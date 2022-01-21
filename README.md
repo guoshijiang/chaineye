@@ -46,5 +46,13 @@ pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 如果你在线上部署，建议使用，supervisor 管理进程，Ng 转发，把静态文件使用 `python3 manage.py collectstatic` 收集到相应的目录。
 
 
-注意：以后 PC 端的代码，我们开发新功能的时候也基于这个代码开发，欢迎大家加入一起搞
+### 注意
+
+以后 PC 端的代码，我们开发新功能的时候也基于这个代码开发，欢迎大家加入一起搞
+
+如果您使用这套代码，搭建过程中有任何问题，可以去问我学院（www.wenwoha.com） 上面找联系方式联系我们，也可以直接加我的微信：LGZAXE
+
+
+
+
 
