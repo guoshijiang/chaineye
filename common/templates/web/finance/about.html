@@ -1,0 +1,134 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <style>
+        .w-main-text {
+            padding: 100px 0 0;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .w-main-text h4 {
+            font-size: 25px;
+            font-weight: 400;
+            color: #1f2c3f;
+            line-height: 50px;
+            text-align: center;
+        }
+        .we-contact, .we-contact ul {
+            justify-content: space-around;
+        }
+        .we-contact {
+            width: 50%;
+            margin: 40px auto;
+        }
+        .m-flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        *, a, h5, li, p, ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        .we-contact ul {
+            flex-direction: column;
+            padding: 30px 0;
+        }
+        .we-contact ul li {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6a717d;
+            line-height: 20px;
+            align-items: center;
+        }
+        .we-contact ul li i {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAAAAADFHGIkAAAA8klEQVQoz3XR23KDIBAG4Lz/yzWjIlaqBvFYEjykHVKVpZ6LyfS/Ydhvhp1lT3pNzyPbjni/3U/LARwRxjkj6BNMAIZvcwEEZmBAgeX2hPTyP3g4td7TOnKHJNBGomQHwk0QBFZQzpcJ8jysIK2HCb31vUJxaKH1JVvhEh+BhgsI534E6YoJlFfop3BPjdCg4RmUV4+QRvollI1A41dI6ATsH8g/2qA3q51/JekIPUFnemjw5rz/THNAbpcm3FAK84AKiWOHxh5mAH/ZmarFPBHkWC1/1bphWYmM+D5m/JoFbrMtqisiG8eVgooiKyy7qfYLZgItMIxwFXsAAAAASUVORK5CYII=) no-repeat;
+            background-size: contain;
+            margin-right: 10px;
+        }
+        .we-contact ul li:nth-child(2) i {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAPFBMVEX////V1dXS0tLPz8/6+vrs7Oz19fXb29vl5eXY2Njg4ODu7u7i4uL8/Pzw8PDd3d339/fn5+fy8vLp6elEOWb4AAABqElEQVRIx51VW47EIAyrHcqz797/rjvR7sIgMQWNv6rKITh22ulrmOTjbcf5MxRc1kH+TRKghH3wfApwzk4EfpTvzOvBQzgP8xU7hF3lqfAnE8hgOvMk6TLHUrD3BkqYql9H+AKcU4EKl0cZEagH4wjf6XBXLzbSPZoMxOrFJc8FVoi1FoH4VLCS3GobmXpj2t8upDZOj7B8i4MF0bFaA5TPNBrxo8PXFv8q1qAz7SKWdFwcCbihYMkjEBwjG8Etq0Dob7YDYcYCXs51pd2D1a018FBJHVT7r8Ljn47L77u3bftUeKlwh/oSiRd4tmQEEPa/HwVI0+qCgFRRjbgcILMFt9IWB5GYkoMg2EZEQOSKK0BA4akX8yJEIwAbiBw9E+WXr0ha6xsVfO+dQhFrQ5lcbQeJXGG2t5nskLA0b0Vcbaco0ojlBfJDwB3R8sMCqq+BGe2MHapvbxh1oopYrQ/YWomePyWRL/i15juS5mPaoWnYKj4eP3BHhFCirfhz788tYNy6/NJkIUSX704n+nyFjQQJIJvZL/EQKEKaBrHaeYk+rdO3+AHb/AvOcaLyFwAAAABJRU5ErkJggg==);
+         }
+        .we-contact ul li:nth-child(3) i {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAPFBMVEX////X19f9/f3S0tLZ2dnu7u7Ozs77+/v4+Pjo6OjV1dXU1NTk5OTe3t709PTs7Ozh4eHb29vm5ubw8PDvHryGAAAA7UlEQVRIx+2R2w6DIAyGKa2gHBT0/d913UKsk8xeLdkSvzsOH/1Lzc03sV7BvOFXQAWa7OE+EIECQRajEKZBoWBY9gIIyagQkWmMzmEZzSVzRoxWhAhBmurxKwK6o5AQQp3NB4YAEMpbBT8WR5j8hzR8ZLdwFLiDjQLExXZpJr6eZy5zFozlo3jONQCn4Wd64UmXa8yOXNvohSdbe1DStJKd0EV+NSVyJ5w/pX0b72tCazS2wSiCDJYIOY0mCHORNIog3MJvCrALHmE1GjZT3ReJXJ6uWSvGZRd8hkoKFZM91FsyKOThnFHB3Pw3D/BgDvJ/JF8IAAAAAElFTkSuQmCC);
+        }
+        .we-contact div img {
+            width: 150px;
+        }
+        .we-contact div p {
+            text-align: center;
+        }
+
+        .w-main-text div p {
+            height: auto!important;
+        }
+        .w-main-text p {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6a717d;
+            line-height: 24px;
+            text-align: justify;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="about-container">
+    <div class="about-img">
+      <img src="{% static 'images/about_banner.png' %}" alt="">
+    </div>
+    <div class="container">
+      <div class="about-title">关于我们</div>
+      <div class="about-des-container row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 about-bg">
+          <img src="{% static 'images/about_pic.png' %}" alt="">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 about-des" style="text-align: left">
+          <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链眼属于天津椭圆曲线科技有限公司(原天津木姜子科技有限公司)旗下产品，
+              天津椭圆曲线科技有限公司是一家全球领先的区块链技术服务公司，目前公司主营业务公链联盟链开发，
+              数字货币交易所开发，数字钱包开发，股票交易所开发，量化系统开发，DAPP开发，NFT和Defi合约开发，
+              白皮书编写和区块链产品推广服务，一直以“成为客户最值得信赖的技术服务公司”为愿景，
+              以“为客户持续创造价值”为使命；基于海量业务的技术锤炼，从基础架构到精细化运营, 为客户提供安全、稳定、可靠的一站式技术服务。
+          </p>
+          <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;团队成员曾就职阿里、百度、美团、汽车之家、火币、币安、Kcash、Achain、Cobo、Chainup、库神、币信和
+              宜信宜人贷等各大知名互联网及区块链公司， 从事专业的技术开发或运营管理，
+              具有丰富的技术经验与区块链行业经验。
+          </p>
+          <p>
+              公司目前已形成以下团队和产品：<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;椭圆曲线(原木姜子科技)：www.gingernet.vip <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问我学院：www.wenwoha.com <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;知鱼定制：www.zhifish.cn <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市集平台：shiji.gingernet.vip <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;链眼社区：www.chaineye.info <br/>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天使：www.anglelove.vip <br/>
+          </p>
+        </div>
+      </div>
+      <div class="w-main-text">
+          <h4>联系我们</h4>
+          <div class="we-contact m-flex">
+              <ul class="m-flex we-contact-list">
+                  <li class="m-flex"><i></i>1294928442</li>
+                  <li class="m-flex"><i></i>13611267041</li>
+                  <li class="m-flex"><i></i>guoshijiang2012@163.com</li>
+              </ul>
+              <div>
+                  <img class="wow zoomIn" src="{% static 'images/weixin.png' %}" alt="" style="visibility: visible;">
+                  <p>请关注官方微信号</p>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

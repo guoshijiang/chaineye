@@ -1,0 +1,40 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cultivate.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="container">
+            <div class="row cultivate-box">
+                {% for chain_safe in chain_safe_list %}
+                    <div class="col-4" style="margin-top:10px">
+                        <a style="color: black;text-decoration:none;" href="{% url 'chain_safe_detail' chain_safe.id %}">
+                            <div class="cultivate-box-item">
+                                <img width="420" height="180" src="{% url 'index' %}media/{{ chain_safe.img }}" alt="">
+                                <div class="content-box">
+                                    <p class="title">{{ chain_safe.title }}</p>
+                                    <div class="desc-box d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="name">作者：{{ chain_safe.author }}</p>
+                                            <p class="time">共阅读 {{ chain_safe.views }} 次</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+               {% include 'web/layout/pagination.html' with items=chain_safe_list %}
+            </nav>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+</div>
+{% endblock %}

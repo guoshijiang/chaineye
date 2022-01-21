@@ -1,0 +1,188 @@
+.header-container {
+  height: 70px;
+}
+.header-container .left-container .logo {
+  display: flex;
+  width: 106px;
+  height: 43px;
+}
+.header-container .left-container .nav-box {
+  width: 400px;
+  margin-left: 110px;
+}
+.header-container .left-container .nav-box li {
+  display: flex;
+  flex-direction: column;
+}
+.header-container .left-container .nav-box li.active .active-line {
+  opacity: 1;
+}
+.header-container .left-container .nav-box li a {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 33px;
+  text-decoration: none;
+}
+.header-container .left-container .nav-box li .active-line {
+  display: inline-block;
+  width: 100%;
+  height: 3px;
+  background: #3F89F6;
+  border-radius: 2px;
+  opacity: 0;
+}
+.header-container .right-container .login-btn-box {
+  display: flex;
+  align-items: center;
+}
+.header-container .right-container .login-btn-box .login-btn {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: 33px;
+  text-decoration: none;
+  margin-right: 27px;
+}
+.header-container .right-container .login-btn-box .login-btn img {
+  margin-right: 3px;
+}
+.header-container .right-container .right-login-box {
+  display: flex;
+  align-items: center;
+}
+.header-container .right-container .right-login-box .user-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.header-container .right-container .right-login-box .back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 32px;
+  background: #FCFCFC;
+  border: 1px solid #EEEEEE;
+  border-radius: 16px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  margin-left: 20px;
+}
+
+.content-box {
+  width: 100%;
+  min-height: calc(-50vh);
+  background-color: #F7F8FB;
+  padding-bottom: 60px;
+}
+.breadcrumb-navigation {
+  height: 75px;
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #000000;
+  line-height: 75px;
+}
+.breadcrumb-navigation a {
+  text-decoration: none;
+  color: #000000;
+}
+.info-box {
+  width: 90%;
+  height: 140px;
+  padding-top: 20px;
+  background: #4990F4;
+  border-radius: 50px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info-box .title {
+  font-size: 30px;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #fff;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.info-box .sub-title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 300;
+  color: #fff;
+  line-height: 30px;
+}
+.form-box {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+.col-sm-10 .el-button {
+  border: none;
+  outline: none;
+  margin-top: 40px;
+}
+
+.form-group{
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.form-group input{
+  width: 450px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #F4FAFF;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333;
+  line-height: 30px;
+}
+.form-group select{
+  width: 450px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #F4FAFF;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333;
+  line-height: 30px;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  background: #ffffff url(../images/arrow-down.png) no-repeat;
+  background-size: 20px;
+  background-position: 410px 13px;
+}

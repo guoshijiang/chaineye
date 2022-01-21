@@ -1,0 +1,122 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+  <head>
+    <title>链眼, 链眼社区, 链眼区块链，一个专注区块链技术，区块链金融，区块链行业咨询和区块链数据分析平台</title>
+    <meta charSet="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Contro" content="no-siteapp" />
+    <meta name="baidu-site-verification" content="code-I0yidDV9M9" />
+    <meta name="apple-mobile-web-app-title" content="链眼, 链眼社区, 链眼区块链，一个专注区块链技术，区块链金融，区块链行业咨询和区块链数据分析平台">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="renderer" content="webkit" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favico.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.toast.min.js' %}"></script>
+    <script src="{% static 'js/jquery.SuperSlide.2.1.1.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <meta name='robots' content='index,follow' />
+    <meta name="keywords" content="链眼, 链眼社区, 链眼区块链，一个专注区块链技术，区块链金融，区块链行业咨询和区块链数据分析平台">
+    <meta name="description" content="链眼, 链眼社区, 链眼区块链，一个专注区块链技术，区块链金融，区块链行业咨询和区块链数据分析平台">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?f16a826bf226cade7f49259dee519e3d";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    {% include 'web/layout/header.html' %}
+    {% block body %}
+    {% endblock %}
+    {% include 'web/layout/bottom.html' %}
+    {% include 'web/auth/login.html' %}
+    <script>
+        let nav_mark = "{{ nav_mark }}"
+        console.log(nav_mark)
+        if (nav_mark === "index") {
+            $("#index").addClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#train").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "questions") {
+            $("#index").removeClass('on')
+            $("#questions").addClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "market") {
+             $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").addClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "activity") {
+             $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").addClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "plannet_course") {
+            $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").addClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "chain_safe") {
+            $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").addClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").removeClass('on')
+        } else if (nav_mark === "coinhunter") {
+            $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").removeClass('on')
+            $("#coinhunter").addClass('on')
+        } else if (nav_mark === "about") {
+            $("#index").removeClass('on')
+            $("#questions").removeClass('on')
+            $("#market").removeClass('on')
+            $("#activity").removeClass('on')
+            $("#plannet_course").removeClass('on')
+            $("#chain_safe").removeClass('on')
+            $("#about").addClass('on')
+            $("#coinhunter").removeClass('on')
+        }
+    </script>
+  </body>
+</html>

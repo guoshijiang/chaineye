@@ -1,0 +1,65 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="title">
+             <p>我参加的活动</p>
+          </div>
+          <div class="information-bd-box">
+            <div class="col-md-10 main  mt-20 pt-5">
+                <ul class="header-title-box">
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-8 col-md-8 space-stream-item-title-warp">
+                                <strong>标题</strong>
+                            </div>
+                            <div class="hidden-xs col-md-2">
+                                <strong>发布日期</strong>
+                            </div>
+                        </div>
+                    </li>
+                    {% for join_act in join_act_list %}
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-8 col-md-8">
+                                    <a class="question-title" href="{% url 'activity_detail' join_act.activity.id %}">{{  join_act.activity }}</a>
+                                </div>
+                                <div class="hidden-xs col-md-2">
+                                    <span class="question-date">{{ join_act.created_at | hdatetime }}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

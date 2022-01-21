@@ -1,0 +1,59 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventAdd.css' %}">
+    <style>
+        #id_part, #id_title{
+            display: inline-block;
+            width: 49%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        #id_category{
+            margin-left: 12px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row event-create">
+        <form class="form-box" method="post" action="{% url 'wirte_course_article' c_article_id %}">
+            <div class="form-group require">
+              {{ course_article_form.part }}
+              {% if course_article_form.part.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_article_form.part.errors }}
+                </div>
+              {% endif %}
+              {{ course_article_form.title }}
+              {% if course_article_form.title.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_article_form.title.errors }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group require">
+              {% csrf_token %}
+              {{ course_article_form.media }}
+              {{ course_article_form.detail }}
+              {% if course_article_form.detail.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_article_form.detail.errors }}
+                </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">提交文章</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

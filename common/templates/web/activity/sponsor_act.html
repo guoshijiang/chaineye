@@ -1,0 +1,62 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventAdd.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row event-create">
+        <div class="event-create-details-title" style="padding:30px 0 30px;">
+            <h1 class="event-create-headline">活动赞助,仅支持数字货币</h1>
+            <p style="margin-bottom:30px"></p>
+            {% for coin_addr in coin_addr_list %}
+                <p class="event-create-byline">{{ coin_addr.coin }}赞助地址: {{ coin_addr.address }}</p>
+            {% endfor %}
+        </div>
+        <form class="form-box" method="post">
+            <div class="form-box" method="post">
+            <div class="from-content-box">
+                <div class="form-content-item">
+                    <input type="hidden" name="activity_id" value="{{ activity_id }}">
+                    <input type="hidden" name="account_id" value="{{ request.session.user_id }}">
+                    <div class="form-group require">
+                        <label>赞助人姓名</label>
+                        <input type="text" name="name" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>赞助人金额</label>
+                        <input type="text" name="amount" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>赞助币种</label>
+                        <input type="text" name="coin" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>赞助充币地址</label>
+                        <input type="text" name="address" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>赞助人手机号</label>
+                        <input type="text" name="phone" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>赞助人邮箱</label>
+                        <input type="email" name="email" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                         <label>赞助人公司</label>
+                         <input type="text" name="company" class="form-control">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group require">
+                    <label>赞助原因</label><br/>
+                    <textarea name="reason" style="width:730px; height:90px; resize:none; border: solid 1px #e5e5e5"></textarea>
+                </div>
+                <button style="margin-left:35%; width:30%;" type="submit" class="btn btn-primary btn-lg btn-block">提交数据</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

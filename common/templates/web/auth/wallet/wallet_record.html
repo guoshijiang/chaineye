@@ -1,0 +1,163 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <style>
+        .el-tabs {
+          width: 100%;
+          min-height: 40px;
+          border-bottom: 1px solid #ddd;
+        }
+        .el-tabs .tabs-box {
+          display: flex;
+          width: auto;
+        }
+        .el-tabs .el-tab {
+          padding: 0 20px;
+          height: 40px;
+          box-sizing: border-box;
+          line-height: 40px;
+          display: inline-block;
+          list-style: none;
+          font-size: 14px;
+          font-weight: 500;
+          color: #303133;
+          text-decoration: none;
+          border: 1px solid #ddd;
+          border-bottom: none;
+          border-right: none;
+        }
+        .el-tabs .el-tab:last-child {
+          border-right: 1px solid #ddd;
+          border-radius: 0 6px 0 0;
+        }
+        .el-tabs .el-tab:first-child {
+          border-radius: 6px 0 0 0;
+        }
+        .el-tabs .el-tab:hover {
+          color: #409EFF;
+        }
+        .el-tabs .el-tab.active {
+          background-color: #ccc;
+        }
+        .el-tab-content {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 20px;
+        }
+        .title-box {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 12px;
+          margin-top: 20px;
+          border-bottom: 1px solid #F0F0F0;
+        }
+        .left-title {
+          font-size: 18px;
+          font-family: PingFang SC;
+          font-weight: bold;
+          color: #333333;
+        }
+        .right-title {
+          font-size: 18px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #298B02;
+          padding-right: 30px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="information-bd-box">
+            <div class="information-body-item">
+               <div class="el-tabs" style="margin-top: 10px;">
+                  <div class="tabs-box">
+                    {% if tab == "walletInfo" %}
+                        <a class="el-tab active" href="{% url 'my_wallet' user.id %}">充值</a>
+                    {% else %}
+                        <a class="el-tab" href="{% url 'my_wallet' user.id %}">充值</a>
+                    {% endif %}
+                    {% if tab == "withdraw" %}
+                        <a class="el-tab active" href="{% url 'wallet_withdraw' %}">提现</a>
+                    {% else %}
+                        <a class="el-tab" href="{% url 'wallet_withdraw' %}">提现</a>
+                    {% endif %}
+                    {% if tab == "income" %}
+                        <a class="el-tab active" href="{% url 'income_record' %}">收益记录</a>
+                    {% else %}
+                        <a class="el-tab" href="{% url 'income_record' %}">收益记录</a>
+                    {% endif %}
+                    {% if tab == "trans" %}
+                        <a class="el-tab active" href="{% url 'trans_record' %}">交易记录</a>
+                    {% else %}
+                        <a class="el-tab" href="{% url 'trans_record' %}">交易记录</a>
+                    {% endif %}
+                     {% if tab == "wallet_record" %}
+                        <a class="el-tab active" href="{% url 'wallet_record' %}">充提记录</a>
+                     {% else %}
+                         <a class="el-tab" href="{% url 'wallet_record' %}">充提记录</a>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+            <div class="box-body table-responsive" style="margin-top:20px">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                        <tr>
+                            <th>转账币种</th>
+                            <th>转入地址</th>
+                            <th>转出地址</th>
+                            <th>金额</th>
+                            <th>手续费</th>
+                            <th>交易Hash</th>
+                            <th>转账时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for w_record in w_record_list %}
+                            <tr>
+                                <td>{{ w_record.asset  }}</td>
+                                <td>{{ w_record.from_addr  }}</td>
+                                <td>{{ w_record.to_addr  }}</td>
+                                <td>{{ w_record.amount | keep_two_decimal_places }}</td>
+                                <td>{{ w_record.tx_fee | keep_two_decimal_places}}</td>
+                                <td>{{ w_record.tx_hash }}</td>
+                                <td>{{ w_record.created_at | hdatetime }}</td>
+                            </tr>
+                       {% endfor %}
+                   </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+               {% include 'web/layout/pagination.html' with items=w_record_list %}
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

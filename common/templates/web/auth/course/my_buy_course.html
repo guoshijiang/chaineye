@@ -1,0 +1,73 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="title">
+             <p>我购买的课程</p>
+          </div>
+          <div class="information-bd-box">
+            <div class="col-md-10 main  mt-20 pt-5">
+                <ul class="header-title-box">
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7 space-stream-item-title-warp">
+                                <strong>标题</strong>
+                            </div>
+                            <div class="col-xs-3 col-md-3">
+                                <strong>购买时间</strong>
+                            </div>
+                            <div class="col-xs-2 col-md-2">
+                                <strong>操作</strong>
+                            </div>
+                        </div>
+                    </li>
+                    {% for buy_course in my_buy_course_list %}
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-7 col-md-7">
+                                    <span class="question-title">{{  buy_course.course.title }}</span>
+                                </div>
+                                 <div class="col-xs-3 col-md-3">
+                                     <span class="question-title">{{  buy_course.created_at | hdatetime }}</span>
+                                </div>
+                                <div class="col-xs-2 col-md-2">
+                                    <a href="{% url 'course_article_detail' buy_course.course.id %}">
+                                       <button class="btn btn-danger">去学习</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

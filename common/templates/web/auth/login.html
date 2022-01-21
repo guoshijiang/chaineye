@@ -1,0 +1,254 @@
+{% load staticfiles zhifishcc_tag%}
+<div class="modal login-modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="tabs">
+              <div class="tab-item register-tab">注册</div>
+              <div class="tab-item login-tab active">登陆</div>
+          </div>
+          <div class="register-form">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" name="register-username" class="form-control" placeholder="昵称">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="password" name="register-pwd1" class="form-control" placeholder="登录密码（6~12个字符）">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="password" name="register-pwd2" class="form-control" placeholder="确认密码（必填）">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" name="register-phone" class="form-control" placeholder="手机号">
+            </div>
+            <div class="input-group">
+                <input type="text" name="register-code" class="form-control" placeholder="输入短信验证码">
+                <div class="get-code" role="button" onclick="GetCodeRister(this)">短信验证码</div>
+            </div>
+            <button class="register-btn" role="button" onclick="Rigister(this)">注册</button>
+            <div class="agreement">我已阅读并接受<span>《知鱼财经平台服务协议》</span></div>
+          </div>
+          <div class="code-login-form">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" name="code-login-phone" class="form-control" placeholder="手机号">
+            </div>
+            <div class="input-group">
+                <input type="text" name="code-login-code" class="form-control" placeholder="输入短信验证码">
+                <div class="get-code" role="button" onclick="GetCodeLogin(this)">短信验证码</div>
+            </div>
+            <div class="login-btn" role="button" onclick="LoginByCode(this)">登录</div>
+            <div class="change-login-type password-type" role="button">密码登陆</div>
+          </div>
+          <div class="password-login-form">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" name="password-login-phone" class="form-control" placeholder="手机号">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="password" name="password-login-password"  class="form-control" placeholder="登录密码（6~12个字符）">
+            </div>
+            <div class="login-btn" role="button" onclick="LoginByPwd(this)">登录</div>
+            <div class="change-login-type code-type" role="button">手机验证码登陆</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+function GetCodeRister(obj) {
+    let phone = $("input[name='register-phone']").val();
+    console.log("phone = ", phone)
+    if (phone.length !== 11) {
+        alert('手机号长度不够');
+        return 0;
+    }
+    let req_url = '/sms_send?phone=' + phone;
+    console.log(req_url)
+    $.ajax({
+        url: req_url,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            if(result.code === 200){
+                msg = JSON.parse(result.result)
+                if (msg.Code === 'OK') {
+                    alert("获取验证码成功");
+                } else {
+                    alert("获取验证码失败，请检查手机号之后重新获取");
+                }
+            }
+        }
+    });
+}
+
+function GetCodeLogin(obj) {
+    let phone = $("input[name='code-login-phone']").val();
+    console.log("phone = ", phone)
+    if (phone.length !== 11) {
+        alert('手机号长度不够');
+        return 0;
+    }
+    let req_url = '/sms_send?phone=' + phone;
+    console.log(req_url)
+    $.ajax({
+        url: req_url,
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            if(result.code === 200){
+                msg = JSON.parse(result.result)
+                if (msg.Code === 'OK') {
+                    alert("获取验证码成功");
+                } else {
+                    alert("获取验证码失败，请检查手机号之后重新获取");
+                }
+            }
+        }
+    });
+}
+
+// 注册
+function Rigister(obj) {
+    let req_url = '/register';
+    let user_name = $("input[name='register-username']").val();
+    if (user_name === ''){
+        alert('用户名不能为空');
+        return 0;
+    }
+    let phone = $("input[name='register-phone']").val();
+    if (phone.length !== 11) {
+        alert('手机号长度不够');
+        return 0;
+    }
+    let code = $("input[name='register-code']").val();
+     if (code === ''){
+        alert('验证码不能为空');
+        return 0;
+    }
+    let password1 = $("input[name='register-pwd1']").val();
+    let password2 = $("input[name='register-pwd2']").val();
+    if (password1 === '' || password2 === ''){
+        alert('密码不能为空');
+        return 0;
+    }
+    if (password1 !== password2) {
+        alert('两次输入的密码不一致');
+        return 0;
+    }
+    let post_data = {
+        username: user_name,
+        phone:phone,
+        code: code,
+        password1: password1,
+        password2: password2
+    };
+    $.ajax({
+        url: req_url,
+        type: "POST",
+        data: post_data,
+        dataType: "json",
+        success: function (result) {
+            if (result.code === 200){
+                alert('注册成功');
+                window.location.reload();
+            }
+            if (result.code === 1000){
+                alert(result.msg);
+            }
+        }
+    });
+}
+
+
+// 通过密码登陆
+function LoginByPwd(obj) {
+    let req_url =  '/login_by_verify_passwd';
+    let user_name = $("input[name='password-login-phone']").val();
+    let password = $("input[name='password-login-password']").val();
+    if (user_name === ""){
+        alert('用户名不能为空');
+        return 0;
+    }
+    if (password === ""){
+         alert('密码不能为空');
+        return 0;
+    }
+    let post_data = {
+        username: user_name,
+        password: password,
+    };
+    $.ajax({
+        url: req_url,
+        type: "POST",
+        data: post_data,
+        dataType: "json",
+        success: function (result) {
+            if (result.code === 200){
+                alert('登陆成功');
+                localStorage.setItem('user_data', JSON.stringify(result.result));
+                localStorage.setItem('user_name', result.result.user_name )
+                window.location.reload();
+            }
+            if (result.code === 1000){
+                alert(result.msg);
+            }
+        }
+    });
+}
+
+// 通过验证码登陆
+function LoginByCode(obj) {
+    let req_url = '/login_by_verify_code';
+    let phone = $("input[name='login-code-phone']").val();
+    let code = $("input[name='login-code-code']").val();
+    if (phone === ""){
+        alert('手机号码不能为空');
+        return 0;
+    }
+    if (code === ""){
+         alert('验证码不能为空');
+        return 0;
+    }
+    let post_data = {
+        phone: phone,
+        code: code,
+    };
+    $.ajax({
+        url: req_url,
+        type: "POST",
+        data: post_data,
+        dataType: "json",
+        success: function (result) {
+            if (result.code === 200){
+                alert('登陆成功');
+                localStorage.setItem('user_data', JSON.stringify(result.result));
+                window.location.reload();
+            }
+            if (result.code === 1000){
+                alert(result.msg);
+            }
+        }
+    });
+}
+
+
+</script>

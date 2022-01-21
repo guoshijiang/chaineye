@@ -1,0 +1,26 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/activity_detail.css' %}">
+{% endblock %}
+{% block body %}
+    <div class="container article-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="margin-top:50px">
+        <div class="activity-time">{{ activity_detail.act_time }}</div>
+        <div class="activity-title">{{ activity_detail.title }}</div>
+        <div class="activity-organizer">主办方：{{ activity_detail.company }}</div>
+        <div class="article-content">
+            <p>{{ activity_detail.body | safe }}</p>
+        </div>
+        <hr/>
+        <div class="activity-title" style="font-size:20px">鸣谢</div>
+          {% for sa in sa_list %}
+            <div class="activity-organizer">赞助商:{{ sa.company }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp赞助币种:{{ sa.coin }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp赞助金额:{{ sa.amount }}</div>
+          {% endfor %}
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+  </div>
+{% endblock %}

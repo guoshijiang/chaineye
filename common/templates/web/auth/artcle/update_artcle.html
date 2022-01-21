@@ -1,0 +1,118 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <style>
+        #pulish-artcle {
+            display: block;
+            width: 45%;
+            height: 35px;
+            background: #E60012;
+            font-size: 18px;
+            line-height: 35px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 15px auto 0;
+        }
+        #id_category, #id_tags, #id_img{
+            display: block;
+            width: 80%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        #id_excerpt {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="content-box">
+    <div class="w1200">
+      <div class="w1000">
+        <form method="post" action="{% url 'update_article' arc_id %}" enctype="multipart/form-data">
+          <div class="form-group-place row" style="padding:20px">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              {{ art_form.title }}
+              {% if art_form.title.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ art_form.title.errors }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-12">
+              {% csrf_token %}
+              {{ art_form.media }}
+              {{ art_form.body | safe }}
+              {% if art_form.body.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ art_form.body.errors }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+               {{ art_form.excerpt }}
+               {% if art_form.excerpt.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ art_form.excerpt.errors }}
+                    </div>
+               {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+          <div class="form-group-place row" style="padding: 20px;  text-align: center;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+               {{ art_form.category }}
+               {% if art_form.category.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ art_form.category.errors }}
+                    </div>
+               {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+          <div class="form-group-place row" style="padding-top: 20px; text-align: center;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+               {{ art_form.img }}
+               {% if art_form.img.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ art_form.img.errors }}
+                    </div>
+               {% endif %}
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+          <div class="form-group-place row" style="padding:20px">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <button type="submit" id="pulish-artcle" class="btn-default block">提交审核</button>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

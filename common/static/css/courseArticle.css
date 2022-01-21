@@ -1,0 +1,162 @@
+.article-content{width: 1200px;margin: 0 auto;display: flex;margin-top: 20px;justify-content: space-between;}
+body{
+  background-color: #F5F5F5;
+}
+p{
+  margin: 0;
+}
+.article-content .article-left{
+  width: 320px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 40px;
+}
+.mulu-list{
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+.mulu-list .mulu-item{
+  display: flex;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+.mulu-list .mulu-item .mulu-left{
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+.mulu-list .mulu-item .mulu-left .wai{
+  width: 40px;
+  height: 40px;
+  background: rgba(200, 200, 200,.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.mulu-list .mulu-item .mulu-left .nei{
+  width: 26px;
+  height: 26px;
+  background: rgba(200, 200, 200,.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.mulu-list .mulu-item .mulu-left .line{
+  width: 2px;
+  height: 26px;
+  background: rgba(200, 200, 200,.6);
+}
+.mulu-list .mulu-item .mulu-left.on .wai{
+  background: rgba(212, 64, 57, .3);
+}
+.mulu-list .mulu-item .mulu-left.on .wai .nei{
+  background: rgba(212, 64, 57, .6);
+}
+.mulu-list .mulu-item .mulu-left.on .line{
+  background: rgba(212, 64, 57, .6);
+}
+
+.mulu-box button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 240px;
+  height: 40px;
+  background: #D44039;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: Adobe Heiti Std;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.mulu-list .mulu-item .mulu-right{
+  width: 180px;
+}
+.mulu-list .mulu-item .mulu-right .title{
+  width: 100%;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #222222;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.mulu-list .mulu-item .mulu-right .row-2{
+  display: flex;
+  align-items: center;
+}
+.mulu-list .mulu-item .mulu-right .row-2 span{
+  width: 38px;
+  height: 20px;
+  background: rgba(212, 64, 57, .3);
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #D44039;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 11px;
+}
+.mulu-list .mulu-item .mulu-right .row-2 p{
+  margin-right: 11px;
+  font-size: 12px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #747A7F;
+}
+
+.article-right{
+  width: 862px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 40px;
+}
+
+.article-title{
+  font-size: 30px;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 42px;
+  margin-bottom: 20px;
+}
+.article-info p{
+  text-align: justify;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #111111;
+  line-height: 28px;
+  word-break: break-all;
+}
+.article-info img{
+  max-width: 100%;
+}
+
+.article-next-box{
+  margin-top: 40px;
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #666666;
+  line-height: 36px;
+}
+.article-next-box a{
+  text-decoration: none;
+  color: #666;
+}

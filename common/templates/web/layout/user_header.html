@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<style>
+    .user-profile {
+        color: #8b0000;
+        margin-left:12px;
+    }
+    .dropdown-usermenu {
+        margin-top: 20px;
+    }
+    .dropdown-usermenu li a{
+        color: #8b0000;
+        padding: 10px;
+        font-size: 14px;
+    }
+</style>
+<div class="nav_menu">
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="">
+        {% if request.session.user_pho %}
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img style="width:24px; height:24px;" src="{% url 'index' %}media/{{ request.session.user_pho }}" alt="" class="img-circle"/>  {{ request.session.user_name }} <span class=" fa fa-angle-down"></span>
+            </a>
+        {% else %}
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img style="width:24px; height:24px;" src="{% static 'images/default_avatar.png' %}" alt="" />  {{ request.session.user_name }} <span class=" fa fa-angle-down"></span>
+            </a>
+        {% endif %}
+        <ul class="dropdown-menu dropdown-usermenu pull-right">
+          <li>
+            <a href="{% url 'my' request.session.user_id %}">
+              <i class="fa fa-user pull-right"></i>个人中心
+            </a>
+          </li>
+           <li>
+            <a href="{% url 'publish_activity' request.session.user_id %}">
+              <i class="fa fa-send pull-right"></i>发布活动
+            </a>
+          </li>
+           <li>
+            <a href="{% url 'create_article' request.session.user_id %}">
+              <i class="fa fa-paragraph pull-right"></i>写文章
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">
+              <i class="fa fa-sign-out pull-right"></i>退出登录
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>

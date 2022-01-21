@@ -1,0 +1,192 @@
+.module-right-box{padding: 18px 14px;}
+.module-right-box h6{font-size: 20px;font-family: PingFang SC;font-weight: 600;color: #222222;}
+/* 公共头部 */
+.common-header{width: 100%;}
+.common-header .respons{width: 100%;background-color: #eee;padding: 10px 0;}
+.common-header .respons p{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 24px;text-align: center;margin: 0;}
+/* PC导航 */
+.nav-container{height: 70px;display: none;}
+.nav-container .img-icon{width: 100%;height: 20px;}
+.nav-container .img-icon img{width: 100%;}
+.nav-container .nav-list{padding: 0;margin: 0;}
+.nav-container .nav-list li{list-style: none;}
+.nav-container .nav-list li a{text-decoration: none;font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #222222;padding-bottom: 5px;}
+.nav-container .nav-list li a.on{border-bottom: 2px solid #E60012;color: #EB5D68;}
+.nav-container .search-box{height: 70px;}
+.nav-container .search-box .ipt-box{width: 110px;height: 40px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;display: flex;justify-content: center;align-items: center;}
+.nav-container .search-box .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+.nav-container .search-box .ipt-box img{width: 19px;height: 19px;}
+.nav-container .search-box p{margin: 0;padding: 0;font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #222222;}
+/* mobile 导航 */
+.nav-mobile-container{padding: 5px 0;}
+.nav-mobile-container .ipt-box{width: 110px;height: 40px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;}
+.nav-mobile-container .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+.nav-mobile-container .icon{cursor:pointer;height: 18px;width: 22px;display: flex;flex-direction: column;justify-content: space-between;}
+.nav-mobile-container .icon span{width: 22px;height: 2px;background-color: #000;}
+.nav-mobile-container .logo-box img{width: 100%;}
+
+
+
+/* 公共尾部 */
+.common-footer{width: 100%;background-color: #212538;margin-top: 40px;}
+.common-footer .common-footer-box{box-sizing: border-box;padding: 29px 0;}
+.common-footer .common-footer-box ul li{list-style: none;}
+.common-footer .common-footer-box a{font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #AAAAAA;line-height: 32px;text-decoration: none;}
+.common-footer .common-footer-box ul li.title a{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;line-height: 32px;}
+/* 公共右侧 */
+
+/* 比特币金融 btn-jr */
+.btn-jr{width: 100%;height: 90px;margin-top: 17px;}
+.btn-jr img{width: 100%;}
+/* 下载app */
+.download-app-box{padding: 19px;margin-top: 15px;border: 1px solid #ddd;}
+.download-app-box .app-icon-box{width: 52px;height: 52px;margin-right: 7px;}
+.download-app-box .app-icon-box img{width: 100%;}
+.download-app-box .app-info-box h6{font-size: 20px;font-family: PingFang SC;font-weight: 600;color: #222222;}
+.download-app-box .app-info-box a{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #00A8FF;}
+.download-app-box .app-info-box p{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #999999;margin: 0;}
+/* 热门标签 hot-label */
+.hot-label{border: 1px solid #ddd;margin-top: 15px;}
+.hot-label .hot-label-box{padding-left: 0;margin: 0;}
+.hot-label .hot-label-box li{border: 1px solid #DADADA;padding: 9px 17px;font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;list-style: none;margin-bottom: 11px;margin-right: 10px;}
+/* 热门推荐 hot-recommend */
+.hot-recommend{border: 1px solid #ddd;margin-top: 15px;}
+.hot-recommend .hot-recommend-box{margin: 0;padding: 0;}
+.hot-recommend .hot-recommend-box li{list-style: none;margin-bottom: 13px;}
+.hot-recommend .hot-recommend-box li:last-child{margin-bottom: 0;}
+.hot-recommend .hot-recommend-box li .left-img{width: 30%;height: 80px;}
+.hot-recommend .hot-recommend-box li .left-img img{width: 100%;}
+.hot-recommend .hot-recommend-box li .right-content{width: 68%;}
+.hot-recommend .hot-recommend-box li a{text-decoration: none;}
+.hot-recommend .hot-recommend-box li .right-content p{font-size: 18px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;text-decoration: none;margin: 0;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
+.hot-recommend .hot-recommend-box li .right-content span{font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;text-decoration: none;margin: 0;}
+/* 新闻资讯 new-list-container */
+.new-list-container{border: 1px solid #ddd;margin-top: 15px;}
+.new-list-container .new-list-box ul{margin: 0;padding: 0;margin-top: 20px;}
+.new-list-container .new-list-box ul li{list-style: none;}
+.new-list-container .new-list-box ul li a{text-decoration: none;}
+.new-list-container .new-list-box ul li .left-list{margin-right: 10px;}
+.new-list-container .new-list-box ul li .left-list .dian{width: 6px;height: 6px;border-radius: 50%;background-color: #E3E3E3;}
+.new-list-container .new-list-box ul li .left-list .xian{width: 1px;background-color: #ddd;flex: 1;}
+.new-list-container .new-list-box ul li .right-content{margin-top: -10px;}
+.new-list-container .new-list-box ul li .right-content p{font-size: 16px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;margin: 0;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;margin-bottom: 10px;}
+.new-list-container .new-list-box ul li .right-content span{font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;margin-bottom: 15px;display: block;}
+.new-list-container .new-list-box ul li a:hover .right-content p{color: #E60012;}
+.new-list-container .new-list-box ul li a:hover .left-list .dian{background-color: #E60012;}
+
+/* 合作伙伴 coop-friend */
+.coop-friend{border: 1px solid #ddd;margin-top: 15px;}
+.coop-friend ul{margin: 0;padding: 0;}
+.coop-friend ul li{list-style: none;margin: 20px 0;}
+.coop-friend ul li .left-img{background: #FFFFFF;border-radius: 50%;margin-right: 5px;}
+.coop-friend ul li .left-img img{border-radius: 50%;margin-right: 5px;}
+.coop-friend ul li .right-content p{font-size: 16px;font-family: PingFang SC;font-weight: 600;color: #222222;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;margin: 0;}
+.coop-friend ul li .right-content span{font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;margin: 0;}
+
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (min-width: 576px){
+    .nav-container{height: 70px;display: block;}
+    .nav-container .img-icon{width: 100%;height: 20px;}
+    .nav-container .nav-list{padding: 0;margin: 0;}
+    .nav-container .nav-list li{list-style: none;}
+    .nav-container .nav-list li a{text-decoration: none;font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #222222;padding-bottom: 5px;}
+    .nav-container .nav-list li a.on{border-bottom: 2px solid #E60012;color: #EB5D68;}
+    .nav-container .search-box{height: 70px;}
+    .nav-container .search-box .ipt-box{width: 60px;height: 20px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;font-size: 12px;}
+    .nav-container .search-box .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+    .nav-container .search-box p{margin: 0;padding: 0;font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #222222;}
+    .common-header .respons p{font-size: 12px;}
+    .nav-mobile-container{display: none;}
+}
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
+@media (min-width: 768px) { 
+    .nav-container{height: 70px;display: block;}
+    .nav-container .img-icon{width: 100%;height: 20px;}
+    .nav-container .nav-list{padding: 0;margin: 0;}
+    .nav-container .nav-list li{list-style: none;}
+    .nav-container .nav-list li a{text-decoration: none;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #222222;padding-bottom: 5px;}
+    .nav-container .nav-list li a.on{border-bottom: 2px solid #E60012;color: #EB5D68;}
+    .nav-container .search-box{height: 70px;}
+    .nav-container .search-box .ipt-box{width: 100px;height: 40px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;}
+    .nav-container .search-box .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+    .nav-container .search-box p{margin: 0;padding: 0;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #222222;}
+    .nav-mobile-container{display: none;}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    /* PC导航 */
+    .nav-container{height: 70px;display: block;}
+    .nav-container .img-icon{width: 100%;height: 20px;}
+    .nav-container .nav-list{padding: 0;margin: 0;}
+    .nav-container .nav-list li{list-style: none;}
+    .nav-container .nav-list li a{text-decoration: none;font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #222222;padding-bottom: 5px;}
+    .nav-container .nav-list li a.on{border-bottom: 2px solid #E60012;color: #EB5D68;}
+    .nav-container .search-box{height: 70px;}
+    .nav-container .search-box .ipt-box{width: 160px;height: 40px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;}
+    .nav-container .search-box .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+    .nav-container .search-box p{margin: 0;padding: 0;font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #222222;}
+    .nav-mobile-container{display: none;}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+    /* PC导航 */
+    .nav-container{height: 70px;display: block;}
+    .nav-container .img-icon{width: 100%;height: 20px;}
+    .nav-container .nav-list{padding: 0;margin: 0;}
+    .nav-container .nav-list li{list-style: none;}
+    .nav-container .nav-list li a{text-decoration: none;font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #222222;padding-bottom: 5px;}
+    .nav-container .nav-list li a.on{border-bottom: 2px solid #E60012;color: #EB5D68;}
+    .nav-container .search-box{height: 70px;}
+    .nav-container .search-box .ipt-box{width: 160px;height: 40px;border: 1px solid #DDDDDD;border-radius: 20px;padding: 0 10px;outline: none;}
+    .nav-container .search-box .ipt-box input{width: 70%;border: none;outline: none;border-radius: 20px;}
+    .nav-container .search-box p{margin: 0;padding: 0;font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #222222;}
+    .nav-mobile-container{display: none;}
+}
+
+.el-dialog__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.el-dialog__wrapper .el-dialog {
+  position: relative;
+  margin: 0 auto 50px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  width: 40%;
+  margin-top: 15vh;
+}
+.el-dialog__wrapper .el-dialog .el-dialog-title {
+  padding: 20px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.el-dialog__wrapper .el-dialog .el-dialog-title .close {
+  cursor: pointer;
+}
+.el-dialog__wrapper .el-dialog .el-dialog__body {
+  padding: 30px 20px;
+  color: #606266;
+  font-size: 14px;
+  word-break: break-all;
+}
+.el-dialog__wrapper .el-dialog .el-dialog__footer {
+  padding: 10px 20px 20px;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+
+

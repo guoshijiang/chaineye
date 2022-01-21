@@ -1,0 +1,188 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/publishEvent.css' %}">
+    <style>
+         #pulish-act {
+            display: block;
+            width: 10%;
+            height: 35px;
+            background: #E60012;
+            font-size: 18px;
+            line-height: 35px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 6px;
+        }
+        #id_excerpt {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+{% block forms_style %}
+    {{ act_form.media }}
+{% endblock %}
+    <div class="content-box">
+      <div style="text-align:center">
+        <div class="info-box">
+          <p class="title">声明</p>
+          <p class="sub-title">亲爱的链眼作者： 为了提高您活动的通过效率，请不要发数字货币相关炒作的活动</p>
+        </div>
+        <form method="post" action="#" class="form-box" enctype="multipart/form-data">
+          <div class="form-group row" style="padding:20px">
+            <label class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.title }}
+              {% if act_form.title.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ act_form.title.errors }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              {{ act_form.body }}
+              {% if act_form.body.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ act_form.body.errors }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword3" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+               {{ act_form.category }}
+               {% if act_form.category.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.category.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword4" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+               {{ act_form.position }}
+               {% if act_form.position.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.position.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <fieldset class="form-group row" style="padding:10px">
+            <legend class="col-form-label col-sm-4 float-sm-left pt-0"></legend>
+            <div class="col-sm-8">
+              {{ act_form.area }}
+               {% if act_form.area.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.area.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </fieldset>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword5" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.act_time }}
+               {% if act_form.act_time.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.act_time.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <div class="col-sm-12">
+               {{ act_form.excerpt }}
+               {% if act_form.excerpt.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.excerpt.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword7" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.company }}
+               {% if act_form.company.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.company.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword8" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.author }}
+               {% if act_form.author.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.author.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+         <div class="form-group row" style="padding:10px">
+            <label for="inputPassword8" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.actfee }}
+               {% if act_form.actfee.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.actfee.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+         <div class="form-group row" style="padding:10px">
+            <label for="inputPassword8" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.person }}
+               {% if act_form.person.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.person.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+         <div class="form-group row" style="padding:10px">
+            <label for="inputPassword8" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.img }}
+               {% if act_form.img.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.img.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword8" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              {{ act_form.status }}
+               {% if act_form.status.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ act_form.status.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group row" style="padding:10px">
+            <label for="inputPassword3" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8" style="text-align: center">
+              <button id="pulish-act" type="submit" class="el-button block">发布</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}

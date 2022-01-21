@@ -1,0 +1,62 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flash.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="information-box">
+          <div class="container">
+            <div class="row">
+              <ul class="information-hd-box col-12 row">
+                {% if cat_id == 0 %}
+                    <li class="col-1 on">
+                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                    </li>
+                {% else %}
+                    <li class="col-1">
+                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                    </li>
+                {% endif %}
+                {% for cat in question_cat_list %}
+                     {% if cat_id == cat.id %}
+                        <li class="col-1 on"><a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% else %}
+                        <li class="col-1"><a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% endif %}
+                {% endfor %}
+              </ul>
+              <div class="information-bd-box col-12" id="question_box">
+                <div class="information-body-item">
+                  <ul class="record-list">
+                    {% for question in question_list %}
+                         <a href="{% url 'question_detail' question.id %}" style="text-decoration:none">
+                            <li class="d-flex flex-column" style="color: #0b2e13">
+                                <div class="title-box">
+                                    <p>{{ question.title }}</p>
+                                </div>
+                                <p class="desc-box">{{ question.content | safe }}</p>
+                                <div class="curve-box d-flex">
+                                    <p><span><img src="{% static 'images/eye.svg'%}" alt=""></span>浏览: <span>{{ question.views }}</span></p>
+                                    <p><span><img src="{% static 'images/answer.svg' %}" alt=""></span>回答: <span>{{ question.answers }}</span></p>
+                                </div>
+                            </li>
+                         </a>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center" style="margin-top:20px">
+                  {% include 'web/layout/pagination.html' with items=question_list %}
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+  </div>
+{% endblock %}

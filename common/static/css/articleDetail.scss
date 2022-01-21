@@ -1,0 +1,33 @@
+.article-container{
+    .back{
+        font-size: 16px;
+        font-family: Adobe Heiti Std;
+        color: #222222;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .article-title{
+        font-size: 30px;
+        color: #333333;
+        line-height: 40px;
+        margin-bottom: 30px;
+    }
+    .user-detail{
+        display: flex;
+        align-items: center;
+        color: #666666;
+        font-size: 16px;
+        margin-bottom: 25px;
+        .author-name{
+            margin-right: 80px;   
+        }
+    }
+    .article-content{
+        color: #111111;
+        font-size: 16px;
+        line-height: 36px;
+        img{
+            max-width: 100%;
+        }
+    }
+}

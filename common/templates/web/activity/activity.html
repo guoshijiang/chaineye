@@ -1,0 +1,198 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/train.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+{% endblock %}
+{% block body %}
+<div class="train-container container">
+    <div id="swipers" style="height: 300px">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="{% static 'images/bannner1.jpeg' %}" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="{% static 'images/banner2.jpeg' %}" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="{% static 'images/banner3.jpeg' %}" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="tabs">
+       {% if cat_id == 0 %}
+            <div class="tab-item active">
+                <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id=0&area_id={{ area_id }}">全部</a>
+            </div>
+        {% else %}
+            <div class="tab-item">
+                <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id=0&area_id={{ area_id }}">全部</a>
+            </div>
+        {% endif %}
+        {% for act in activity_cat %}
+           {% if cat_id == act.id %}
+               <div class="tab-item active">
+                    <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ act.id }}&area_id={{ area_id }}">{{ act.name }}</a>
+                </div>
+           {% else %}
+                <div class="tab-item ">
+                   <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ act.id }}&area_id={{ area_id }}">{{ act.name }}</a>
+                </div>
+           {% endif %}
+        {% endfor %}
+    </div>
+    <div class="second-tabs">
+        {% if area_id == 0 %}
+            <div class="tab-item active">
+                <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ cat_id }}&area_id=0">全部</a>
+            </div>
+        {% else %}
+            <div class="tab-item">
+                <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ cat_id }}&area_id=0">全部</a>
+            </div>
+        {% endif %}
+        {% for area in area_list %}
+           {% if area_id == area.id %}
+               <div class="tab-item active">
+                    <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ cat_id }}&area_id={{ area.id }}">{{ area.name }}</a>
+                </div>
+           {% else %}
+                <div class="tab-item ">
+                   <a style="text-decoration:none; color:#333" href="{% url 'activity' %}?cat_id={{ cat_id }}&area_id={{ area.id }}">{{ area.name }}</a>
+                </div>
+           {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row list record-list">
+      {% for activity in activity_list %}
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 list-item">
+             <a style="animation:none;"  href="{% url 'activity_detail' activity.id %}">
+                   <div style="border: 1px solid #DDDDDD">
+                       <div class="item-img">
+                          <img src="{% url 'index' %}media/{{ activity.img }}" alt="">
+                       </div>
+                       <div class="item-detail">
+                          <div class="item-top">
+                            <div class="item-title">{{ activity.title }}</div>
+                            <div class="state">{{ activity.status | act_status }}</div>
+                          </div>
+                          <div class="introduce">简介：{{ activity.excerpt }}</div>
+                          <div class="company-name">主办方：{{ activity.company }}</div>
+                          <div class="time">时间：{{ activity.act_time }}</div>
+                      </div>
+                   </div>
+             </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="load-more">加载更多</div>
+</div>
+<script>
+    $(function() {
+      new Swiper('#swipers .swiper-container', {
+        watchSlidesProgress: true,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        loop: true,
+        loopedSlides: 3,
+        autoplay: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          progress: function(progress) {
+            for (i = 0; i < this.slides.length; i++) {
+              var slide = this.slides.eq(i);
+              var slideProgress = this.slides[i].progress;
+              modify = 1;
+              if (Math.abs(slideProgress) > 1) {
+                modify = (Math.abs(slideProgress) - 1) * 0.4 + 1;
+              }
+              let width = ''
+              if($('.swiper-container').width() < 768) {
+                width = 130
+              }else{
+                width = 288
+              }
+              translate = slideProgress * modify * width + 'px';
+              scale = 1 - Math.abs(slideProgress) / 5;
+              zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+              slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+              slide.css('zIndex', zIndex);
+              slide.css('opacity', 1);
+              if (Math.abs(slideProgress) > 3) {
+                slide.css('opacity', 0);
+              }
+            }
+          },
+          setTransition: function(transition) {
+            for (var i = 0; i < this.slides.length; i++) {
+              var slide = this.slides.eq(i)
+              slide.transition(transition);
+            }
+          }
+        }
+      })
+    })
+  </script>
+  <script>
+     $(document).ready(function(){
+        let page = 1
+        var Dom = jQuery('.record-list');
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var boxHeight = $(document.getElementById("news-lettter-box")).height();
+            if (scrollTop + 300 >= boxHeight) {
+                let html = '';
+                let l_url=window.location.origin;
+                let req_url = l_url + "/activity?cat_id=" + {{ cat_id }} + "&area_id=" + {{ area_id }} + "&page=" + page + "&page_size=20";
+                $.ajax({
+                    url: req_url,
+                    data: {},
+                    type: "GET",
+                    dataType: "json",
+                    success: function (result) {
+                        activity_list = result.result.data
+                        if (activity_list.length >= 1){
+                            for(var i= 0; i < activity_list.length; i++) {
+                                console.log(activity_list[i])
+                                 html += `
+                                   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 list-item">
+                                     <a style="animation:none;"  href="#">
+                                           <div style="border: 1px solid #DDDDDD">
+                                               <div class="item-img">
+                                                  <img src="{% url 'index' %}media/${ activity_list[i].img }" alt="">
+                                               </div>
+                                               <div class="item-detail">
+                                                  <div class="item-top">
+                                                    <div class="item-title">${ activity_list[i].title }</div>
+                                                    <div class="state">${ activity_list[i].status | act_status }</div>
+                                                  </div>
+                                                  <div class="introduce">简介：${ activity_list[i].excerpt }</div>
+                                                  <div class="company-name">主办方：${ activity_list[i].company }</div>
+                                                  <div class="time">时间：${ activity_list[i].act_time }</div>
+                                              </div>
+                                           </div>
+                                     </a>
+                                   </div>
+                                `
+                            }
+                            Dom.append(html);
+                        } else {
+                            jQuery('#More').text("没有了，已经见低了");
+                        }
+                    }
+                })
+                page = page + 1
+           }
+       });
+    })
+  </script>
+{% endblock %}

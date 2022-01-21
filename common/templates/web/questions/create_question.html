@@ -1,0 +1,63 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventAdd.css' %}">
+    <style>
+        #id_category, #id_title{
+            display: inline-block;
+            width: 49%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        #id_category{
+            margin-left: 12px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row event-create">
+        <div class="event-create-details-title">
+            <h1 class="event-create-headline">畅所欲言</h1>
+            <p class="event-create-byline">遇到什么难题了吗，提交问题，我们社区将会竭尽全力帮您解决</p>
+        </div>
+        <form class="form-box" method="post">
+            <div class="form-group require">
+              {{ qs_form.title }}
+              {% if qs_form.title.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ qs_form.title.errors }}
+                </div>
+              {% endif %}
+              {{ qs_form.category }}
+              {% if qs_form.category.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ qs_form.category.errors }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group require">
+              {% csrf_token %}
+              {{ qs_form.media }}
+              {{ qs_form.content }}
+              {% if qs_form.body.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ qs_form.body.errors }}
+                </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">发布问题</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

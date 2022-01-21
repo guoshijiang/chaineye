@@ -1,0 +1,86 @@
+{% load staticfiles zhifishcc_tag%}
+<div class="col-12 col-md-4">
+    <div class="module-right-box">
+      <dl class="activity-price">价格:
+          <span class="activity-free">{{ activity_detail.actfee }}</span>
+      </dl>
+      <dd class="activity-action">
+          <a href="{% url 'participate_act' activity_detail.id %}">
+              <button type="button" class="activity-button apply button-primary">
+                <span>立即报名</span>
+              </button>
+          </a>
+          <a href="{% url 'sponsor_act' activity_detail.id %}">
+              <button type="button" class="activity-button support button-default">
+                <span>赞助会议</span>
+             </button>
+          </a>
+      </dd>
+    </div>
+    <div class="new-list-container module-right-box">
+      <div class="new-list-box">
+        <ul style="text-align:left">
+          <li>
+              <div class="right-content">
+                <span>活动时间: {{ activity_detail.act_time }}</span>
+              </div>
+          </li>
+           <li>
+              <div class="right-content" style=" margin-top:8px">
+                <span>活动地址: {{ activity_detail.position }}</span>
+              </div>
+          </li>
+          <li>
+              <div class="right-content" style=" margin-top:8px">
+                <span>活动人数: {{ activity_detail.person }}</span>
+              </div>
+          </li>
+          <li>
+              <div class="right-content" style=" margin-top:8px">
+                <span>发起人: {{ activity_detail.author }}</span>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="hot-recommend module-right-box">
+      <h6>热门活动</h6>
+      <ul class="hot-recommend-box">
+        {% for hot_act in hot_activity %}
+            <li>
+              <a href="{{ recd_art.link_url }}" class="d-flex justify-content-between">
+                <div class="left-img"><img width="120" height="80" src="{% url 'index' %}media/{{ hot_act.img }}" alt=""></div>
+                <div class="right-content d-flex flex-column justify-content-between">
+                  <p>{{ hot_act.title }}</p>
+                  <span>{{ hot_act.author }}</span>
+                  <span>{{ hot_act.status | act_status }}</span>
+                </div>
+              </a>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <a href="{% url 'publish_activity' user.id %}" style="margin-top:26px; line-height:46px" type="button" class="activity-button publish button-default">
+        <span><i></i>
+            发布活动
+        </span>
+    </a>
+    <div class="coop-friend module-right-box" style="margin:0">
+      <h6>合作伙伴</h6>
+      <div class="coop-box">
+        <ul>
+          {% for partner in partner_list %}
+              <a href="{{ partner.link_url }}">
+                  <li class="d-flex justify-content-between">
+                    <div class="left-img"><img width="32" height="32" src="{% url 'index' %}media/{{ partner.img }}" alt=""></div>
+                    <div class="right-content d-flex flex-column justify-content-between">
+                      <p>{{ partner.name }}</p>
+                      <span>{{ partner.excerpt }}</span>
+                    </div>
+                  </li>
+              </a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+</div>

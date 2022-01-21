@@ -1,0 +1,96 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/course.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flash.css' %}">
+    <style>
+    .banner-container {
+        position: relative;
+        margin-top: 20px;
+        height: 340px;
+        background: linear-gradient(
+    0deg, #03043d, #10249c);
+        border-radius: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .banner-container .banner-title {
+        position: absolute;
+        top: 142px;
+        left: 170px;
+        font-size: 36px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 58px;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="w1200">
+    <div class="banner-container">
+        <img src="{% static 'images/banner_fangfa.png' %}">
+        <p class="banner-title">全球顶尖区块链技术团队打造的<br />区块链实战的课程体系, 更完善, 更系统, 更专业</p>
+    </div>
+    <div class="w1000 course-box-container">
+        <ul class="course-box-left">
+           {% if cat_id == 0 %}
+                <li class="active"><a href="{% url 'plannet_course' %}">全部</a></li>
+            {% else %}
+                <li><a href="{% url 'plannet_course' %}">全部</a></li>
+            {% endif %}
+            {% for cat in course_cat_list %}
+                {% if cat.id == cat_id %}
+                    <li class="active"><a href="{% url 'plannet_course' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'plannet_course' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                {% endif %}
+           {% endfor %}
+        </ul>
+        <div class="course-box-right">
+            <ul class="list-box">
+                {% for course in course_list %}
+                    <li>
+                        <a href="{% url 'course_detail' course.id %}">
+                            <div class="left-img-box">
+                                <img width="213px" height="117px" src="{% url 'index' %}media/{{ course.logo }}" alt="">
+                            </div>
+                            <div class="right-content-box">
+                                <div class="title">
+                                    {% if course.is_pre_sell == "Yes" %}
+                                        <span>预售</span>
+                                    {% else %}
+                                        <span>已完结</span>
+                                    {% endif %}
+                                    <p>{{ course.title }}</p>
+                                </div>
+                                <p class="desc">{{ course.excerpt }}</p>
+                                <div class="row">
+                                    <p class="name">
+                                        {% if request.session.user_pho %}
+                                            <img width="28px" height="28px" src="{% static 'images/pic1.png' %}" alt="">
+                                        {% else %}
+                                            <img width="28px" height="28px" src="{% url 'index' %}media/{{ course.user.id | user_photo }}" alt="">
+                                        {% endif %}
+                                        {{ course.user }}
+                                    </p>
+                                    <p class="zy">{{ course.user.id | user_position }}</p>
+                                </div>
+                                <div class="row">
+                                    <p class="price">{{ course.price | keep_two_decimal_places }} USDT</p>
+                                    <p class="num">课程数：{{ course.article_num }}</p>
+                                    <span class="circle"></span>
+                                    <p class="soul">购买人数：{{ course.buyer_num }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                {% include 'web/layout/pagination.html' with items=course_list %}
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}

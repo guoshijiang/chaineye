@@ -1,0 +1,102 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/courseDetail.css' %}">
+  <style>
+    .btn-box {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 50px 0 30px;
+      display: flex;
+      margin-top: 15px;
+    }
+  </style>
+{% endblock %}
+{% block body %}
+  <div class="content-box">
+    <div class="top-content">
+      <div class="info-box">
+        <div class="left-img-box">
+            <img width="213px" height="117px" src="{% url 'index' %}media/{{ course_detail.logo }}" alt="">
+        </div>
+        <div class="right-content-box">
+            <div class="title"><span>预售</span><p>{{ course_detail.title }}</p></div>
+            <p class="desc">{{ course_detail.excerpt  }}</p>
+            <div class="row">
+                <p class="name">
+                    {% if request.session.user_pho %}
+                        <img width="28px" height="28px" src="{% static 'images/pic1.png' %}" alt="">
+                    {% else %}
+                        <img width="28px" height="28px" src="{% url 'index' %}media/{{ course_detail.user.id | user_photo }}" alt="">
+                    {% endif %}
+                    {{ course_detail.user }}
+                </p>
+                <p class="zy">{{ course_detail.user.id | user_position }}</p>
+            </div>
+        </div>
+      </div>
+      <div class="control-box">
+        <div class="left-control-box">
+          <img  width="28px" height="28px"  src="{% static 'images/default_avatar.png' %}" alt="">
+          <p>{{ course_detail.buyer_num }}人已购买</p>
+        </div>
+        <div>
+            {% if already_buy %}
+                <a href="{% url 'course_article_detail' course_arcticle_first.id %}" class="el-button primary">观看课程</a>
+            {% else %}
+                {% if request.session.is_login %}
+                    <form method="post" action="{% url 'course_detail' course_detail.id %}">
+                        <button type="submit" class="el-button primary">购买 {{ course_detail.price | keep_two_decimal_places }} USDT</button>
+                    </form>
+                {% else %}
+                    <a data-toggle="modal" data-target="#loginModal" class="el-button primary" style="margin-bottom:15px; color: white">登陆购买</a>
+                {% endif %}
+                <a style="margin-bottom:15px" href="{% url 'course_article_detail' course_arcticle_first.id %}" class="el-button border">试读</a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="bottom-content">
+      <ul class="title-ul-box">
+        <li class="on">目录</li>
+        <li>介绍</li>
+      </ul>
+      <div class="content-tab-box">
+        <div class="mulu-box">
+          <p class="mulu-title">专栏内容</p>
+          <div class="mulu-list">
+            {% for course_arcticle in course_arcticle_list %}
+                <a class="mulu-item" href="{% url 'course_article_detail' course_arcticle.id %}">
+                  <div class="mulu-left">
+                    <div class="wai">
+                      <div class="nei">{{ course_arcticle.part }}</div>
+                    </div>
+                    <div class="line"></div>
+                  </div>
+                  <div class="mulu-right">
+                    <p class="title">{{ course_arcticle.title }}</p>
+                    <div class="row-2">
+                      <p>{{ course_arcticle.views }}次学习</p>
+                      <p>{{ course_arcticle.comment_num }}条评论</p>
+                    </div>
+                  </div>
+                </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="js-content">{{ course_detail.detail }}</div>
+      </div>
+        <div class="btn-box">
+            {% if balance_not_enough %}
+                {% include 'web/planet/window/to_deposit.html' %}
+            {% endif %}
+            {% if buy_success %}
+                {% include 'web/planet/window/pay_success.html' %}
+            {% endif %}
+        </div>
+    </div>
+    <script>
+      $('.bottom-content').slide({ titCell: '.title-ul-box li', mainCell: '.content-tab-box' })
+    </script>
+  </div>
+{% endblock %}

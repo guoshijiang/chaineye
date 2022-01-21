@@ -1,0 +1,87 @@
+{% load staticfiles zhifishcc_tag%}
+<div class="col-12 col-md-4">
+    <div class="apply-box module-right-box">
+      {% if request.session.is_login %}
+          <a href="{% url 'create_article' request.session.user_id %}">发文章</a>
+          <a href="{% url 'create_question' request.session.user_id %}">提问</a>
+      {% else %}
+          <a data-toggle="modal" data-target="#loginModal" role="button">成为作者</a>
+          <a data-toggle="modal" data-target="#loginModal" role="button">我要提问</a>
+      {% endif %}
+    </div>
+    <div class="btn-jr"><img src="{% static 'images/index_guanggao.png' %}" alt=""></div>
+    {% for adv in adv_list %}
+        <div class="download-app-box module-right-box d-flex">
+          <div class="app-icon-box">
+            <img src="{% url 'index' %}media/{{ adv.img }}" alt="">
+          </div>
+          <div class="app-info-box">
+            <div class="d-flex justify-content-between"><h6>{{ adv.name }}</h6><a href="{{ adv.link_url }}">下载APP>></a></div>
+            <p>{{ adv.adv_info }}</p>
+          </div>
+        </div>
+    {% endfor %}
+    <div class="hot-label module-right-box">
+      <h6>热门标签</h6>
+      <ul class="hot-label-box d-flex flex-wrap">
+        {% for hg in hot_tag %}
+           <a href="{% url 'tag_list' hg.name %}"><li>{{ hg.name }}</li></a>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="hot-recommend module-right-box">
+      <h6>热门推荐</h6>
+      <ul class="hot-recommend-box">
+        {% for recd_art in recd_art_list %}
+            <li>
+              <a href="{{ recd_art.link_url }}" target="_blank" class="d-flex justify-content-between">
+                <div class="left-img"><img width="120" height="80" src="{% url 'index' %}media/{{ recd_art.img }}" alt=""></div>
+                <div class="right-content d-flex flex-column justify-content-between">
+                  <p>{{ recd_art.title }}</p>
+                  <span>{{ recd_art.user }}   {{ recd_art.created_at | hdatetime }}</span>
+                </div>
+              </a>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="new-list-container module-right-box">
+      <h6>最新文章</h6>
+      <div class="new-list-box">
+        <ul style="text-align: left">
+          {% for article in article_list %}
+              <li>
+                <a href="{% url 'arctle_detail' %}?article_id={{ article.id }}" target="_blank" class="d-flex">
+                  <div class="left-list d-flex flex-column justify-content-center align-items-center">
+                    <span class="dian"></span>
+                    <span class="xian"></span>
+                  </div>
+                  <div class="right-content" style="margin-left: 20px">
+                    <p>{{ article.title }}</p>
+                      <span>{{ article.created_at | hdatetime }}</span>
+                  </div>
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="coop-friend module-right-box">
+      <h6>合作伙伴</h6>
+      <div class="coop-box">
+        <ul>
+          {% for partner in partner_list %}
+              <a href="{{ partner.link_url }}">
+                  <li class="d-flex justify-content-between">
+                    <div class="left-img"><img width="36" height="36" src="{% url 'index' %}media/{{ partner.img }}" alt=""></div>
+                    <div class="right-content d-flex flex-column justify-content-between">
+                      <p>{{ partner.name }}</p>
+                      <span>{{ partner.excerpt }}</span>
+                    </div>
+                  </li>
+              </a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+</div>

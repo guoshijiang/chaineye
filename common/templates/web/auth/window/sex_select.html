@@ -1,0 +1,27 @@
+ {% if user_info.sex == '男' %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios3" value="男" checked><span></span> &nbsp;&nbsp;&nbsp;&nbsp;男
+</label>
+{% else %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios4"  value="男"><span></span>&nbsp;&nbsp;&nbsp;&nbsp;男
+</label>
+{% endif %}
+{% if user_info.sex == '女' %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios3" value="女" checked><span></span> &nbsp;&nbsp;&nbsp;&nbsp;女
+</label>
+{% else %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios4"  value="女"><span></span>&nbsp;&nbsp;&nbsp;&nbsp; 女
+</label>
+{% endif %}
+{% if user_info.sex == '未知' %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios3" value="未知" checked><span></span> &nbsp;&nbsp;&nbsp;&nbsp;未知
+</label>
+{% else %}
+<label class="radio-inline">
+  <input type="radio" name="user_sex" id="optionsRadios4"  value="未知"><span></span>&nbsp;&nbsp;&nbsp;&nbsp; 未知
+</label>
+{% endif %}

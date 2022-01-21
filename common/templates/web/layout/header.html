@@ -1,0 +1,103 @@
+{% load staticfiles zhifishcc_tag%}
+<div class="common-header">
+    <div class="respons">
+      <div class="container">
+        <div class="row">
+          <p class="col-12">链眼社区：专注于区块链安全，区块链数据分析, 区块链信息整合，区块链技术服务和区块链技术咨询。</p>
+        </div>
+      </div>
+    </div>
+    <div class="nav-container">
+      <div class="container">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-sm-1 col-md-2">
+            <div class="img-icon"><img width=36px height=36px src="{% static 'images/logo.svg' %}" alt=""></div>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <ul class="nav-list d-flex justify-content-between">
+              <li><a href="{% url 'index' %}" id="index">首页</a></li>
+              <li><a href="{% url 'chain_safe' %}" id="chain_safe">链安</a></li>
+              <li><a href="{% url 'plannet_course' %}" id="plannet_course">专栏课程</a></li>
+              <li><a href="{% url 'questions' %}" id="questions">问答</a></li>
+              <li><a href="{% url 'activity' %}" id="activity">活动</a></li>
+              <li><a href="{% url 'about' %}" id="about">关于我们</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-5 col-md-4 search-box d-flex justify-content-between align-items-center">
+             <form style="margin-top: 10px" action="{% url 'index' %}" method="get">
+                <input type="text" style="width:200px; line-height: 38px; height:38px; border-radius: 30px; margin-top: 10px" name="title" class="form-control form-control-sm" placeholder="请输入你要查找的内容">
+             </form>
+            <div class="d-flex justify-content-between align-items-cente">
+            </div>
+            {% if request.session.user_name %}
+                {% include 'web/layout/user_header.html' %}
+            {% else %}
+                <p data-toggle="modal" data-target="#loginModal" role="button">登录 | 注册 </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-mobile-container">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-2 logo-box d-flex align-items-center"><img src="{% static 'images/logo.png' %}" alt=""></div>
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="dropdown">
+              <div class="icon" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'index' %}">首页</a>
+                <a class="dropdown-item" href="{% url 'chain_safe' %}">链安</a>
+                <a class="dropdown-item" href="{% url 'plannet_course' %}">专栏课程</a>
+                <a class="dropdown-item" href="{% url 'questions' %}">问答</a>
+                <a class="dropdown-item" href="{% url 'activity' %}">活动</a>
+                <a class="dropdown-item" href="{% url 'about' %}">关于我们</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-2"></div>
+          <div class="col-4">
+            <div class="ipt-box d-flex justify-content-between align-items-center">
+              <input type="text" placeholder="搜索">
+              <img src="{% static 'images/sousuo.png' %}" alt="">
+            </div>
+          </div>
+           {% if request.session.user_name %}
+                {% include 'web/layout/user_header.html' %}
+            {% else %}
+                <div class="col-2 d-flex justify-content-end align-items-center">登录</div>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        $('.register-tab').click(function() {
+            $(this).addClass('active')
+            $('.login-tab').removeClass('active')
+            $('.register-form').show()
+            $('.password-login-form').hide()
+            $('.code-login-form').hide()
+        })
+        $('.login-tab').click(function() {
+            $(this).addClass('active')
+            $('.register-tab').removeClass('active')
+            $('.register-form').hide()
+            $('.password-login-form').show()
+            $('.code-login-form').hide()
+        })
+        $('.password-type').click(function() {
+            $('.password-login-form').show()
+            $('.code-login-form').hide()
+        })
+        $('.code-type').click(function() {
+            $('.code-login-form').show()
+            $('.password-login-form').hide()
+        })
+    })
+</script>

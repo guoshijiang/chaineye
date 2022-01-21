@@ -1,0 +1,111 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/market.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="container">
+            <div class="row data-box">
+                <h6>全球金融数据</h6>
+                <div class="col-12 row">
+                    <div class="col-3">
+                        <div class="data-item">
+                            <p>美元指数</p>
+                            <p class="green">91.021</p>
+                            <p><span class="green">+0.211</span><span class="green">+0.211</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="data-item">
+                            <p>黄金期货</p>
+                            <p class="red">1780.25</p>
+                            <p><span class="red">+0.211</span><span class="red">+0.211</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="data-item">
+                            <p>WTI原油期货</p>
+                            <p class="red">91.021</p>
+                            <p><span class="red">+0.211</span><span class="red">+0.211</span></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="data-item">
+                            <p>白银期货</p>
+                            <p class="red">91.021</p>
+                            <p><span class="red">+0.211</span><span class="red">+0.211</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <table class="table table-box">
+                        <thead>
+                          <tr>
+                            <th scope="col">排行榜</th>
+                            <th scope="col">币种</th>
+                            <th scope="col">流通市值（￥）</th>
+                            <th scope="col">流通市值（$）</th>
+                            <th scope="col">全球指数（￥）</th>
+                            <th scope="col">24H额（$）</th>
+                            <th scope="col">24H转手</th>
+                            <th scope="col">24H涨幅</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>BTC</td>
+                            <td>319438.23</td>
+                            <td>93201.4</td>
+                            <td>58293.3亿</td>
+                            <td>9302.3</td>
+                            <td>3.15%</td>
+                            <td class="green">-0.3</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>BTC</td>
+                            <td>319438.23</td>
+                            <td>93201.4</td>
+                            <td>58293.3亿</td>
+                            <td>9302.3</td>
+                            <td>3.15%</td>
+                            <td class="red">+3.2%</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>BTC</td>
+                            <td>319438.23</td>
+                            <td>93201.4</td>
+                            <td>58293.3亿</td>
+                            <td>9302.3</td>
+                            <td>3.15%</td>
+                            <td class="green">-0.3</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>BTC</td>
+                            <td>319438.23</td>
+                            <td>93201.4</td>
+                            <td>58293.3亿</td>
+                            <td>9302.3</td>
+                            <td>3.15%</td>
+                            <td class="green">-0.3</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                    <div class="loading-more">
+                        加载更多
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+</div>
+{% endblock %}

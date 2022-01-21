@@ -1,0 +1,47 @@
+<div class="menus">
+  {% if active_mark == "my" %}
+      <a href="{% url 'my' user.id %}"><div id="my" class="menu-item active">个人中心</div></a>
+  {% else %}
+      <a href="{% url 'my' user.id %}"><div id="my" class="menu-item">个人中心</div></a>
+  {% endif %}
+  {% if active_mark == "my_wallet" %}
+      <a href="{% url 'my_wallet' user.id %}"><div id="my_wallet" class="menu-item active">我的钱包</div></a>
+  {% else %}
+      <a href="{% url 'my_wallet' user.id %}"><div id="my_wallet" class="menu-item">我的钱包</div></a>
+  {% endif %}
+  {% if active_mark == "my_article" %}
+      <a href="{% url 'my_article' user.id %}"><div id="my_article" class="menu-item active">我的文章</div></a>
+  {% else %}
+      <a href="{% url 'my_article' user.id %}"><div id="my_article" class="menu-item">我的文章</div></a>
+  {% endif %}
+  {% if active_mark == "my_activity" %}
+    <a href="{% url 'my_activity' user.id %}"><div id="my_activity" class="menu-item active">我的活动</div></a>
+  {% else %}
+     <a href="{% url 'my_activity' user.id %}"><div id="my_activity" class="menu-item">我的活动</div></a>
+  {% endif %}
+   {% if active_mark == "my_buy_course" %}
+      <a href="{% url 'my_buy_course' user.id %}"><div id="my_article" class="menu-item active">我购买的课程</div></a>
+  {% else %}
+      <a href="{% url 'my_buy_course' user.id %}"><div id="my_article" class="menu-item">我购买的课程</div></a>
+  {% endif %}
+  {% if active_mark == "my_course" %}
+      <a href="{% url 'my_course' user.id %}"><div id="my_course" class="menu-item active">我的专栏</div></a>
+  {% else %}
+      <a href="{% url 'my_course' user.id %}"><div id="my_course" class="menu-item">我的专栏</div></a>
+  {% endif %}
+  {% if active_mark == "my_questions" %}
+      <a href="{% url 'my_questions' user.id %}"><div id="my_questions" class="menu-item active">我的提问</div></a>
+  {% else %}
+      <a href="{% url 'my_questions' user.id %}"><div id="my_questions" class="menu-item">我的提问</div></a>
+  {% endif %}
+  {% if active_mark == "ijoin_activiy" %}
+      <a href="{% url 'ijoin_activiy' user.id %}"><div id="ijoin_activiy" class="menu-item active">参加的活动</div></a>
+  {% else %}
+      <a href="{% url 'ijoin_activiy' user.id %}"><div id="ijoin_activiy" class="menu-item">参加的活动</div></a>
+  {% endif %}
+  {% if active_mark == "isponsor_activiy" %}
+      <a href="{% url 'isponsor_activiy' user.id %}"><div id="isponsor_activiy" class="menu-item active">赞助的活动</div></a>
+  {% else %}
+      <a href="{% url 'isponsor_activiy' user.id %}"><div id="isponsor_activiy" class="menu-item">赞助的活动</div></a>
+  {% endif %}
+</div>

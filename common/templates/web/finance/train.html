@@ -1,0 +1,71 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cultivate.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="container">
+            <div class="row cultivate-box">
+                <div class="col-4">
+                    <div class="cultivate-box-item">
+                        <img src="https://dummyimage.com/420x320/ccc/fff" alt="">
+                        <div class="content-box">
+                            <p class="title">BTC钱包开发培训</p>
+                            <div class="desc-box d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="name">天津木姜子科技</p>
+                                    <p class="time">2019年11月24日 22:47</p>
+                                </div>
+                                <span class="icon">已结束</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="cultivate-box-item">
+                        <img src="https://dummyimage.com/420x320/ccc/fff" alt="">
+                        <div class="content-box">
+                            <p class="title">BTC钱包开发培训</p>
+                            <div class="desc-box d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="name">天津木姜子科技</p>
+                                    <p class="time">2019年11月24日 22:47</p>
+                                </div>
+                                <span class="icon">已结束</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="cultivate-box-item">
+                        <img src="https://dummyimage.com/420x320/ccc/fff" alt="">
+                        <div class="content-box">
+                            <p class="title">BTC钱包开发培训</p>
+                            <div class="desc-box d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="name">天津木姜子科技</p>
+                                    <p class="time">2019年11月24日 22:47</p>
+                                </div>
+                                <span class="icon">已结束</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                <ul class="pagination">
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                </ul>
+            </nav>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+  </div>
+{% endblock %}

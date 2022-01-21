@@ -1,0 +1,160 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+{% endblock %}
+{% block body %}
+<div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="title">
+            <p>我的课程</p>
+            <a href="{% url 'create_course' user.id %}" class="btn btn-danger">发布新课程</a>
+          </div>
+          <div class="information-bd-box">
+              <section class="module-box-body">
+                 <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red-gradient">
+                                <img style="margin-top:12px;" src="{% static 'svg/all.svg' %}">
+                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">全部课程</span>
+                                <span class="info-box-number">{{ total_course }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red-gradient">
+                                <img style="margin-top:12px;" src="{% static 'svg/up_course.svg' %}">
+                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">上架课程</span>
+                                <span class="info-box-number">{{ total_active_course }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red-gradient">
+                                <img style="margin-top:12px;" src="{% static 'svg/down.svg' %}">
+                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">下架课程</span>
+                                <span class="info-box-number">{{ total_unactive_course }}</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red-gradient">
+                                <img style="margin-top:12px;" src="{% static 'svg/check.svg' %}">
+                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">审核课程</span>
+                                <span class="info-box-number">{{ total_checking_course }}</span>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+              </section>
+              <div class="main">
+                 <ul class="header-title-box">
+                    <li style="margin-top:30px">
+                        <div class="row">
+                            <div class="col-xs-4 col-md-4 space-stream-item-title-warp">
+                                 <a href="{% url 'my_course' user.id %}?pay_way=all" data-toggle="tooltip" class="btn btn-danger">
+                                     <i class="fa">全部</i>
+                                  </a>
+                                 <a href="{% url 'my_course' user.id %}?pay_way=free" data-toggle="tooltip"class="btn btn-danger">
+                                     <i class="fa">免费</i>
+                                  </a>
+                                 <a href="{% url 'my_course' user.id %}?pay_way=unfree" data-toggle="tooltip" class="btn btn-danger">
+                                     <i class="fa">收费</i>
+                                  </a>
+                            </div>
+                            <div class="col-xs-8 col-md-8">
+                                <form class="form-inline searchForm" method="GET" style="padding-top:0;">
+                                     <input name="course_name" style="width:300px; border-radius:15px" class="form-control input-sm" placeholder="请输入课程名称">
+                                     <div class="form-group" style="margin-left:20px">
+                                        <button class="btn btn-danger" type="submit">
+                                            查询
+                                        </button>
+                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                 </ul>
+             </div>
+             <div class="information-bd-box">
+            <div class="information-body-item">
+              <ul>
+              {% for my_course in my_course_list %}
+                <li class="d-flex justify-content-between">
+                  {% if my_course.logo  %}
+                      <div class="information-left-img">
+                        <img width="230" height="159" src="{% url 'index' %}media/{{ my_course.logo }}" alt="">
+                      </div>
+                  {% endif %}
+                  <div class="information-right-content">
+                    <a href="#">
+                      <p>{{ my_course.title }}</p>
+                    </a>
+                    <p class="desc">{{ my_course.excerpt }}</p>
+                    <div class="art-info d-flex justify-content-between">
+                          <p style="font-size: 14px; color:red">
+                            <span>价格:{{ my_course.price | keep_two_decimal_places }} USDT</span>
+                            <span style="margin-left:10px; margin-right:10px">状态:{{ my_course.status }}</span>
+                             <span>完整度:{{ my_course.process }} </span>
+                          </p>
+                          <p>
+                              <span>
+                                 <a href="{% url 'update_course' my_course.id %}" class="btn btn-danger d-inline">
+                                   课程编辑
+                                 </a>
+                               </span>
+                               <span style="margin-left: 10px">
+                                 <a href="{% url 'create_course_article' my_course.id %}"  class="btn btn-danger d-inline">
+                                    课时编辑
+                                 </a>
+                               </span>
+                          </p>
+                    </div>
+                  </div>
+                </li>
+               {% endfor %}
+              </ul>
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center" style="margin-top:20px">
+              {% include 'web/layout/pagination.html' with items=my_course_list %}
+            </nav>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

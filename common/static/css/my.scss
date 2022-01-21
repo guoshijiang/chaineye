@@ -1,0 +1,143 @@
+.my-container{
+  background-color: #F0F0F0;
+  padding: 20px 0 0;
+  .content-container{
+    display: flex;
+    .content-left{
+      // width: 240px;
+      // margin-right: 20px;
+      .user-detail{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 274px;
+        padding: 30px 0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        img{
+          width: 74px;
+          height: 74px;
+          border-radius: 50%;
+        }
+        .user-name{
+          color: #333333;
+          font-size: 16px;
+          font-weight: 600;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+        .address-level{
+          color: #999999;
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+        .login-out-btn{
+          width: 95%;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          border: 1px solid #999999;
+          border-radius: 2px;
+          color: #666666;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+      .menus{
+        background: #FFFFFF;
+        border-radius: 6px;
+        .menu-item{
+          height: 56px;
+          line-height: 56px;
+          color: #333333;
+          font-size: 16px;
+          padding-left: 24px;
+          position: relative;
+          cursor: pointer;
+          &.active{
+            &::after{
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 4px;
+              height: 36px;
+              background: #E60012;
+            }
+          }
+        }
+      }
+    }
+    .content-right{
+      flex: 1;
+      background-color: #ffffff;
+      .base-detail{
+        .title{
+          color: #222222;
+          height: 50px;
+          line-height: 50px;
+          padding-left: 20px;
+          border-bottom: 1px solid #CCCCCC;
+        }
+        form{
+          padding: 96px 0 0 36px;
+        }
+        .form-group{
+          display: flex;
+          align-items: center;
+          font-size: 20px;
+          color: #222222;
+          font-size: 14px;
+          .label{
+            margin-right: 20px;
+          }
+          label{
+            margin-bottom: 0;
+            margin-right: 20px;
+          }
+          input[type="radio"] {
+            display: none;
+          }
+          input[type="radio"]+span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid #999;
+            background-color: #fff;
+          }
+          input[type="radio"]:checked+span {
+            width: 15px;
+            height: 15px;
+            border: 1px solid #fff;
+            background-color: #E60012;
+          }
+        }
+        .submit-btn{
+          width: 100px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          background-color: #E60012;
+          color: #ffffff;
+          border-radius: 2px;
+          user-select: none;
+          margin-top: 80px;
+        }
+      }
+    }
+  }
+  @media screen and(max-width: 768px){
+    .content-container{
+      .content-left{
+        width: 100vw;
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+    }
+  }
+}

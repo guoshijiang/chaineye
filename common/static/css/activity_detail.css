@@ -1,0 +1,117 @@
+.activity-time {
+    padding-bottom: 9px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    color: #909099;
+}
+
+.activity-title {
+    padding-bottom: 10px;
+    line-height: 44px;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: PingFangSC-Medium;
+    color: #121115;
+}
+
+.activity-organizer {
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.activity-organizer, .activity-price {
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    color: #121115;
+}
+
+.activity-free {
+    font-size: 26px;
+    font-weight: 500;
+    color: #3cb838;
+}
+
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.button-primary {
+    background: linear-gradient(
+135deg
+,#ffc462,#f37c00);
+    color: #fff;
+    border: none;
+}
+
+dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+
+.activity-action {
+    display: inline;
+    position: relative;
+}
+
+.activity-action .apply {
+    margin-right: 20px;
+}
+
+.activity-action .apply {
+    margin-right: 20px;
+}
+
+.activity-button {
+    display: inline-block;
+    width: 120px;
+    height: 36px;
+    padding: 0;
+    line-height: 38px;
+    border: 1px solid #f39700;
+    border-radius: 2px;
+    text-align: center;
+    background: #fff;
+    font-size: 16px;
+    color: #f39700;
+    outline: none;
+    cursor: pointer;
+}
+
+.publish {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.publish {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -1,0 +1,19 @@
+{% load staticfiles zhifishcc_tag %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>支付成功提示</p>
+      <a href="{% url 'course_detail' course_detail.id %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <div class="el-dialog__body">
+      <div class="el-form">
+        <div class="el-form-item">
+          <div class="el-form-label">支付成功， 支付币种为 USDT，支付金额为 {{ course_detail.price | keep_two_decimal_places }} </div>
+        </div>
+      </div>
+    </div>
+    <div class="el-dialog__footer">
+      <a href="{% url 'course_article_detail' course_detail.id %}" class="el-button primary">去阅读</a>
+    </div>
+  </div>
+</div>

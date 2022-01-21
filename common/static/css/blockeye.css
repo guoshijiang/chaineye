@@ -1,0 +1,324 @@
+.main-pagewarp {
+    width: 1280px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: calc(100vh - 244px);
+    margin: 20px auto 156px;
+}
+
+.daohang {
+    margin-bottom: 224px;
+    overflow: hidden
+}
+
+.daohang .daohang_left {
+    float: left;
+    width: 200px;
+    padding: 12px 0;
+    background: #fff;
+    border: solid 1px #F0F0EE;
+}
+
+.daohang .type_list {
+    padding: 0;
+}
+
+.daohang .daohang_left .type_list li {
+    line-height: 48px;
+    padding-left: 15px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative
+}
+
+.daohang .daohang_left .type_list li.active:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 20px;
+    width: 2px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #E60012
+}
+
+.daohang .daohang_left .type_list li span {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer
+}
+
+.daohang .daohang_left .type_list li span.active,
+.daohang .daohang_left .type_list li span.active i:before,
+.daohang .daohang_left .type_list li span:hover,
+.daohang .daohang_left .type_list li span:hover i:before {
+    color: #EB5D68
+}
+
+.daohang_right {
+    background: #fff;
+    width: 1060px;
+    float: right;
+    padding-right: 30px;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.daohang_cell {
+    overflow: hidden;
+    -webkit-transition: max-height .3s;
+    transition: max-height .3s;
+    margin-bottom: 22px
+}
+
+.daohang_cell .clear {
+    clear: both
+}
+
+.daohang_cell .open {
+    line-height: 30px;
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #858a90;
+    cursor: pointer;
+    margin-top: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.daohang_cell .open img {
+    vertical-align: middle;
+    margin-left: 5px
+}
+
+.daohang_cell h2 {
+    float: left;
+    font-weight: 400;
+    font-size: 18px;
+    color: #0b1721;
+    margin-bottom: 20px;
+    padding-top: 20px
+}
+
+.daohang_cell a:hover {
+    -webkit-box-shadow: 0 2px 14px 0 rgba(159, 169, 176, .23);
+    box-shadow: 0 2px 14px 0 rgba(159, 169, 176, .23)
+}
+
+.daohang_cell a {
+    display: block;
+    float: left;
+    border-radius: 2px;
+    width: 237px;
+    height: 84px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #edf1f6;
+    padding: 14px 12px;
+    text-decoration: none;
+}
+
+.daohang_cell a .name {
+    line-height: 30px;
+    font-size: 16px;
+    color: #0b1721
+}
+
+.daohang_cell a img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 8px
+}
+
+.daohang_cell a p {
+    color: #858a90;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 8px
+}
+
+.daohang_cell:first-child {
+    margin-bottom: 35px
+}
+
+.daohang_cell:first-child .open {
+    margin-top: 23px
+}
+
+.daohang_cell:first-child h2 {
+    padding-top: 25px
+}
+
+.daohang_cell.open {
+    max-height: 1000px
+}
+
+.fixed_daohang {
+    position: fixed;
+    top: 20px
+}
+
+.dappsubmit .row {
+    width: auto
+}
+
+.dappsubmit *,
+.dappsubmit :after,
+.dappsubmit :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.dappsubmit a {
+    cursor: pointer;
+    text-decoration: none
+}
+
+.dappsubmit body {
+    font-size: 13px;
+    font-weight: 300;
+    font-family: Poppins;
+    background: #f4f6fa;
+    color: #646c9a
+}
+
+.dappsubmit .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.dappsubmit .col-md {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.dappsubmit .my-dropzone {
+    min-height: 150px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px dashed #ebedf2
+}
+
+.dappsubmit .my-dropzone-msg {
+    text-align: center;
+    margin: 2em 0;
+    cursor: pointer
+}
+
+.dappsubmit .my-dropzone-msg-title {
+    margin: 0 0 5px;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1.1rem
+}
+
+.dappsubmit .my-dropzone-msg-desc {
+    font-size: .9rem;
+    color: #a1a8c3
+}
+
+.dappsubmit .form-group {
+    margin-bottom: 2rem
+}
+
+.dappsubmit .form-group label {
+    font-size: 1rem;
+    font-weight: 400;
+    display: inline-block;
+    margin-bottom: .5rem
+}
+
+.dappsubmit .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.8rem + 2px);
+    padding: .65rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ebedf2;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
+}
+
+.dappsubmit .input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%
+}
+
+.dappsubmit .input-group-prepend {
+    margin-right: -1px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.dappsubmit .input-group-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .65rem 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #a1a8c3;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #f7f8fa;
+    border: 1px solid #ebedf2;
+    border-radius: .25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.dappsubmit .input-group>.custom-file,
+.dappsubmit .input-group>.custom-select,
+.dappsubmit .input-group>.form-control {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0
+}

@@ -1,0 +1,100 @@
+.login-modal .modal-dialog {
+  top: 50%;
+  -webkit-transform: translate(0, -50%) !important;
+          transform: translate(0, -50%) !important;
+}
+
+.login-modal .tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 50px;
+}
+
+.login-modal .tabs .tab-item {
+  color: #999999;
+  font-size: 30px;
+  padding-bottom: 6px;
+  position: relative;
+  cursor: pointer;
+}
+
+.login-modal .tabs .tab-item.active {
+  color: #222222;
+}
+
+.login-modal .tabs .tab-item.active:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #E60012;
+  width: 40px;
+  height: 2px;
+}
+
+.login-modal .tabs .tab-item.register-tab {
+  margin-right: 76px;
+}
+
+.login-modal .code-login-form {
+  display: none;
+}
+
+.login-modal .register-form {
+  display: none;
+}
+
+.login-modal .input-group {
+  margin-bottom: 20px;
+}
+
+.login-modal .input-group .get-code {
+  width: 114px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  background: #FFC000;
+  border-radius: 5px;
+  margin-left: 18px;
+}
+
+.login-modal .login-btn, .login-modal .register-btn {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  background: #E60012;
+  border-radius: 5px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.login-modal .change-login-type {
+  color: #999999;
+  font-size: 16px;
+}
+
+.login-modal .agreement {
+  color: #999999;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-modal .agreement span {
+  color: #239FFF;
+  cursor: pointer;
+}
+/*# sourceMappingURL=login.css.map */

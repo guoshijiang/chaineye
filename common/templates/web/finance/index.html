@@ -1,0 +1,219 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="money-list">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex flex-wrap justify-content-center">
+        </div>
+      </div>
+    </div>
+ </div>
+ <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        {% if title == "" %}
+            <div class="banner-box">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-md-6 d-flex align-items-center banner-left-box">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        {% for banner in banner_list %}
+                            <div class="carousel-item {{ banner.active }}">
+                              <img width="410" height="260" src="{% url 'index' %}media/{{ banner.img }}" class="d-block w-100" alt="...">
+                            </div>
+                       {% endfor %}
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="banner-right-box">
+                      <h6>热门区</h6>
+                      <ul class="banner-right-list">
+                         {% for hot in hot_list %}
+                        <li class="banner-right-item">
+                          <a href="{% url 'arctle_detail' %}?article_id={{ hot.id }}" target="_blank">
+                            <p>{{ hot.title }}</p>
+                            <span>{{ hot.excerpt }}</span>
+                          </a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endif %}
+        <div class="information-box" id="information-box">
+          <div class="container">
+            <div class="row">
+              <ul class="information-hd-box col-12 row">
+                {% if cat_id == 0 %}
+                    <li class="col-1 on">
+                        <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+                    </li>
+                {% else %}
+                    <li class="col-1">
+                        <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+                    </li>
+                {% endif %}
+                {% for cat in cat_list %}
+                     {% if cat_id == cat.id %}
+                        <li class="col-1 on"><a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% else %}
+                        <li class="col-1"><a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% endif %}
+                {% endfor %}
+              </ul>
+              <div class="information-bd-box col-12">
+                <div class="information-body-item">
+                  <ul class="record-list" style="text-align: left">
+                    {% for arcticle in index_article_lst %}
+                        {% if arcticle.is_recommend == True %}
+                        <li class="d-flex justify-content-between">
+                              <div class="information-left-img">
+                                <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                              </div>
+                              <div class="information-right-content">
+                                <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" target="_blank">
+                                  <p>
+                                     <span>推荐</span> {{ arcticle.title }}
+                                  </p>
+                                </a>
+                                <p class="desc">{{ arcticle.excerpt }}</p>
+                                <div class="art-info d-flex justify-content-between">
+                                  <p>
+                                    <span>{{ arcticle.user }}</span>
+                                    <span>{{ arcticle.created_at | hdatetime}}</span>
+                                  </p>
+                                  <p>
+                                    <span>阅读量</span>
+                                      {{ arcticle.views }}
+                                  </p>
+                                </div>
+                              </div>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if title == "" %}
+                        <p class="subject-title">资金专题 ｜ 你的资金如何保障？</p>
+                        <img src="{% static 'images/pic_chang.png' %}" alt="" class="subject-img">
+                    {% endif %}
+                    {% for arcticle in index_article_lst %}
+                        {% if arcticle.is_recommend == False %}
+                            <li class="d-flex justify-content-between">
+                                  <div class="information-left-img">
+                                    <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                                  </div>
+                                  <div class="information-right-content">
+                                    <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" target="_blank">
+                                      <p>{{ arcticle.title }}</p>
+                                    </a>
+                                    <p class="desc">{{ arcticle.excerpt }}</p>
+                                    <div class="art-info d-flex justify-content-between">
+                                      <p>
+                                        <span>{{ arcticle.user }}</span>
+                                        <span>{{ arcticle.created_at | hdatetime}}</span>
+                                      </p>
+                                      <p>
+                                        <span>阅读量</span>
+                                          {{ arcticle.views }}
+                                      </p>
+                                    </div>
+                                  </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <div class="loading-more" id="More">
+                       加载中
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          $('.information-box').slide({titCell:".information-hd-box li",mainCell:".information-bd-box",trigger:"click"})
+        </script>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+ </div>
+<script>
+ $(document).ready(function(){
+    let page = 1
+    var Dom = jQuery('.record-list');
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var boxHeight = $(document.getElementById("information-box")).height();
+        if (scrollTop >= boxHeight) {
+            let html = '';
+            let l_url=window.location.origin;
+            let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
+            console.log(req_url)
+            $.ajax({
+                url: req_url,
+                data: {},
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    artcle_list = result.result.data
+                    if (artcle_list.length >= 1){
+                        for(var i= 0; i < artcle_list.length; i++) {
+                            console.log(artcle_list[i])
+                             html += `
+                                <li class="d-flex justify-content-between">
+                                    <div class="information-left-img">
+                                       <img width="235" height="150" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
+                                    </div>
+                                    <div class="information-right-content">
+                                        <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" target="_blank">
+                                          <p>${ artcle_list[i].title }</p>
+                                        </a>
+                                        <p class="desc">${ artcle_list[i].excerpt }</p>
+                                        <div class="art-info d-flex justify-content-between">
+                                              <p>
+                                                <span>${ artcle_list[i].user }</span>
+                                                <span>${ artcle_list[i].created_at } </span>
+                                              </p>
+                                              <p>
+                                                <span></span>
+                                                  ${ artcle_list[i].views }
+                                              </p>
+                                          </div>
+                                    </div>
+                                </li>
+                            `
+                        }
+                        Dom.append(html);
+                    } else {
+                        jQuery('#More').text("没有了，已经见低了");
+                    }
+                }
+            })
+            page = page + 1
+       }
+   });
+})
+</script>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/createArticle.css' %}">
+    <style>
+        #pulish-artcle {
+            display: block;
+            width: 45%;
+            height: 35px;
+            background: #E60012;
+            font-size: 18px;
+            line-height: 35px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 15px auto 0;
+        }
+         #id_category, #id_title, #id_logo, #id_price{
+            display: inline-block;
+            width: 49%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        #id_category, #id_logo{
+            margin-left: 12px;
+        }
+        #id_excerpt {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="content-box">
+    <div class="w1200">
+      <div class="w1000">
+        <form method="post" action="{% url 'create_course' user_id %}" enctype="multipart/form-data">
+          <div class="form-group-place row">
+            <div class="col-sm-12" style="margin-bottom: 20px;">
+             {{ course_form.title }}
+              {% if course_form.title.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_form.title.errors }}
+                </div>
+              {% endif %}
+              {{ course_form.category }}
+              {% if course_form.category.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_form.category.errors }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-12" style="margin-bottom: 20px;">
+               {{ course_form.excerpt }}
+               {% if course_form.excerpt.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ course_form.excerpt.errors }}
+                    </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-12">
+              {% csrf_token %}
+              {{ course_form.media }}
+              {{ course_form.detail }}
+              {% if course_form.detail.errors %}
+                <div style="color:red; margin-left:8px; margin-top:5px">
+                   {{ course_form.detail.errors }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-12" style="margin-bottom: 20px;">
+               {{ course_form.price }}
+               {% if course_form.price.errors %}
+                    <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ course_form.price.errors }}
+                    </div>
+               {% endif %}
+               {{ course_form.logo }}
+               {% if course_form.logo.errors %}
+                   <div style="color:red; margin-left:8px; margin-top:5px">
+                       {{ course_form.logo.errors }}
+                   </div>
+               {% endif %}
+            </div>
+          </div>
+          <div class="form-group-place row">
+            <div class="col-sm-12">
+              <button type="submit" id="pulish-artcle" class="btn-default block" style="border: none;outline: none;height: 46px;border-radius: 8px;margin-top: 20px;">提交课程</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

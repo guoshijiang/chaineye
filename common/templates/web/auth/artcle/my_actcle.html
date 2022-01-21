@@ -1,0 +1,64 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="title">
+            <p>我的文章</p>
+            <a href="{% url 'create_article' user.id %}" class="btn btn-danger">写文章</a>
+          </div>
+          <div class="information-bd-box">
+            <div class="information-body-item">
+              <ul>
+                 {% for article in article_list %}
+                <li class="d-flex justify-content-between">
+                  {% if article.img  %}
+                      <div class="information-left-img">
+                        <img width="230" height="159" src="{% url 'index' %}media/{{ article.img }}" alt="">
+                      </div>
+                  {% endif %}
+                  <div class="information-right-content">
+                    <a href="{% url 'update_article' article.id %}">
+                      <p>{{ article.title }}</p>
+                    </a>
+                    <p class="desc">{{ article.excerpt }}</p>
+                    <div class="art-info d-flex justify-content-between">
+                    </div>
+                  </div>
+                </li>
+               {% endfor %}
+              </ul>
+            </div>
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center" style="margin-top:20px">
+              {% include 'web/layout/pagination.html' with items=article_list %}
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

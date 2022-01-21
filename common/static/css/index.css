@@ -1,0 +1,96 @@
+/* 币种列表 money-list  */
+.money-list{padding: 20px 0;border-bottom: 1px solid #ddd;box-sizing: border-box;}
+.money-list .money-list-item{width: 110px;border-right: 1px solid #ddd;height: 70px;}
+.money-list .money-list-item:last-child{border-right: none;}
+.money-list .money-list-item .img-box{width: 15px;height: 15px;margin-top: 1px;display: flex;justify-content: center;align-items: center;}
+.money-list .money-list-item .img-box img{width: 100%;}
+.money-list .money-list-item .money-type-box{margin-left: 9px;}
+.money-list .money-list-item .money-type-box p{margin-bottom: 0;color: #222;font-size: 14px;line-height: 16px;font-family: PingFang SC;font-weight: 400;margin-bottom: 7px;}
+.money-list .money-list-item .money-type-box p.red-text{color: #E60012;}
+/* 申请入驻 apply-box */
+.apply-box{width: 100%;border: 1px solid #ddd;margin-top: 22px;box-sizing: border-box;}
+.apply-box p{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #999999;text-align: center;margin-bottom: 0;margin-top: 25px;}
+.apply-box a{display: block;width: 90%;height: 35px;background: #E60012;font-size: 18px;line-height: 35px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;text-align: center;text-decoration: none;cursor: pointer;margin: 15px auto 0;}
+
+/* banner-box banner区域 */
+.banner-box{margin-top: 28px;}
+.banner-box .banner-left-box{margin-bottom: 10px;}
+.banner-box .banner-right-box h6{font-size: 20px;font-family: PingFang SC;font-weight: 600;color: #222222;}
+.banner-box .banner-right-box .banner-right-list{margin: 0;padding: 0;}
+.banner-box .banner-right-box .banner-right-list li.banner-right-item{list-style: none;padding-bottom: 7px;border-bottom: 1px solid #ddd;margin-bottom: 10px;}
+.banner-box .banner-right-box .banner-right-list li.banner-right-item:last-child{margin-bottom: 0;}
+.banner-box .banner-right-box .banner-right-list li.banner-right-item a{text-decoration: none;}
+.banner-box .banner-right-box .banner-right-list li.banner-right-item a p{font-size: 18px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;margin-bottom: 5px;}
+.banner-box .banner-right-box .banner-right-list li.banner-right-item a span{display: block;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;    overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+
+/* 资讯切换专区 information-box */
+.information-box{margin-top: 20px;}
+.information-box .information-hd-box{padding: 10px 0;margin: 0;border-bottom: 1px solid #ddd;}
+.information-box .information-hd-box li{list-style: none;font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #555555;padding: 0;text-align: center;padding-bottom: 3px;cursor: pointer;}
+.information-box .information-hd-box li.on{color: #E60012;border-bottom: 2px solid #E60012;}
+.information-box .information-bd-box{padding-top: 20px;}
+.information-box .information-bd-box ul{padding: 0;margin: 0;}
+.information-box .information-bd-box ul li{list-style: none;padding: 12px 0 24px;border-bottom: 1px solid #ddd;}
+.information-box .information-bd-box ul li .information-left-img{margin-right: 10px;}
+.information-box .information-bd-box ul li .information-right-content{display: flex;flex-direction: column;justify-content: space-between;}
+.information-box .information-bd-box ul li .information-right-content a{display: flex;text-decoration: none;}
+.information-box .information-bd-box ul li .information-right-content a p span{width: 55px;height: 20px;background-color: #E60012;display: inline-block;justify-content: center;align-items: center;font-size: 14px;font-family: PingFang SC;font-weight: 600;color: #FFFFFF;line-height: 20px;margin-right: 7px;text-align: center;}
+.information-box .information-bd-box ul li .information-right-content a p{margin: 0;font-size: 18px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.information-box .information-bd-box ul li .information-right-content .desc{font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;    overflow : hidden;text-overflow: ellipsis;display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;margin: 0;}
+.information-box .information-bd-box ul li .information-right-content .art-info{font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;}
+.information-box .information-bd-box ul li .information-right-content .art-info p{margin-bottom: 0;}
+.information-box .information-bd-box ul li .information-right-content .art-info p span{margin-right: 0;}
+.information-box .information-bd-box .subject-title{font-size: 22px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;margin: 25px 0 15px;}
+.information-box .information-bd-box .subject-img{width: 100%;}
+.information-box .information-bd-box .loading-more{display: flex;justify-content: center;align-items: center;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;width: 100%;height: 40px;border: 1px solid #DDDDDD;cursor: pointer;margin-top: 30px;}
+
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (min-width: 576px){
+    .banner-box .banner-left-box{margin-bottom: 10px;}
+}
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
+@media (min-width: 768px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+    .information-box .information-bd-box ul li .information-right-content .art-info{font-size: 12px;}
+    .information-box .information-bd-box ul li .information-right-content .art-info p span{margin-right: 0;}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+    .banner-box .banner-right-box h6{font-size: 18px;margin-bottom: 4px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item{margin-bottom: 5px;padding-bottom: 2px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a p{font-size: 14px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a span{font-size: 12px;}
+    .information-box .information-hd-box li{font-size: 14px;}
+    .information-box .information-bd-box ul li .information-right-content .art-info{font-size: 14px;}
+    .information-box .information-bd-box ul li .information-right-content .art-info p span{margin-right: 10px;}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+    .banner-box .banner-right-box h6{font-size: 18px;margin-bottom: 8px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item{margin-bottom: 10px;padding-bottom: 7px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a p{font-size: 16px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a span{font-size: 14px;}
+    .information-box .information-hd-box li{font-size: 14px;}
+    .information-box .information-bd-box ul li .information-right-content .art-info{font-size: 14px;}
+    .information-box .information-bd-box ul li .information-right-content .art-info p span{margin-right: 10px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

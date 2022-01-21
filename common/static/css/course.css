@@ -1,0 +1,202 @@
+body{background-color: #F5F5F5;}
+.w1200{ width: 1200px;margin: 0 auto; }
+.w1000{ width: 1000px;margin: 0 auto; }
+
+.banner{
+  width: 100%;
+  margin-top: 20px;
+}
+.banner img{ 
+  display: block;
+  width: 100%;
+}
+.course-box-container{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.course-box-left{
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.course-box-left li{
+  background: #FFFFFF;
+  width: 100%;
+  height: 49px;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #333333;
+  line-height: 49px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #F5F5F5;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.course-box-left li:first-child{
+  border-radius: 5px 5px 0 0;
+}
+.course-box-left li:last-child{
+  border-radius: 0 0 5px 5px;
+}
+.course-box-left li span{
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 4px;
+  height: 40px;
+  background: #D44039;
+}
+.course-box-left li.on span{
+  display: block;
+}
+
+.course-box-right{
+  width: 800px;
+  padding: 25px 20px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+.course-box-right ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.course-box-right ul.list-box li{
+  margin-bottom: 27px;
+}
+/* .course-box-right ul.list-box li:last-child{
+  margin-bottom: 0;
+} */
+.course-box-right ul.list-box li a{
+  width: 100%;
+  height: 117px;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+.course-box-right ul.list-box li a .left-img-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.course-box-right ul.list-box li a .left-img-box img{
+  max-width: 100%;
+}
+.course-box-right ul.list-box li a .right-content-box{
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.course-box-right ul.list-box li a .right-content-box .title{
+  font-size: 20px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.course-box-right ul.list-box li a .right-content-box .title p{
+  width: 460px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+.course-box-right ul.list-box li a .right-content-box .title span{
+  display: block;
+  width: 38px;
+  height: 20px;
+  background: rgba(212, 64, 57, .3);
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #D44039;
+  line-height: 20px;
+  text-align: center;
+  margin-right: 10px;
+}
+.course-box-right ul.list-box li a .right-content-box .desc{
+  margin: 0;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 500;
+  color: #747A7F;
+  width: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  margin-bottom: 6px;
+}
+.course-box-right ul.list-box li a .right-content-box .row{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+.course-box-right ul.list-box li a .right-content-box .row p{
+  margin: 0;
+}
+.course-box-right ul.list-box li a .right-content-box .row .name{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #333333;
+  margin-right: 30px;
+}
+.course-box-right ul.list-box li a .right-content-box .row .name img{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.course-box-right ul.list-box li a .right-content-box .row .zy{
+  margin: 0;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #747A7F;
+}
+.course-box-right ul.list-box li a .right-content-box .row .price{
+  font-size: 18px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #EB7B27;
+  margin-right: 12px;
+}
+
+.course-box-right ul.list-box li a .right-content-box .row .num{
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #747A7F;
+  margin-right: 17px;
+}
+.course-box-right ul.list-box li a .right-content-box .row .circle{
+  width: 3px;
+  height: 3px;
+  background: #747A7F;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.course-box-right ul.list-box li a .right-content-box .row .soul{
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #747A7F;
+}

@@ -1,0 +1,36 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventAdd.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row event-create">
+        <div class="event-create-details-title">
+            <h1 class="event-create-headline">{{ title }}</h1>
+            <p class="event-create-byline">
+                {{ error_msg }},
+                <span id="time-out"> 3 </span> 秒后自动跳转，请等待
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    let time_sed = 3;
+    let time_span = document.getElementById("time-out");
+    let url_href = window.location.href;
+    let index = url_href.lastIndexOf("\/");
+    let url_str = url_href.substring(0, index + 1);
+    let req_url = url_str + "{{ redict_url }}";
+    function error_time_out() {
+        time_sed--;
+        time_span.innerHTML = time_sed;
+        if(time_sed <= 0) {
+            location.href =  req_url;
+            clearInterval(interval);
+        }
+    }
+    let interval = setInterval("error_time_out()", 1000);
+</script>
+{% endblock %}

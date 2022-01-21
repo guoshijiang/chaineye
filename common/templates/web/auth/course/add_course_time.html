@@ -1,0 +1,120 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+    <style>
+        #id_part {
+            width:200px; border-radius:15px
+        }
+        #id_title {
+            width:300px; border-radius:15px; margin-left:20px
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="information-bd-box">
+              <div class="col-md-12 main">
+                <ul class="header-title-box">
+                    <li>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-2">
+                                <strong>课程序号</strong>
+                            </div>
+                             <div class="col-xs-8 col-md-8 space-stream-item-title-warp">
+                                <strong>课程标题</strong>
+                            </div>
+                            <div class="hidden-xs col-md-2">
+                                <strong>操作状态</strong>
+                            </div>
+                        </div>
+                    </li>
+                    {% for c_article in c_article_list %}
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-2 col-md-2"><span>{{ c_article.part }}</span></div>
+                                 <div class="col-xs-7 col-md-7">
+                                    <a class="question-title" href="">{{ c_article.title }}</a>
+                                </div>
+                                <div class="col-xs-3 col-md-3">
+                                    {% if c_article.detail %}
+                                        {% if c_article.is_active %}
+                                            <a class="btn btn-dark">
+                                                <i class="fa" style="color: white">已发布</i>
+                                            </a>
+                                        {% else %}
+                                            <a class="btn btn-dark">
+                                                <i class="fa" style="color: white">审核中</i>
+                                            </a>
+                                         {% endif %}
+                                    {% else %}
+                                         <a href="#" class="btn btn-danger">
+                                            <i class="fa">修改</i>
+                                         </a>
+                                         <a href="{% url 'wirte_course_article' c_article.id %}" class="btn btn-danger">
+                                            <i class="fa">写文章</i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+              <div class="main">
+                 <ul class="header-title-box">
+                    <li style="margin-top:30px">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <form class="form-inline" method="post" style="padding-top:0;" action="{% url 'create_course_article' course_id %}">
+                                   {{ course_article_form.part }}
+                                   {% if course_article_form.part.errors %}
+                                        <div style="color:red; margin-left:8px; margin-top:5px">
+                                            {{ course_article_form.part.errors }}
+                                        </div>
+                                   {% endif %}
+                                    {{ course_article_form.title }}
+                                   {% if course_article_form.title.errors %}
+                                        <div style="color:red; margin-left:8px; margin-top:5px">
+                                            {{ course_article_form.title.errors }}
+                                        </div>
+                                   {% endif %}
+                                    <div class="form-group" style="margin-left:20px">
+                                        <button class="btn btn-danger" type="submit">
+                                            提交
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                 </ul>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

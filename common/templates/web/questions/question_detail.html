@@ -1,0 +1,75 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/activity_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="container content-main">
+              <div class="row content flex-column">
+                <h1 class="event-read-title">{{ question.title }}</h1>
+                <div class="content-text">
+                    <h2>问题描述</h2>
+                    <div id="threadMessage" style="display: block">
+                        <p>
+                            {{ question.content | safe }}
+                        </p>
+                    </div>
+                </div>
+              </div>
+              <div class="content-discuss">
+                <h2>回复区</h2>
+                {% if len_answer == 0 %}
+                    <p>暂无回复</p>
+                {% else %}
+                    {% for qs_answer in qs_answer_list %}
+                        <div class="content-discuss-add">
+                            <div class="content-discuss-add-title">
+                              <span class="add-title-name">{{ qs_answer.user }}</span>
+                              <span class="add-title-time">{{ qs_answer.created_at | hdatetime }}</span>
+                            </div>
+                            <div class="discuss-add-text">
+                                {{ qs_answer.content | safe}}
+                            </div>
+                        </div>
+                   {% endfor %}
+               {% endif %}
+            </div>
+            <div class="content-comment">
+                <h2>回答</h2>
+                 <form class="form-box" method="post" action="{% url 'create_answer' question.id %}">
+                    <div class="el-textarea">
+                      {% csrf_token %}
+                      {{ answer_form.media }}
+                      {{ answer_form.content }}
+                      {% if answer_form.content.errors %}
+                        <div style="color:red; margin-left:8px; margin-top:5px">
+                           {{ answer_form.content.errors }}
+                        </div>
+                      {% endif %}
+                    </div>
+                     <div class="content-comment-btn">
+                        <button type="submit">发布</button>
+                    </div>
+                 </form>
+            </div>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+</div>
+<script>
+    function CommentShow(obj, id){
+        var node=$('#reply-box-c-' + id);
+        if(node.is(':hidden')){　　
+        　　node.show();　
+        }else {
+            node.hide();
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+         <div class="col-12 col-md-8">
+             <div class="information-box" id="information-box">
+                  <div class="container">
+                    <div class="row">
+                        <div class="information-bd-box col-12">
+                            <div class="information-body-item">
+                                <ul class="record-list" style="text-align: left">
+                                    {% for arcticle in tag_artcle_list %}
+                                        <li class="d-flex justify-content-between">
+                                              <div class="information-left-img">
+                                                <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                                              </div>
+                                              <div class="information-right-content">
+                                                <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" target="_blank">
+                                                  <p>{{ arcticle.title }}</p>
+                                                </a>
+                                                <p class="desc">{{ arcticle.excerpt }}</p>
+                                                <div class="art-info d-flex justify-content-between">
+                                                  <p>
+                                                    <span>{{ arcticle.user }}</span>
+                                                    <span>{{ arcticle.created_at | hdatetime}}</span>
+                                                  </p>
+                                                  <p>
+                                                    <span>阅读量</span>
+                                                      {{ arcticle.views }}
+                                                  </p>
+                                                </div>
+                                              </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+             </div>
+         </div>
+    {% include 'web/layout/right.html' %}
+    </div>
+</div>
+{% endblock %}

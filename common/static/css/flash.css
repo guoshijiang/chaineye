@@ -1,0 +1,61 @@
+
+/* 资讯切换专区 information-box */
+.information-box{margin-top: 20px;}
+.information-box .information-hd-box{padding: 10px 0;margin: 0;border-bottom: 1px solid #ddd;}
+.information-box .information-hd-box li{list-style: none;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #555555;padding: 0;text-align: center;padding-bottom: 3px;cursor: pointer;}
+.information-box .information-hd-box li.on{color: #E60012;border-bottom: 2px solid #E60012;}
+.information-box .information-bd-box ul{padding: 0;margin: 0;}
+.information-box .information-bd-box ul li{list-style: none;padding: 21px 0;border-bottom: 1px solid #ddd;}
+.information-box .information-bd-box .information-body-item .time-box{width: 161px;height: 24px;background: url('../images/quan.png') center center no-repeat;display: flex;justify-content: flex-end;align-items: center;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #222222;line-height: 20px;padding: 0 12px;box-sizing: border-box;margin-bottom: 20px;}
+.information-box .information-bd-box .information-body-item .title-box{display: block;font-size: 18px;font-family: PingFang SC;font-weight: 600;color: #222222;line-height: 20px;text-decoration: none;}
+.information-box .information-bd-box .information-body-item .desc-box{font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;}
+.information-box .information-bd-box .information-body-item .curve-box p{margin: 0;margin-right: 20px;display: flex;justify-content: center;align-items: center;font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 18px;}
+.information-box .information-bd-box .information-body-item .curve-box p span{display: flex;justify-content: center;align-items: center;margin-right: 9px;}
+.information-box .information-bd-box .information-body-item .loading-more{display: flex;justify-content: center;align-items: center;font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;width: 100%;height: 40px;border: 1px solid #DDDDDD;cursor: pointer;margin-top: 30px;}
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (min-width: 576px){
+    .banner-box .banner-left-box{margin-bottom: 10px;}
+}
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
+@media (min-width: 768px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+    .banner-box .banner-right-box h6{font-size: 18px;margin-bottom: 4px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item{margin-bottom: 5px;padding-bottom: 2px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a p{font-size: 14px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a span{font-size: 12px;}
+    .information-box .information-hd-box li{font-size: 14px;}
+
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+    .banner-box .banner-left-box{margin-bottom: 0;}
+    .banner-box .banner-right-box h6{font-size: 18px;margin-bottom: 8px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item{margin-bottom: 10px;padding-bottom: 7px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a p{font-size: 16px;}
+    .banner-box .banner-right-box .banner-right-list li.banner-right-item a span{font-size: 14px;}
+    .information-box .information-hd-box li{font-size: 14px;}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

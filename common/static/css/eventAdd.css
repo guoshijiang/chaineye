@@ -1,0 +1,80 @@
+/* 头部 header-container */
+.header-container{width: 100%;height: 88px;background-color: #444;}
+.header-container .header-title-box{width: 100%;height: 88px;display: flex;justify-content: space-between;align-items: center;box-sizing: border-box;padding: 0 36px;border-bottom: 1px solid #eee;}
+.header-container .header-title-box p{color: #fff;margin: 0;}
+
+.content-main{padding: 100px 15px 200px; margin: auto;}
+
+.content-main .content h1.content-main-title {
+	font-size: 30px;
+	font-weight: 300;
+	color: #444;
+}
+
+
+.event-create .event-create-details-title {
+	text-align: center;
+	width: 100%;
+	padding: 30px;
+}
+
+.event-create .event-create-details-title h1.event-create-headline {
+	color: #333333;
+	font-size: 30px;
+	margin: 0;
+	line-height: 42px;
+	letter-spacing: 1px;
+	font-weight: 300;
+}
+
+.event-create .event-create-details-title p.event-create-byline {
+	font-size: 16px;
+	line-height: 16px;
+	letter-spacing: 1px;
+	color: #333333;
+	margin: 10px 0;
+}
+.form-box{width: 80%;margin: auto;}
+.form-box .form-group{
+    width: 100%;
+}
+.btn-group{
+    width: 360px;
+    height: 40px;
+}
+.btn-tab{
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+}
+.btn-tab.on{
+    color: #fff;
+    background-color: #409EFF;
+    border-color: #409EFF;
+}
+.el-upload--picture-card {
+    background-color: #fbfdff;
+    border: 1px dashed #c0ccda;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 148px;
+    height: 148px;
+    line-height: 146px;
+    vertical-align: top;
+}
+.input-upload{
+    width: 148px;
+    height: 148px;
+}
+.require.form-group label:before {
+    content: '*';
+    color: #f56c6c;
+    margin-right: 4px;
+}
+.require.form-group label.form-check-label:before {
+    content: '';
+    color: #f56c6c;
+    margin-right: 4px;
+}
+
+

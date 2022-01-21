@@ -1,0 +1,30 @@
+/* 头部 header-container */
+.header-container{width: 100%;height: 388px;background: url(../images/home_bg.png) center center no-repeat;}
+.header-container .header-title-box{width: 100%;height: 88px;display: flex;justify-content: space-between;align-items: center;box-sizing: border-box;padding: 0 36px;border-bottom: 1px solid #eee;}
+.header-container .header-title-box p{color: #fff;}
+.header-container .header-content-box{color: #fff;}
+.header-container .header-content-box h1{text-align: center;margin-top: 50px;width: 100%;}
+.header-container .header-content-box .desc{width: 100%;text-align: center;margin-top: 15px;}
+.header-container .header-content-box .btn-lg{width: 304px;height: 52px;margin-top: 20px;}
+.header-container .header-content-box .hint{font-size: 12px;margin-top: 10px;}
+
+/* 事件列表区域 */
+.event-list-container{margin-top: 40px;}
+.event-list-container .title-list{border-bottom: 2px solid #e4e7ed;width: 100%;}
+.event-list-container .title-list ul{list-style: none;margin: 0;padding: 0;}
+.event-list-container .title-list ul li{margin-right: 20px;cursor: pointer;padding: 10px;margin-bottom: -2px;}
+.event-list-container .title-list ul li.on{color: #009dee;border-bottom: 1px solid #009dee;}
+.event-list-container .title-list .event-total{color: #009dee;margin: 0;}
+.event-list-container .content-container{width: 100%;}
+.event-list-container .content-box{width: 100%;}
+.event-list-container .content-box ul.event-list-box{padding: 0;list-style: none;margin-top: 20px;}
+.event-list-container .content-box ul.event-list-box li{padding: 30px 10px;border-bottom: 1px solid #f1f1f1;}
+.event-list-container .content-box ul.event-list-box li p{margin: 0;}
+.event-list-container .content-box ul.event-list-box li a.title{font-weight: 300;font-size: 16px;line-height: 27px;text-align: left;word-break: break-word;color: #333;text-decoration: none;display: block;}
+.event-list-container .content-box ul.event-list-box li span.icon{display: inline-block;color: #000;padding: 0 5px;margin: 0;line-height: 22px;vertical-align: middle;color: #999;font-size: 12px;background: #f8f8fb;border-radius: 3px;font-weight: 300;}
+.event-list-container .content-box ul.event-list-box li p.time{line-height: 27px;font-size: 12px;font-weight: 300;color: #666;text-align: right;}
+.event-list-container .content-box ul.event-list-box li p.author{line-height: 27px;font-size: 12px;font-weight: 300;color: #666;text-align: right;}
+
+
+
+

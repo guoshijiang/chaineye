@@ -1,0 +1,41 @@
+.article-container .back {
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  color: #222222;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.article-container .article-title {
+  font-size: 30px;
+  color: #333333;
+  line-height: 40px;
+  margin-bottom: 30px;
+}
+
+.article-container .user-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #666666;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.article-container .user-detail .author-name {
+  margin-right: 80px;
+}
+
+.article-container .article-content {
+  color: #111111;
+  font-size: 16px;
+  line-height: 36px;
+}
+
+.article-container .article-content img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=articleDetail.css.map */

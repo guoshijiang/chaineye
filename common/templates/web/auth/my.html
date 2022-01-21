@@ -1,0 +1,107 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="my-container">
+    <div class="container content-container row">
+      <div class="content-left col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="user-detail ">
+            {% if user_info.photo  %}
+                <img width="32" height="32" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+            {% else %}
+                <img width="32" height="32" src="{% static 'images/default_avatar.png' %}" alt="">
+            {% endif %}
+          <div class="user-name">
+              {{ user.user_name }}
+          </div>
+          <div class="address-level">
+              <input type="text" name="user_company" style="border:0; width:45%;text-align:right" value="{{ user_info.company }}"> |
+              <input type="text" name="user_position" style="border:0; width:45%;text-align:left;" value="{{ user_info.position }}">
+          </div>
+          <a style="text-decoration:none; color:black;" class="login-out-btn" href="{% url 'logout' %}">退出登录</a>
+        </div>
+        {% include "web/auth/window/my_tab.html" %}
+      </div>
+      <div class="content-right col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="base-detail">
+          <div class="title">基本资料</div>
+          <form class="form-horizontal" method="post" enctype="multipart/form-data" action="update_user_info" role="form">
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            <div class="form-group">
+              <div class="label">昵称：</div>
+              <input type="text" name="user_name" style="border:0; width:500px; height:36px" value="{{ user.user_name }}" />
+            </div>
+            <hr/>
+            <div class="form-group">
+              <div class="label">性别：</div>
+              <div>
+                {% include "web/auth/window/sex_select.html" %}
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:30px">
+              <div class="label">简介：</div>
+              <div>
+                <textarea name="user_introduce" style="resize:none; border:0; width:600px; height:120px;">{{ user_info.introduce }}</textarea>
+              </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+              <div class="label">公司：</div>
+              <div>
+                 <input type="text" name="user_company" style="border: 0; width: 500px; height: 36px" value="{{ user_info.company }}" />
+              </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+              <div class="label">职位：</div>
+              <div>
+                 <input type="text" name="user_position" style="border: 0; width: 500px; height: 36px" value="{{ user_info.position }}" />
+              </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+              <div class="label">头像：</div>
+              <div>
+                  {% if user_info.photo %}
+                      <img id="pic"  width="220" height="180" src="{% url 'index' %}media/{{ user_info.photo }}" alt="">
+                  {% else %}
+                      <img id="pic"  width="220" height="220" src="{% static 'images/default_avatar.png' %}" alt="">
+                  {% endif %}
+                  <input id="upload" name="user_photo" accept="image/*" type="file" style="display: none">
+              </div>
+            </div>
+            <hr/>
+            <button style="border:none; background-color:red; outline:none;" type="submit" class="submit-btn" role="button">点击修改个人信息</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      $(function() {
+      $("#pic").click(function() {
+          $("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+          $("#upload").on("change", function() {
+              var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+              if (objUrl) {
+                  $("#pic").attr("src", objUrl); //将图片路径存入src中，显示出图片
+              }
+          });
+      });
+  });
+  function getObjectURL(file) {
+      var url = null;
+      if (window.createObjectURL != undefined) { // basic
+          url = window.createObjectURL(file);
+      } else if (window.URL != undefined) { // mozilla(firefox)
+          url = window.URL.createObjectURL(file);
+      } else if (window.webkitURL != undefined) { // webkit or chrome
+          url = window.webkitURL.createObjectURL(file);
+      }
+      return url;
+  }
+  </script>
+{% endblock %}

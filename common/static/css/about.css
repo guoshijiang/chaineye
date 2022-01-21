@@ -1,0 +1,114 @@
+.about-container .about-img {
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 36.45%;
+  overflow: hidden;
+}
+
+.about-container .about-img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.about-container .about-title, .about-container {
+  color: #131A21;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 0 85px;
+}
+
+.contact-us {
+  color: #131A21;
+  font-size: 36px;
+  text-align: center;
+  margin: 120px 0 85px;
+}
+
+.about-container .about-bg {
+  padding: 0;
+}
+
+.about-container .about-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.about-container .about-des {
+  background-color: #E7E8EB;
+  padding: 23px 9px 13px 28px;
+  color: #232931;
+  font-size: 16px;
+  line-height: 26px;
+  border-radius: 0 5px 5px 0;
+}
+
+.about-container .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 70px;
+}
+
+.about-container .btns .submit-btn {
+  width: 175px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px solid #CA151E;
+  font-size: 18px;
+  color: #CA151E;
+  border-radius: 30px;
+  margin-right: 100px;
+  cursor: pointer;
+}
+
+.about-container .btns .reset-btn {
+  width: 175px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 2px solid #1E2832;
+  font-size: 18px;
+  color: #131A21;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .about-container .about-title, .about-container .contact-us {
+    font-size: 30px;
+    margin: 100px 0 65px;
+  }
+  .about-container .about-des {
+    font-size: 14px;
+  }
+  .about-container .btns {
+    margin-top: 50px;
+  }
+  .about-container .btns .submit-btn {
+    width: 150px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 16px;
+    margin-right: 60px;
+  }
+  .about-container .btns .reset-btn {
+    width: 150px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 16px;
+  }
+}
+/*# sourceMappingURL=about.css.map */

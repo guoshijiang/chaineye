@@ -1,0 +1,54 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eventAdd.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row event-create">
+        <div class="event-create-details-title" style="padding:30px 0 30px;">
+            <h1 class="event-create-headline">活动报名</h1>
+        </div>
+        <form class="form-box" method="post">
+            <div class="form-box" method="post">
+            <div class="from-content-box">
+                <div class="form-content-item">
+                    <input type="hidden" name="activity_id" value="{{ activity_id }}">
+                    <input type="hidden" name="account_id" value="{{ request.session.user_id }}">
+                    <div class="form-group require">
+                        <label>联系人姓名</label>
+                        <input type="text" name="username" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                        <label>联系人手机号</label>
+                        <input type="text" name="phone" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                         <label>微信号</label>
+                         <input type="text" name="weichat" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                         <label>邮箱</label>
+                         <input type="text" name="email" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                         <label>公司</label>
+                         <input type="text" name="company" class="form-control">
+                      </div>
+                      <div class="form-group require">
+                         <label>职位</label>
+                         <input type="text" name="position" class="form-control">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group require">
+                    <label>参会目的</label><br/>
+                    <textarea name="content" style="width:730px; height:90px; resize:none; border: solid 1px #e5e5e5"></textarea>
+                </div>
+                <button style="margin-left:35%; width:30%;" type="submit" class="btn btn-primary btn-lg btn-block">提交数据</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

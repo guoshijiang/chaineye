@@ -1,0 +1,204 @@
+.train-container{
+  #swipers {
+    position: relative;
+    margin: 30px auto;
+    .swiper-slide {
+      width: 576px;
+      height: 300px;
+      background: #fff;
+      box-shadow: 0 8px 30px #ddd;
+      img{
+        display:block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .swiper-pagination {
+      width: 100%;
+      bottom: 20px;
+    }
+    .swiper-pagination-bullets{
+      .swiper-pagination-bullet {
+        margin: 0 5px;
+        border: 3px solid #fff;
+        background-color: #d5d5d5;
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+      }
+      .swiper-pagination-bullet-active {
+        border: 3px solid #00aadc;
+        background-color: #fff;
+      }
+    }
+    .swiper-button-prev {
+      left: -30px;
+      width: 30px;
+      height: 30px;
+      background: url(../images/wm_button_icon.png) no-repeat;
+      background-position: 0 0;
+      background-size: 100%;
+    }
+    .swiper-button-next {
+      right: -30px;
+      width: 30px;
+      height: 30px;
+      background: url(../images/wm_button_icon.png) no-repeat;
+      background-position: 0 -93px;
+      background-size: 100%;
+    }
+    .swiper-button-next:hover {
+      background-position: 0 -139px;
+      background-size: 100%
+    }
+  }
+  .tabs{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #DDDDDD;
+    .tab-item{
+      font-size: 18px;
+      color: #555555;
+      padding: 20px 0;
+      margin-right: 30px;
+      cursor: pointer;
+      position: relative;
+      &.active{
+        color: #E60012;
+        font-size: 20px;
+        font-weight: 600;
+        &:after{
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: 10px;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 2px;
+          background: #E60012;
+        }
+      }
+    }
+  }
+  .second-tabs{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 35px;
+    .tab-item{
+      font-size: 14px;
+      color: #555555;
+      padding: 20px 0;
+      margin-right: 20px;
+      cursor: pointer;
+      position: relative;
+      &.active{
+        color: #E60012;
+        font-weight: 600;
+      }
+    }
+  }
+  .list{
+    .list-item{
+      cursor: pointer;
+      margin-bottom: 20px;
+      .item-img{
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-bottom: 47.03%;
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
+      }
+      .item-detail{
+        border: 1px solid #DDDDDD;
+        padding-bottom: 50px;
+      }
+      .item-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0;
+        padding-right: 10px;
+        .item-title{
+          color: #222222;
+          font-size: 18px;
+        }
+        .state{
+          color: #FFFFFF;
+          font-size: 14px;
+          background-color: #E60012;
+          padding: 3px 7px;
+        }
+      }
+      .company-name, .time{
+        font-size: 14px;
+        color: #999999;
+      }
+    }
+  }
+  .load-more{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 14px;
+    border: 1px solid #DDDDDD;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+  @media screen and(max-width: 768px) {
+    #swipers{
+      .swiper-slide{
+        width: 260px;
+        height: 135px;
+      }
+    }
+    .tabs{
+      .tab-item{
+        padding: 10px 0;
+        margin-right: 20px;
+      }
+    }
+    .second-tabs{
+      .tab-item{
+        padding: 10px 0;
+        margin-right: 10px;
+      }
+    }
+    .list{
+      .list-item{
+        .item-detail{
+          padding-bottom: 30px;
+        }
+        .item-top{
+          margin: 10px 0;
+          padding-right: 10px;
+          .item-title{
+            color: #222222;
+            font-size: 16px;
+          }
+          .state{
+            color: #FFFFFF;
+            font-size: 12px;
+            background-color: #E60012;
+            padding: 3px 7px;
+          }
+        }
+        .company-name, .time{
+          font-size: 12px;
+        }
+      }
+    }
+    .load-more{
+      margin-top: 30px;
+    }
+  }
+}
