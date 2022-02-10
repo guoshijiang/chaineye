@@ -1,0 +1,52 @@
+.data_bixin_statics {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.net-pos-zhu {
+    margin-top: 80px;
+}
+
+.log-main .text_hidden p {
+    width: 350px;
+    text-indent: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.log-main .text_hidden p:hover {
+    text-overflow: inherit;
+    overflow: visible;
+    white-space: inherit;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.border-box {
+    border: #4a4a4a dashed 1px;
+    width: 150px;
+    height: 40px;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: lavenderblush;
+    margin-left: 8px;
+}
+
+.box-back {
+    background-color: #4a4a4a;
+    color: white;
+}
+
+.white-space {
+    margin-top: 80px;
+}
+
+.exchange-name input {
+    width: 100%;
+    height: 40px
+}

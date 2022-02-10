@@ -1,0 +1,628 @@
+h1, h2, h3, h4, h5, p {
+    font-family: "Microsoft Yahei", arial,sans-serif;
+}
+
+body {
+    color: #9e9e9e;
+    background: #f0f0f0;
+    font-weight: normal;
+}
+
+.show {
+    width: 850px;
+    overflow: hidden;
+    background: #fff;
+    color: #9e9e9e;
+    font: 12px/20px "Microsoft Yahei", arial,sans-serif;
+    font-weight: normal;
+}
+
+.show .newShow {
+    margin-top: 30px;
+    display: block;
+}
+
+.show ol {
+    overflow: hidden;
+}
+
+ol {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.show ol li img {
+    float: left;
+    width: 105px;
+    height: 140px;
+    border: 1px solid #f0f0f0;
+    margin-right: 14px;
+}
+
+.show ol li {
+    margin-right: 30px;
+    margin-bottom: 44px;
+    overflow: hidden;
+    float: left;
+     display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.show ol li a {
+    text-decoration: none;
+    outline: none;
+    font-family: "Microsoft Yahei", arial,sans-serif;
+    color: #9e9e9e;
+    cursor: pointer;
+}
+
+.show .bookMation {
+    width: 120px;
+    height: 142px;
+    float: left;
+}
+
+div {
+    display: block;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.show .bookMation h3 {
+    height: 27px;
+    width: 148px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #212121;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.bookR .bookinf02 {
+    padding: 24px 40px 0 30px;
+    height: 98px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.bookR .bookinf02 .left {
+    float: left;
+    width: 180px;
+    margin-top: 4px;
+}
+
+.bookR .bookinf02 .left .tryRead {
+    width: 80px;
+    height: 30px;
+    background: #8bc34a;
+}
+
+.show .bookMation .tryread a {
+    width: 34px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    float: right;
+    background: #f26552;
+}
+
+.bookR .bookinf02 .left span {
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+em, span {
+    display: inline-block;
+}
+
+.show .bookMation .introduce {
+    width: 140px;
+    height: 30px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-top: 8px;
+}
+
+.bookInfor {
+    width: 860px;
+    overflow: hidden;
+    font: 12px/20px "Microsoft Yahei", arial,sans-serif;
+    background: #f0f0f0;
+    font-weight: normal;
+}
+
+.bookInfor .bookL {
+    float: left;
+    width: 26.9%;
+}
+
+.bookInfor .bookL span {
+    height: 23px;
+    line-height: 18px;
+    position: absolute;
+    background-position: 0 0;
+    margin: 30px 0 0 -5px;
+    font-size: 14px;
+    padding-left:40px;
+    text-decoration: none;
+    color: #9e9e9e;
+}
+
+.bookInfor .bookL a {
+    margin: 68px auto 0;
+    width: 156px;
+    height: 208px;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.bookInfor .bookL a img {
+    width: 100%;
+    height: 100%;
+}
+
+.bookInfor .bookL .shadow {
+    position: absolute;
+    left: 32px;
+    top: 273px;
+}
+
+.bookInfor .bookR {
+    float: left;
+    width: 73.1%;
+    overflow: hidden;
+    padding-bottom: 27px;
+    border-left: 1px solid #f0f0f0;
+    box-sizing: border-box;
+}
+
+.bookR .bookinf01 {
+    padding: 22px 40px 0 30px;
+    height: 72px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.bookR .bookinf03 {
+    padding: 24px 40px 0 30px;
+}
+
+.bookR .bookinf01 .bookname {
+    overflow: hidden;
+    margin-bottom: 15px;
+    color: #212121;
+}
+
+em, h2, h1, h3, i {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.bookR .bookinf01 .bookname h2 {
+    max-width: 438px;
+    height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+}
+
+.bookR .bookinf01 .bookname h2 a {
+    color: #212121;
+    font-size: 20px;
+}
+
+.bookR .bookinf01 .bookname span {
+    float: right;
+    font-size: 20px;
+}
+
+.bookR .bookinf01 p {
+    overflow: hidden;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.bookR .bookinf01 p .author {
+    margin-right: 18px;
+}
+
+.bookR .bookinf01 p span {
+    float: left;
+}
+
+.bookR .bookinf01 p .manyMan {
+    float: right;
+}
+
+.bookR .bookinf02 .left {
+    float: left;
+    width: 180px;
+    margin-top: 4px;
+}
+
+.bookR .bookinf02 .left p {
+    margin-bottom: 18px;
+    width: 300px;
+}
+
+.bookR .bookinf02 .left p .price {
+    color: #212121;
+}
+
+.bookR .bookinf02 .left p .line {
+    color: #f0f0f0;
+}
+
+.bookR .bookinf02 .left p .orig {
+    text-decoration: line-through;
+}
+
+.bookR .bookinf02 .left .buyBook {
+    width: 70px;
+    height: 30px;
+    background: #f26552;
+    margin-left: 6px;
+}
+
+.bookR .bookinf02 .left span {
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    border: none;
+    background: none;
+    font-family: "Microsoft Yahei", arial,sans-serif;
+}
+
+.bookR .bookinf02 .right {
+    float: right;
+    width: 164px;
+}
+
+.bookR .bookinf02 .right .look_phone {
+    float: left;
+}
+
+.bookR .bookinf02 .right .look_ewm {
+    float: right;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+}
+
+.bookR .bookinf03 p {
+    line-height: 18px;
+    height: 54px;
+    overflow: hidden;
+    margin-bottom: 13px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+
+.bookR .bookinf03 .shareWrap {
+    overflow: hidden;
+}
+
+.bookR .bookinf03 .shareWrap span {
+    float: right;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    font-family: "Microsoft Yahei", arial,sans-serif;
+    color: #9e9e9e;
+}
+
+.sqCon {
+    background: #fafafa;
+    width: 860px;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.bookCir {
+    width: 100%;
+    border-right: 1px solid #f0f0f0;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.bookCir .title {
+    width: 100%;
+    height: 92px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 34px 40px 0 40px;
+    box-sizing: border-box;
+}
+
+em, span {
+    display: inline-block;
+}
+
+.bookCir .title p {
+    float: left;
+    width: 210px;
+    padding: 5px 0 0 0;
+}
+
+.bookCir .title .shuquan {
+    font-size: 16px;
+    color: #212121;
+}
+
+.bookCir .title .line {
+    font-size: 16px;
+    color: #f0f0f0;
+    margin: 0 8px;
+}
+
+.bookCir .title .comBtn {
+    width: 98px;
+    height: 25px;
+    line-height: 25px;
+    background: #8bc34a;
+    border-radius: 3px;
+    float: right;
+    color: #fff;
+}
+
+.bookCir .title .comBtn s {
+    float: left;
+    width: 12px;
+    height: 12px;
+    /*background-position: -86px -25px;*/
+    margin: 6px 6px 0 9px;
+}
+
+.bookCir .allCom {
+    overflow: hidden;
+    display: block;
+}
+
+.bookCir ul {
+    padding-left: 40px;
+    min-height: 1044px;
+}
+
+.bookCir ul li {
+    padding-top: 32px;
+    overflow: hidden;
+}
+
+.bookCir ul li .headImg {
+    width: 50px;
+    height: 50px;
+}
+
+.bookCir ul li .headImg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+img {
+    border: none;
+}
+
+.bookCir ul li .allCom {
+    float: right;
+    width: 750px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 4px 40px 0 0;
+}
+
+.bookCir .allCom {
+    overflow: hidden;
+    display: block;
+}
+
+.bookCir ul li .ComMan {
+    overflow: hidden;
+    margin: 0 0 11px 0;
+}
+
+.bookCir ul li .ComMan div {
+    display: block;
+}
+
+.bookCir ul li {
+    text-align: -webkit-match-parent;
+}
+
+.bookCir ul li .ComMan p {
+    max-width: 330px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #6b6b6b;
+    float: left;
+    line-height: 18px;
+    margin-right: 20px;
+}
+
+.bookCir ul li .ComMan .lv, .bookCir ul li .ComMan .vip {
+    width: 36px;
+    height: 16px;
+    background: #d2d2d2;
+    color: #fff;
+    line-height: 16px;
+    text-align: center;
+    margin: 0 6px 0 0;
+    float: left;
+}
+
+.bookCir ul li .ComMan span {
+    float: right;
+}
+
+.bookCir ul li .ComMan .vip {
+    width: 26px;
+    height: 16px;
+}
+
+.bookCir ul li .ComMan .lv, .bookCir ul li .ComMan .vip {
+    width: 36px;
+    height: 16px;
+    background: #d2d2d2;
+    color: #fff;
+    line-height: 16px;
+    text-align: center;
+    margin: 0 6px 0 0;
+    float: left;
+}
+
+.bookCir ul li .ComMan span {
+    float: right;
+}
+
+.bookCir ul li .disTxt {
+    padding-top: 7px;
+    margin-bottom: 13px;
+    overflow: hidden;
+}
+
+.bookCir ul li .comTxt s, .bookCir ul li .disTxt s {
+    display: inline-block;
+    width: 30px;
+    height: 18px;
+    background-position: 0 -68px;
+    margin: 0 7px 0 0;
+    text-decoration: none;
+    color: #fff;
+    line-height: 18px;
+    padding-left: 4px;
+}
+
+.bookCir ul li .disTxt i {
+    color: #6b6b6b;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.bookCir ul li .disTxt i a {
+    text-decoration: none;
+    outline: none;
+    font-family: "Microsoft Yahei", arial,sans-serif;
+    color: #9e9e9e;
+}
+
+.bookCir ul li .attend {
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.bookCir ul li .attend a {
+    text-decoration: none;
+    outline: none;
+    font-family: "Microsoft Yahei", arial,sans-serif;
+    color: #9e9e9e;
+}
+
+.bookCir ul li .attend .line {
+    margin: 0 12px 0 8px;
+    width: 1px;
+    height: 12px;
+    background: #f0f0f0;
+    float: left;
+}
+
+.bookCir ul li .attend .zan img {
+    width: 12px;
+    height: 12px;
+    margin: 0 4px 0 0;
+    float: left;
+}
+
+.bookCir ul li .attend .huifu img {
+    width: 13px;
+    height: 12px;
+    margin: 1px 4px 0 0;
+    float: left;
+}
+
+.bookCir ul li .attend i {
+    line-height: 12px;
+    float: left;
+    margin-right: 4px;
+}
+
+.bookCir ul li .attend .up {
+    float: right;
+    cursor: pointer;
+    display: block;
+}
+
+.bookCir ul li .attend .up i {
+    float: left;
+    margin-right: 6px;
+}
+
+.bookCir ul li .attend i {
+    line-height: 12px;
+    float: left;
+    margin-right: 4px;
+}
+
+.tag_lib {
+    background: rgb(217, 83, 79);
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+
+
+
+

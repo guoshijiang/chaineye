@@ -9,6 +9,7 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webfront.urls')),
+    path('backoffice/', include('backoffice.urls')),
     path('mdeditor/', include('mdeditor.urls')),
     path('ueditor/', include('DjangoUeditor.urls')),
     re_path('^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),

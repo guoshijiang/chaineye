@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    {% load staticfiles zhifishcc_tag%}
+    {% block head %}
+        <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/b_login.css' %}">
+    {% endblock %}
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a>标注后台系统</a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">登录</p>
+            <form class="dataForm" id="dataForm" action="{% url 'login' %}" method="post">
+                <div class="el-form-item flex alcenter">
+                  <p class="el-form-label">用户名：</p>
+                  {{ login_form.user_name }}
+                  {% if login_form.user_name.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ login_form.user_name.errors }}
+                     </div>
+                  {% endif %}
+                </div>
+                <div class="el-form-item flex alcenter">
+                  <p class="el-form-label">密码：</p>
+                  {{ login_form.password }}
+                  {% if login_form.password.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ login_form.password.errors }}
+                     </div>
+                  {% endif %}
+                </div>
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-xs-8">
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" id="loginButton" class="btn btn-primary btn-block btn-flat">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load staticfiles%}
+<html>
+<html data-static_url={{ config.STATIC_URL }}>
+  <head>
+    <title>
+      {% block bixin_head_title %}
+      链眼系统后台
+      {% endblock %}
+    </title>
+    <meta charSet="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Contro" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="renderer" content="webkit" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favico.png' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/vendor.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/nprogress.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap-progressbar-3.3.4.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/daterangepicker.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/trade.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/jquery.toast.min.css' %}" />
+    <script src="{% static 'admin/js/lib/jquery.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'admin/js/src/fastclick.js' %}" ></script>
+    <script src="{% static 'admin/js/src/nprogress.js' %}" ></script>
+    <script src="{% static 'admin/js/lib/lodash.js' %}"></script>
+    <script src="{% static 'admin/js/lib/clipboard.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/bootstrap.min.js' %}" ></script>
+    <script src="{% static 'admin/js/lib/chart.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/raphael.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/morris.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/gauge.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/bootstrap-progressbar.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/laydate/laydate.js' %}"></script>
+    <script src="{% static 'admin/js/lib/jquery.toast.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/echarts.min.js' %}"></script>
+    <script src="{% static 'admin/js/src/date.js' %}"></script>
+    <script src="{% static 'admin/js/lib/moment.min.js' %}"></script>
+    <script src="{% static 'admin/js/src/daterangepicker.js' %}"></script>
+    <script src="{% static 'admin/js/src/utils.js' %}"></script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body class="nav-md">
+    <div class="container body">
+      {% block body %}
+      {% endblock %}
+    </div>
+    <script src="{% static 'admin/js/src/gentelella_custom.js' %}"></script>
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

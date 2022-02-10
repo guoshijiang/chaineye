@@ -1,0 +1,21 @@
+{% extends 'admin/layout/nav_panel.html' %}
+{% load staticfiles %}
+{% block panelHeader %}
+{% endblock %}
+{% block panelBody %}
+<div class="align-self-stretch flex-grow-1 flex-shrink-1 d-block flex-column w-100">
+  <div class="x_panel align-self-stretch flex-grow-1 flex-shrink-1 d-flex flex-column">
+    <div class="x_title flex-grow-0 flex-shrink-0 w-100">
+      {% block filter %}
+      {% endblock %}
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content flex-grow-1 flex-shrink-1 w-100 overflow-auto">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block panelScript %}
+{% endblock %}
