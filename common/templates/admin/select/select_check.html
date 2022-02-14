@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<div class="input-group">
+  <div class="input-group-addon">
+      <span class="fa fa-exchange"></span>
+      <span>是否审核</span>
+  </div>
+  <select style="width:100px" name="is_checked" data-bixin-select="true" class="form-control">
+    {% if is_checked == 'all' %}
+        <option value="all" selected>全部</option>
+    {% else %}
+        <option value="all">全部</option>
+    {% endif %}
+    {% if is_checked == 'uncheck' %}
+        <option value="uncheck" selected>未审核</option>
+    {% else %}
+        <option value="uncheck">未审核</option>
+    {% endif %}
+    {% if is_checked == 'checking' %}
+        <option value="checking" selected>审核中</option>
+    {% else %}
+        <option value="checking">审核中</option>
+    {% endif %}
+    {% if is_checked == 'checked' %}
+        <option value="checked" selected>已审核</option>
+    {% else %}
+        <option value="checked">已审核</option>
+    {% endif %}
+  </select>
+</div>

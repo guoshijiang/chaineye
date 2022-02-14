@@ -6,6 +6,14 @@
 <h3>博客列表</h3>
 {% endblock %}
 {% block filter %}
+ <form encType="multipart/form-data" class="form-inline d-flex flex-row justify-content-start align-items-end" method="get">
+    <div class="form-group">
+        <label class="sr-only control-label"></label>
+        {% include 'admin/select/select_title.html' %}
+        {% include 'admin/select/select_name.html' %}
+    </div>
+    <button type="submit" class="btn btn-default">查询</button>
+</form>
 {% endblock %}
 {% block content %}
 <div class="dataTables_wrapper form-inline no-footer">
@@ -31,7 +39,14 @@
                    <td>{{ article.user.user_name  }}</td>
                    <td>{{ article.views  }}</td>
                    <td>{{ article.created_at | hdatetime }}</td>
-                   <td>查看详情</td>
+                   <td>
+                      <a href="{% url 'arctle_detail' %}?article_id={{ article.id }}">查看</a>
+                      {% if article.is_active == True %}
+                          <a>已审核</a>
+                      {% elif article.is_active == False %}
+                          <a href="{% url 'back_blog_check' b_blog.id %}">审核</a>
+                      {% endif %}
+                   </td>
                </tr>
             {% endfor %}
           </tbody>

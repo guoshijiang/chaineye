@@ -7,15 +7,17 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from blogs.models import Article, Category, ChainSafe
 from ceye_auth.models import User, UserInfo
+from backoffice.helper import check_admin_login
 
 
+#@check_admin_login
 def back_index(request):
-    user_id = int(request.GET.get("user_id", 0))
+    user_name = request.GET.get("user_name", "")
     title = request.GET.get("title", "")
     cat_id = int(request.GET.get("cat_id", 0))
     article_list = Article.objects.all().order_by("-id")
-    if user_id not in [0, "0"]:
-        user = User.objects.filter(id=user_id).first()
+    if user_name not in ["", "None"]:
+        user = User.objects.filter(user_name=user_name).first()
         article_list = article_list.filter(user=user)
     if title not in ["", None]:
         article_list = article_list.filter(title=title)
@@ -26,6 +28,15 @@ def back_index(request):
     return render(request, 'admin/index/index.html', locals())
 
 
+#@check_admin_login
+def back_blog_check(request, bid):
+    b_blog = Article.objects.filter(id=bid).first()
+    b_blog.is_active = True
+    b_blog.save()
+    return redirect('back_index')
+
+
+#@check_admin_login
 def back_chainsafe(request):
     title = request.GET.get("title", "")
     chain_safe_list = ChainSafe.objects.all().order_by("-id")
