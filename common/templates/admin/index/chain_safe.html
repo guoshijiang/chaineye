@@ -3,7 +3,7 @@
 {% block bixin_head_title %}
 {% endblock %}
 {% block panelHeader %}
-<h3>注册用户列表</h3>
+<h3>链安文章</h3>
 {% endblock %}
 {% block filter %}
 {% endblock %}
@@ -15,19 +15,19 @@
         <table class="table table-striped table-bordered dataTable no-footer" role="grid">
           <thead>
             <tr role="row">
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">用户名</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">注册手机号</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">最近登陆时间</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">注册时间</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">标题</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">阅读量</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">发布时间</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">操作</th>
             </tr>
           </thead>
           <tbody>
-            {% for b_user in b_user_list %}
+            {% for chain_safe in chain_safe_list %}
                <tr role="row">
-                   <td>{{ b_user.user_name }}</td>
-                   <td>{{ b_user.phone }}</td>
-                   <td>{{ b_user.logintime | hdatetime }}</td>
-                   <td>{{ b_user.created_at | hdatetime }}</td>
+                   <td>{{ chain_safe.title }}</td>
+                   <td>{{ chain_safe.views  }}</td>
+                   <td>{{ chain_safe.created_at | hdatetime }}</td>
+                   <td>查看详情</td>
                </tr>
             {% endfor %}
           </tbody>
@@ -37,7 +37,7 @@
   </div>
   <div class="row">
     <div class="pull-right">
-      {% include 'admin/select/pagination.html' with items=b_user_list %}
+      {% include 'admin/select/pagination.html' with items=chain_safe_list %}
     </div>
   </div>
 </div>

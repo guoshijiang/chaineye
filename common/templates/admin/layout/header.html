@@ -9,11 +9,11 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="">
         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <img src="{% static 'images/avatar.png' %}" alt="" /><span class=" fa fa-angle-down"></span>
+          <img src="{% static 'admin/images/avatar.png' %}" alt="" /><span class=" fa fa-angle-down"></span>
         </a>
         <ul class="dropdown-menu dropdown-usermenu pull-right">
           <li>
-            <a href="{% url 'logout' %}">
+            <a href="{% url 'backend_logout' %}">
               <i class="fa fa-sign-out pull-right"></i>退出登录
             </a>
           </li>

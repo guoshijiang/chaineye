@@ -8,6 +8,45 @@ SEX_CHOICES = [(x, x) for x in ['男', '女', '未知']]
 EXPIRED = 1
 UNEXPIRE = 2
 EXPIRE_TYPE_CHOICES = [(EXPIRED, 'EXPIRED'), (UNEXPIRE, 'UNEXPIRE')]
+BackendAccountType = [(x, x) for x in ['Admin', "Outer", 'Inner']]
+ValidSelect = [(x, x) for x in ['Yes', 'No']]
+
+
+class Account(BaseModel):
+    name = models.CharField(max_length=32, unique=True)
+    role = models.CharField(
+        max_length=128,
+        choices=BackendAccountType,
+        default="Admin",
+        verbose_name=u'账户角色'
+    )
+    password = models.CharField(
+        max_length=128,
+        default='',
+        verbose_name=u'密码'
+    )
+    valid = models.CharField(
+        max_length=128,
+        choices=ValidSelect,
+        default="Yes",
+        verbose_name=u'是否有效'
+    )
+
+    class Meta:
+        verbose_name = '后台用户表'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "password": self.password,
+            "role": self.role,
+            "valid": self.valid,
+        }
 
 
 class User(BaseModel):

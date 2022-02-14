@@ -5,9 +5,9 @@
     <title>登陆</title>
     {% load staticfiles zhifishcc_tag%}
     {% block head %}
-        <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/b_login.css' %}">
+        <link rel="stylesheet" href="{% static 'admin/css/AdminLTE.min.css' %}">
+        <link rel="stylesheet" href="{% static 'admin/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'admin/css/b_login.css' %}">
     {% endblock %}
 </head>
 <body class="hold-transition login-page">
@@ -17,7 +17,7 @@
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">登录</p>
-            <form class="dataForm" id="dataForm" action="{% url 'login' %}" method="post">
+            <form class="dataForm" id="dataForm" action="{% url 'backend_login' %}" method="post">
                 <div class="el-form-item flex alcenter">
                   <p class="el-form-label">用户名：</p>
                   {{ login_form.user_name }}

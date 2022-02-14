@@ -7,6 +7,37 @@ from django.contrib.auth.decorators import login_required
 from ceye_auth.models import (
     User
 )
+from backoffice.forms.login_form import AccountLoginForm
+
+
+def backend_login(request):
+    if request.method == "GET":
+        login_form = AccountLoginForm(request)
+        return render(request, "admin/auth/login.html", locals())
+    elif request.method == "POST":
+        login_form = AccountLoginForm(request, request.POST)
+        if login_form.is_valid():
+            user_name = login_form.clean_user_name()
+            user = Account.objects.filter(name=user_name).first()
+            request.session["backend_is_login"] = True
+            request.session["b_user_id"] = user.id
+            request.session["b_user_name"] = user.name
+            request.session["b_role"] = user.role
+            user.online = "Yes"
+            user.save()
+            return redirect("back_blog_list")
+        else:
+            error = login_form.errors
+            return render(
+                request, 'admin/auth/login.html',
+                {'login_form': login_form, 'error': error}
+            )
+
+
+def backend_logout(request):
+    request.session["backend_is_login"] = False
+    request.session.flush()
+    return redirect("backend_login")
 
 
 def back_user_list(request):
