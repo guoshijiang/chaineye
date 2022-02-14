@@ -42,6 +42,6 @@ class AccountLoginForm(forms.Form):
         password = self.cleaned_data.get('password')
         if password in ["", None]:
             raise forms.ValidationError('密码不能为空')
-        if user.password != hash_code(password):
+        if user.password != password:
             raise forms.ValidationError('密码错误，请核对之后输入')
         return password

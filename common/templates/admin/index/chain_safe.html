@@ -6,6 +6,13 @@
 <h3>链安文章</h3>
 {% endblock %}
 {% block filter %}
+ <form encType="multipart/form-data" class="form-inline d-flex flex-row justify-content-start align-items-end" method="get">
+    <div class="form-group">
+        <label class="sr-only control-label"></label>
+        {% include 'admin/select/select_title.html' %}
+    </div>
+    <button type="submit" class="btn btn-default">查询</button>
+</form>
 {% endblock %}
 {% block content %}
 <div class="dataTables_wrapper form-inline no-footer">
@@ -27,7 +34,14 @@
                    <td>{{ chain_safe.title }}</td>
                    <td>{{ chain_safe.views  }}</td>
                    <td>{{ chain_safe.created_at | hdatetime }}</td>
-                   <td>查看详情</td>
+                   <td>
+                      <a href="{% url 'chain_safe_detail' chain_safe.id %}">查看</a>
+                      {% if chain_safe.is_active == True %}
+                          <a>已审核</a>
+                      {% elif chain_safe.is_active == False %}
+                          <a href="{% url 'back_chainsafe_check' chain_safe.id %}">审核</a>
+                      {% endif %}
+                   </td>
                </tr>
             {% endfor %}
           </tbody>

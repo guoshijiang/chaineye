@@ -1,7 +1,15 @@
 #encoding=utf-8
 
 from django.contrib import admin
-from ceye_auth.models import User, UserInfo, UserBuyCourse
+from ceye_auth.models import Account, User, UserInfo, UserBuyCourse
+
+
+@admin.register(Account)
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'role')
+    list_per_page = 50
+    ordering = ('-created_at',)
+    list_display_links = ('id', 'name')
 
 
 @admin.register(User)

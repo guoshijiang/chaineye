@@ -5,11 +5,14 @@ from common.helpers import paged_items
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from ceye_auth.models import (
-    User
+    User,
+    Account
 )
 from backoffice.forms.login_form import AccountLoginForm
+from backoffice.helper import check_admin_login
 
 
+@csrf_exempt
 def backend_login(request):
     if request.method == "GET":
         login_form = AccountLoginForm(request)
@@ -25,7 +28,7 @@ def backend_login(request):
             request.session["b_role"] = user.role
             user.online = "Yes"
             user.save()
-            return redirect("back_blog_list")
+            return redirect("back_index")
         else:
             error = login_form.errors
             return render(
@@ -34,12 +37,16 @@ def backend_login(request):
             )
 
 
+@csrf_exempt
+@check_admin_login
 def backend_logout(request):
     request.session["backend_is_login"] = False
     request.session.flush()
     return redirect("backend_login")
 
 
+@csrf_exempt
+@check_admin_login
 def back_user_list(request):
     b_user_list = User.objects.all().order_by("-id")
     b_user_list = paged_items(request, b_user_list)

@@ -9,7 +9,9 @@ from backoffice.views.user import (
 )
 from backoffice.views.index import (
     back_index,
-    back_chainsafe
+    back_blog_check,
+    back_chainsafe,
+    back_chainsafe_check
 )
 
 
@@ -20,5 +22,8 @@ urlpatterns: List[Any] = [
     path(r'back_user_list', back_user_list, name='back_user_list'),
 
     path(r'back_index', back_index, name='back_index'),
+    path(r'<int:bid>/back_blog_check', back_blog_check, name='back_blog_check'),
+
     path(r'back_chainsafe', back_chainsafe, name='back_chainsafe'),
+    path(r'<int:id>/back_chainsafe_check', back_chainsafe_check, name='back_chainsafe_check'),
 ]

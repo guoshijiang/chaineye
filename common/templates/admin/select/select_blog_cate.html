@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<div class="input-group">
+  <div class="input-group-addon">
+      <span class="fa fa-exchange"></span>
+      <span>博客类别</span>
+  </div>
+  <select style="width:100px" name="cat_id" data-bixin-select="true" class="form-control">
+    {% if cat_id == 0 %}
+        <option value="0" selected>全部</option>
+    {% else %}
+        <option value="0">全部</option>
+    {% endif %}
+    {% for blog_cat in blog_cat_list %}
+      {% if blog_cat.id == cat_id %}
+          <option value="{{ blog_cat.id }}" selected>{{ blog_cat.name }}</option>
+      {% else %}
+          <option value="{{ blog_cat.id }}">{{ blog_cat.name }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+</div>
