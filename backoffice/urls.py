@@ -5,7 +5,8 @@ from backoffice.views.index import back_index
 from backoffice.views.user import (
     back_user_list,
     backend_login,
-    backend_logout
+    backend_logout,
+    back_user_wallet
 )
 from backoffice.views.index import (
     back_index,
@@ -26,12 +27,14 @@ from backoffice.views.course import (
     back_course_comment,
     course_comment_check
 )
+from backoffice.views.message import back_message_list, back_create_message
 
 
 urlpatterns: List[Any] = [
     path(r'backend_login', backend_login, name='backend_login'),
     path(r'backend_logout', backend_logout, name='backend_logout'),
     path(r'back_user_list', back_user_list, name='back_user_list'),
+    path(r'<int:uid>/back_user_wallet', back_user_wallet, name='back_user_wallet'),
 
     path(r'back_index', back_index, name='back_index'),
     path(r'<int:bid>/back_blog_check', back_blog_check, name='back_blog_check'),
@@ -48,4 +51,7 @@ urlpatterns: List[Any] = [
     path(r'<int:caid>/back_course_article_check', back_course_article_check, name='back_course_article_check'),
     path(r'<int:aid>/back_course_comment', back_course_comment, name='back_course_comment'),
     path(r'<int:cid>/course_comment_check', course_comment_check, name='course_comment_check'),
+
+    path(r'back_message_list', back_message_list, name='back_message_list'),
+    path(r'back_create_message', back_create_message, name='back_create_message'),
 ]

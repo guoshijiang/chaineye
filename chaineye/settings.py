@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     "ceye_auth",
     "planet",
     "question",
-    "wallet"
+    "wallet",
+    "backoffice"
 ]
 
 MIDDLEWARE = [

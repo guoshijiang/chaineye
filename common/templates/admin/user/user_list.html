@@ -19,6 +19,7 @@
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">注册手机号</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">最近登陆时间</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">注册时间</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">操作</th>
             </tr>
           </thead>
           <tbody>
@@ -28,6 +29,9 @@
                    <td>{{ b_user.phone }}</td>
                    <td>{{ b_user.logintime | hdatetime }}</td>
                    <td>{{ b_user.created_at | hdatetime }}</td>
+                   <td>
+                     <a href="{% url 'back_user_wallet' b_user.id %}">查看钱包</a>
+                   </td>
                </tr>
             {% endfor %}
           </tbody>

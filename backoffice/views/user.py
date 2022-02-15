@@ -10,6 +10,7 @@ from ceye_auth.models import (
 )
 from backoffice.forms.login_form import AccountLoginForm
 from backoffice.helper import check_admin_login
+from wallet.models import UserWallet
 
 
 @csrf_exempt
@@ -51,3 +52,9 @@ def back_user_list(request):
     b_user_list = User.objects.all().order_by("-id")
     b_user_list = paged_items(request, b_user_list)
     return render(request, 'admin/user/user_list.html', locals())
+
+
+@check_admin_login
+def back_user_wallet(request, uid):
+    user_wallet_list = UserWallet.objects.filter(user__id=uid).order_by("-id")
+    return render(request, 'admin/user/user_wallet.html', locals())
