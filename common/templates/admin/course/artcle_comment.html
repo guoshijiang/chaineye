@@ -3,13 +3,15 @@
 {% block bixin_head_title %}
 {% endblock %}
 {% block panelHeader %}
-<h3>链安文章</h3>
+<h3>博客列表</h3>
 {% endblock %}
 {% block filter %}
  <form encType="multipart/form-data" class="form-inline d-flex flex-row justify-content-start align-items-end" method="get">
     <div class="form-group">
         <label class="sr-only control-label"></label>
         {% include 'admin/select/select_title.html' %}
+        {% include 'admin/select/select_name.html' %}
+        {% include 'admin/select/select_blog_cate.html' %}
     </div>
     <button type="submit" class="btn btn-default">查询</button>
 </form>
@@ -23,36 +25,40 @@
           <thead>
             <tr role="row">
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">标题</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">分类名称</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">作者</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">阅读量</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">发布时间</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">操作</th>
             </tr>
           </thead>
           <tbody>
-            {% for chain_safe in chain_safe_list %}
+            {% for article in article_list %}
                <tr role="row">
-                   <td>{{ chain_safe.title }}</td>
-                   <td>{{ chain_safe.views  }}</td>
-                   <td>{{ chain_safe.created_at | hdatetime }}</td>
+                   <td>{{ article.title }}</td>
+                   <td>{{ article.category.name }}</td>
+                   <td>{{ article.user.user_name  }}</td>
+                   <td>{{ article.views  }}</td>
+                   <td>{{ article.created_at | hdatetime }}</td>
                    <td>
-                      <a href="{% url 'chain_safe_detail' chain_safe.id %}">查看</a>
-                      {% if chain_safe.is_active == True %}
+                      <a href="{% url 'arctle_detail' %}?article_id={{ article.id }}">查看</a>
+                      {% if article.is_active == True %}
                           <a>已审核</a>
-                      {% elif chain_safe.is_active == False %}
-                          <a href="{% url 'back_chainsafe_check' chain_safe.id %}">审核</a>
+                      {% elif article.is_active == False %}
+                          <a href="{% url 'back_blog_check' b_blog.id %}">审核</a>
                       {% endif %}
                    </td>
                </tr>
             {% endfor %}
           </tbody>
         </table>
-        <div>文章总数：{{ total_chain_safe  }}</div>
+        <div>文章总数：{{ total_article  }}</div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="pull-right">
-      {% include 'admin/select/pagination.html' with items=chain_safe_list %}
+      {% include 'admin/select/pagination.html' with items=article_list %}
     </div>
   </div>
 </div>

@@ -44,9 +44,9 @@ def back_chainsafe(request):
     chain_safe_list = ChainSafe.objects.all().order_by("-id")
     if title not in ["", None]:
         chain_safe_list = chain_safe_list.filter(title=title)
+    total_chain_safe = len(chain_safe_list)
     chain_safe_list = paged_items(request, chain_safe_list)
     return render(request, 'admin/index/chain_safe.html', locals())
-
 
 
 @check_admin_login
