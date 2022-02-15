@@ -3,7 +3,7 @@
 {% block bixin_head_title %}
 {% endblock %}
 {% block panelHeader %}
-<h3>博客列表</h3>
+<h3>课程评论列表</h3>
 {% endblock %}
 {% block filter %}
  <form encType="multipart/form-data" class="form-inline d-flex flex-row justify-content-start align-items-end" method="get">
@@ -11,7 +11,6 @@
         <label class="sr-only control-label"></label>
         {% include 'admin/select/select_title.html' %}
         {% include 'admin/select/select_name.html' %}
-        {% include 'admin/select/select_blog_cate.html' %}
     </div>
     <button type="submit" class="btn btn-default">查询</button>
 </form>
@@ -24,41 +23,41 @@
         <table class="table table-striped table-bordered dataTable no-footer" role="grid">
           <thead>
             <tr role="row">
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">标题</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">分类名称</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">作者</th>
-              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">阅读量</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">课程名称</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">评论人</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">评论文章</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">评论内容</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">是否是有效</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">发布时间</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">操作</th>
             </tr>
           </thead>
           <tbody>
-            {% for article in article_list %}
+            {% for course_comment in course_comment_list %}
                <tr role="row">
-                   <td>{{ article.title }}</td>
-                   <td>{{ article.category.name }}</td>
-                   <td>{{ article.user.user_name  }}</td>
-                   <td>{{ article.views  }}</td>
-                   <td>{{ article.created_at | hdatetime }}</td>
+                   <td>{{ course_comment.course.title }}</td>
+                   <td>{{ course_comment.user.user_name }}</td>
+                   <td>{{ course_comment.artcle.title  }}</td>
+                   <td>{{ course_comment.content  }}</td>
+                    <td>{{ course_comment.is_active  }}</td>
+                   <td>{{ course_comment.created_at | hdatetime }}</td>
                    <td>
-                      <a href="{% url 'arctle_detail' %}?article_id={{ article.id }}">查看</a>
-                      {% if article.is_active == True %}
+                      {% if course_comment.is_active == True %}
                           <a>已审核</a>
-                      {% elif article.is_active == False %}
-                          <a href="{% url 'back_blog_check' b_blog.id %}">审核</a>
+                      {% elif course_comment.is_active == False %}
+                          <a href="{% url 'course_comment_check' course_comment.id %}">审核</a>
                       {% endif %}
                    </td>
                </tr>
             {% endfor %}
           </tbody>
         </table>
-        <div>文章总数：{{ total_article  }}</div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="pull-right">
-      {% include 'admin/select/pagination.html' with items=article_list %}
+      {% include 'admin/select/pagination.html' with items=course_comment_list %}
     </div>
   </div>
 </div>

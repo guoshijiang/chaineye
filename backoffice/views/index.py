@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from blogs.models import Article, Category, ChainSafe
 from ceye_auth.models import User, UserInfo
 from backoffice.helper import check_admin_login
+from question.models import Questions
+from activity.models import Activity
 
 
 @check_admin_login
@@ -55,3 +57,49 @@ def back_chainsafe_check(request, id):
     chain_safe.is_active = True
     chain_safe.save()
     return redirect('back_chainsafe')
+
+
+@check_admin_login
+def back_question_list(request):
+    user_name = request.GET.get("user_name", "")
+    title = request.GET.get("title", "")
+    question_list = Questions.objects.all().order_by("-id")
+    if user_name not in ["", "None"]:
+        user = User.objects.filter(user_name=user_name).first()
+        question_list = question_list.filter(user=user)
+    if title not in ["", None]:
+        question_list = question_list.filter(title=title)
+    total_question = len(question_list)
+    question_list = paged_items(request, question_list)
+    return render(request, 'admin/index/question_list.html', locals())
+
+
+@check_admin_login
+def back_question_check(request, id):
+    qs = Questions.objects.filter(id=id).first()
+    qs.is_active = True
+    qs.save()
+    return redirect('back_question_list')
+
+
+@check_admin_login
+def back_activity_list(request):
+    user_name = request.GET.get("user_name", "")
+    title = request.GET.get("title", "")
+    activity_list = Activity.objects.all().order_by("-id")
+    if user_name not in ["", "None"]:
+        user = User.objects.filter(user_name=user_name).first()
+        activity_list = activity_list.filter(user=user)
+    if title not in ["", None]:
+        activity_list = activity_list.filter(title=title)
+    total_activity = len(activity_list)
+    activity_list = paged_items(request, activity_list)
+    return render(request, 'admin/index/activity_list.html', locals())
+
+
+@check_admin_login
+def back_activity_check(request, id):
+    act = Activity.objects.filter(id=id).first()
+    act.is_active = True
+    act.save()
+    return redirect('back_activity_list')

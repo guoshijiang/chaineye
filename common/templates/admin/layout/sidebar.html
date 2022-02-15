@@ -39,6 +39,12 @@
                   <li>
                     <a href="{% url 'back_chainsafe'%}">链安列表</a>
                  </li>
+                 <li>
+                    <a href="{% url 'back_question_list' %}">问答列表</a>
+                 </li>
+                 <li>
+                    <a href="{% url 'back_activity_list' %}">活动列表</a>
+                 </li>
               </ul>
          </li>
         <li>
@@ -47,27 +53,7 @@
              </a>
              <ul class="nav child_menu">
                  <li>
-                    <a href="#">教程列表</a>
-                 </li>
-             </ul>
-        </li>
-        <li>
-             <a>
-                <i class="fa fa-question"></i>问答管理<span class="fa fa-chevron-right pull-right"></span>
-             </a>
-             <ul class="nav child_menu">
-                 <li>
-                    <a href="#">问答列表</a>
-                 </li>
-             </ul>
-        </li>
-         <li>
-             <a>
-                <i class="fa fa-book"></i>活动管理<span class="fa fa-chevron-right pull-right"></span>
-             </a>
-             <ul class="nav child_menu">
-                 <li>
-                    <a href="#">活动列表</a>
+                    <a href="{% url 'back_course_list' %}">教程列表</a>
                  </li>
              </ul>
         </li>

@@ -11,7 +11,6 @@
         <label class="sr-only control-label"></label>
         {% include 'admin/select/select_title.html' %}
         {% include 'admin/select/select_name.html' %}
-        {% include 'admin/select/select_blog_cate.html' %}
     </div>
     <button type="submit" class="btn btn-default">查询</button>
 </form>
@@ -41,7 +40,7 @@
                <tr role="row">
                    <td>{{ course.title }}</td>
                    <td>{{ course.category.name }}</td>
-                   <td>{{ course.price }}</td>
+                   <td>{{ course.price | keep_two_decimal_places }}</td>
                    <td>{{ course.user.user_name  }}</td>
                    <td>{{ course.buyer_num  }}</td>
                    <td>{{ course.views  }}</td>
@@ -49,24 +48,25 @@
                    <td>{{ course.process  }}</td>
                    <td>{{ course.created_at | hdatetime }}</td>
                    <td>
-                      <a href="{% url 'course_detail' course.id %}">查看</a>
+                      <a href="{% url 'course_detail' course.id %}">查看详情</a>
+                      <a href="{% url 'back_course_artcle' course.id %}">查看章节</a>
                       {% if course.status == "CheckPass" %}
                           <a>已审核</a>
                       {% elif course.status == "Checking" %}
-                          <a href="{% url 'back_blog_check' b_blog.id %}">审核</a>
+                          <a href="{% url 'back_course_check' course.id %}">审核</a>
                       {% endif %}
                    </td>
                </tr>
             {% endfor %}
           </tbody>
         </table>
-        <div>文章总数：{{ total_article  }}</div>
+        <div>教程总数：{{ total_course  }}</div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="pull-right">
-      {% include 'admin/select/pagination.html' with items=article_list %}
+      {% include 'admin/select/pagination.html' with items=course_list %}
     </div>
   </div>
 </div>
