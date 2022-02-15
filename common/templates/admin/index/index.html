@@ -28,6 +28,8 @@
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">分类名称</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">作者</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">阅读量</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">是否推荐</th>
+              <th class="sorting" tabindex="0" rowspan="1" colSpan="1">是否有效</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">发布时间</th>
               <th class="sorting" tabindex="0" rowspan="1" colSpan="1">操作</th>
             </tr>
@@ -39,6 +41,8 @@
                    <td>{{ article.category.name }}</td>
                    <td>{{ article.user.user_name  }}</td>
                    <td>{{ article.views  }}</td>
+                   <td>{{ article.is_recommend  }}</td>
+                   <td>{{ article.is_active  }}</td>
                    <td>{{ article.created_at | hdatetime }}</td>
                    <td>
                       <a href="{% url 'arctle_detail' %}?article_id={{ article.id }}">查看</a>
