@@ -27,7 +27,16 @@ from backoffice.views.course import (
     back_course_comment,
     course_comment_check
 )
-from backoffice.views.message import back_message_list, back_create_message
+from backoffice.views.message import (
+    back_message_list,
+    back_create_message,
+    back_delete_message
+)
+from backoffice.views.channel_api import (
+    get_chainsafe,
+    get_blogs,
+    get_course
+)
 
 
 urlpatterns: List[Any] = [
@@ -54,4 +63,9 @@ urlpatterns: List[Any] = [
 
     path(r'back_message_list', back_message_list, name='back_message_list'),
     path(r'back_create_message', back_create_message, name='back_create_message'),
+    path(r'<int:id>/back_delete_message', back_delete_message, name='back_delete_message'),
+
+    path(r'get_chainsafe', get_chainsafe, name='get_chainsafe'),
+    path(r'get_blogs', get_blogs, name='get_blogs'),
+    path(r'get_course', get_course, name='get_course'),
 ]

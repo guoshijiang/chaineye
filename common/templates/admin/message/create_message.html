@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'admin/layout/filter_panel.html' %}
+{% load staticfiles zhifishcc_tag %}
+{% block bixin_head_title %}
+{% endblock %}
+{% block panelHeader %}
+<h3>添加新的资产</h3>
+{% endblock %}
+{% block filter %}
+<ul class="nav navbar-right panel_toolbox">
+  <li>
+      <a href="{% url 'back_message_list' %}">返回公告列表<i class="fa fa-chevron-right ml-1"></i></a>
+  </li>
+</ul>
+{% endblock %}
+{% block content %}
+<div class="form-horizontal form-label-left">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+           <label class="control-label col-md-3 col-sm-3 col-xs-12">公告标题:</label>
+           <div class="col-md-7 col-sm-7 col-xs-12 exchange-name">
+              {{ msg_form.title }}
+           </div>
+           {% if msg_form.title.errors %}
+              <div class="text-danger">{{ msg_form.title.errors }}</div>
+           {% endif %}
+        </div>
+         <div class="form-group">
+           <label class="control-label col-md-3 col-sm-3 col-xs-12">图片:</label>
+           <div class="col-md-6 col-sm-6 col-xs-12">
+               {{ msg_form.img }}
+           </div>
+           {% if msg_form.img.errors %}
+              <div class="text-danger">{{ msg_form.img.errors }}</div>
+           {% endif %}
+        </div>
+        <div class="form-group">
+            {% csrf_token %}
+            {{ msg_form.media }}
+            {{ msg_form.content }}
+            {% if msg_form.content.errors %}
+              <div class="text-danger">{{ msg_form.content.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="submit" value="提交公告" />
+            </div>
+        </div>
+   </form>
+</div>
+{% endblock %}

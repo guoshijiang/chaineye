@@ -5,7 +5,7 @@ from backoffice.models import Message
 from DjangoUeditor.forms import UEditorField
 
 
-class MessageForm(forms.ModelForm):
+class MessageForm(forms.Form):
     title = forms.CharField(
         required=True,
         label="标题",

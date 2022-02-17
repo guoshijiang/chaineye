@@ -10,15 +10,18 @@ from ceye_auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from backoffice.models import Message
 from backoffice.forms.message_form import MessageForm
+from backoffice.helper import check_admin_login
 
 
+@check_admin_login
 def back_message_list(request):
     message_list = Message.objects.all().order_by("-id")
     return render(request, 'admin/message/message_list.html', locals())
 
 
 @csrf_exempt
-def back_create_message(request, uid):
+@check_admin_login
+def back_create_message(request):
     if request.method == "GET":
         msg_form = MessageForm(request)
         return render(request, "admin/message/create_message.html", locals())
@@ -36,3 +39,9 @@ def back_create_message(request, uid):
                     'error': error
                 }
             )
+
+
+@check_admin_login
+def back_delete_message(request, id):
+    Message.objects.filter(id=id).delete()
+    return redirect('back_message_list')
