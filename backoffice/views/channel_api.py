@@ -20,10 +20,13 @@ def get_chainsafe():
     start = page * page_size
     end = start + page_size
     cf_data_list = []
-    cf_list = ChainSafe.objects.filter(is_active=True).order_by("-id")[start:end]
+    cf_list = ChainSafe.objects.filter(is_active=True, is_synced=False).order_by("-id")[start:end]
     for cf in cf_list:
         cf_data_list.append(cf.channel_to_dict())
+        cf.is_synced = True
+        cf.save()
     return ok_json(cf_data_list)
+
 
 @check_bearer_auth
 def get_blogs():
@@ -33,10 +36,13 @@ def get_blogs():
     start = page * page_size
     end = start + page_size
     article_data_list = []
-    article_list = Article.objects.filter(is_active=True).order_by("-id")[start:end]
+    article_list = Article.objects.filter(is_active=True, is_synced=False).order_by("-id")[start:end]
     for article in article_list:
         article_data_list.append(article.channel_to_dict())
+        article.is_synced = True
+        article.save()
     return ok_json(article_data_list)
+
 
 @check_bearer_auth
 def get_course():
@@ -46,12 +52,16 @@ def get_course():
     start = page * page_size
     end = start + page_size
     course_data_list = []
-    course_list = Course.objects.filter(is_active=True).order_by("-id")[start:end]
+    course_list = Course.objects.filter(is_active=True, is_synced=False).order_by("-id")[start:end]
     for course in course_list:
         course_article_data_list = []
-        ca_list = CourseArtcle.ojects.filter(course=course).order_by("-id")
+        course.is_synced = True
+        course.save()
+        ca_list = CourseArtcle.ojects.filter(course=course, is_synced=False).order_by("-id")
         for ca in ca_list:
             course_article_data_list.apend(ca.channel_to_dict())
+            ca.is_synced = True
+            ca.save()
         return_data = {
             "article": article.channel_to_dict(),
             "course_article": course_article_data_list

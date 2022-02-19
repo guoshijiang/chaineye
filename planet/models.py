@@ -76,6 +76,7 @@ class Course(BaseModel):
     views = models.PositiveIntegerField(default=0, verbose_name='课程阅读量')
     process = models.CharField(max_length=100, default="0", verbose_name='课程完成度')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='作者')
+    is_synced = models.BooleanField(default=False, verbose_name='是否已经同步')
     is_active = models.BooleanField(default=True, verbose_name='是否是有效')
 
     class Meta:
@@ -123,6 +124,7 @@ class CourseArtcle(BaseModel):
     )
     comment_num = models.PositiveIntegerField(default=0, verbose_name='文章阅读量')
     views = models.PositiveIntegerField(default=0, verbose_name='文章阅读量')
+    is_synced = models.BooleanField(default=False, verbose_name='是否已经同步')
     is_active = models.BooleanField(default=False, verbose_name='是否是有效')
 
     class Meta:

@@ -168,6 +168,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+API_TOKEN = 'WenwoChaineyeChannel'
 ACCESSKEYID = ''   # 短信验证吗 accessKeyId
 ACCESSSECRET = ''  # 短信验证码 accessSecret
 SIGNNAME = ''      # 短信验证码 SignName

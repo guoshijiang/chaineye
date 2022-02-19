@@ -13,7 +13,6 @@ def check_admin_login(func):
     return user_auth
 
 
-
 def check_bearer_auth(func):
     def check_bearer_auth(request, *args, **kwargs):
         if settings.API_TOKEN:
