@@ -64,7 +64,7 @@ def get_course(request):
         course_article_data_list = []
         course.is_synced = True
         course.save()
-        ca_list = CourseArtcle.objects.filter(course=course).order_by("-id")
+        ca_list = CourseArtcle.objects.filter(course=course).order_by("id")
         for ca in ca_list:
             course_article_data_list.append(ca.channel_to_dict())
             ca.is_synced = True
