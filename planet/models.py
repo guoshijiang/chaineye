@@ -91,6 +91,19 @@ class Course(BaseModel):
             'title': self.title,
         }
 
+    def channel_to_dict(self):
+        return {
+            'title': self.title,
+            'logo': self.logo,
+            'excerpt': self.excerpt,
+            'detail': self.detail,
+            'price': self.price,
+            'buyer_num': self.buyer_num,
+            'article_num': self.article_num,
+            'views': self.views,
+            'process': self.process
+        }
+
 
 class CourseArtcle(BaseModel):
     part = models.CharField(max_length=100, default="1", verbose_name='章节')
@@ -127,6 +140,13 @@ class CourseArtcle(BaseModel):
             'uuid': self.uuid,
             'created_at': self.created_at,
             'updated_at': self.updated_at
+        }
+
+    def channel_to_dict(self):
+        return {
+            'part': self.part,
+            'title': self.title,
+            'detail': self.detail
         }
 
 

@@ -62,6 +62,13 @@ class Article(BaseModel):
             'updated_at': self.updated_at
         }
 
+    def channel_to_dict(self):
+        return {
+            'title': self.title,
+            'excerpt': self.excerpt,
+            'body': self.body
+        }
+
 
 class ChainSafe(BaseModel):
     title = models.CharField(max_length=70, verbose_name='名称')
@@ -97,4 +104,10 @@ class ChainSafe(BaseModel):
             'is_active': self.is_active
         }
 
+    def channel_to_dict(self):
+        return {
+            'title': self.title,
+            'excerpt': self.excerpt,
+            'body': self.body
+        }
 
