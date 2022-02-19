@@ -95,7 +95,7 @@ class Course(BaseModel):
     def channel_to_dict(self):
         return {
             'title': self.title,
-            'logo': self.logo,
+            'logo': str(self.logo),
             'excerpt': self.excerpt,
             'detail': self.detail,
             'price': self.price,
