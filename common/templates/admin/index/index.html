@@ -49,7 +49,7 @@
                       {% if article.is_active == True %}
                           <a>已审核</a>
                       {% elif article.is_active == False %}
-                          <a href="{% url 'back_blog_check' b_blog.id %}">审核</a>
+                          <a href="{% url 'back_blog_check' article.id %}">审核</a>
                       {% endif %}
                    </td>
                </tr>
