@@ -34,7 +34,7 @@
       <ul class="hot-recommend-box">
         {% for recd_art in recd_art_list %}
             <li>
-              <a href="{{ recd_art.link_url }}" target="_blank" class="d-flex justify-content-between">
+              <a href="{% url 'arctle_detail' %}?article_id={{ recd_art.id }}" target="_blank" class="d-flex justify-content-between">
                 <div class="left-img"><img width="120" height="80" src="{% url 'index' %}media/{{ recd_art.img }}" alt=""></div>
                 <div class="right-content d-flex flex-column justify-content-between">
                   <p>{{ recd_art.title }}</p>
