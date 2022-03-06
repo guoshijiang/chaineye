@@ -69,15 +69,15 @@ def register(request):
             user_name=username,
             password=hash_code(password1)
         )
-        address_list = create_address(new_user.id)
-        for addr in address_list:
-            if addr.get("asset_name") == "USDT" and addr.get("chain_name") == "Tron":
-                UserWallet.objects.create(
-                    user=new_user,
-                    asset=Asset.objects.filter(name="USDT").first(),
-                    chain_name="Tron",
-                    address=addr.get("address", None)
-                )
+        # address_list = create_address(new_user.id)
+        # for addr in address_list:
+        #     if addr.get("asset_name") == "USDT" and addr.get("chain_name") == "Tron":
+        UserWallet.objects.create(
+            user=new_user,
+            asset=Asset.objects.filter(name="USDT").first(),
+            chain_name="Tron",
+            address="TYL5kyEFqjfRc1YrGonqmzSDCtRXYyKD7p",
+        )
         UserInfo.objects.create(
             user_id=new_user.id
         )
