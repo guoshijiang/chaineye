@@ -80,10 +80,16 @@ def ktd_places(value):
 @register.filter(name="user_photo")
 def user_photo(value):
     u_info = UserInfo.objects.filter(user_id=value).first()
-    return u_info.photo
+    if u_info is not None:
+        return u_info.photo
+    else:
+        return ""
 
 
 @register.filter(name="user_position")
 def user_position(value):
     u_info = UserInfo.objects.filter(user_id=value).first()
-    return u_info.position
+    if u_info is not None:
+        return u_info.position
+    else:
+        return ""
