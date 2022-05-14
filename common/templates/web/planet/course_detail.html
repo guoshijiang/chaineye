@@ -20,7 +20,7 @@
             <img width="213px" height="117px" src="{% url 'index' %}media/{{ course_detail.logo }}" alt="">
         </div>
         <div class="right-content-box">
-            <div class="title"><span>预售</span><p>{{ course_detail.title }}</p></div>
+            <div class="title"><span>推荐</span><p>{{ course_detail.title }}</p></div>
             <p class="desc">{{ course_detail.excerpt  }}</p>
             <div class="row">
                 <p class="name">
@@ -49,9 +49,9 @@
                         <button type="submit" class="el-button primary">购买 {{ course_detail.price | keep_two_decimal_places }} USDT</button>
                     </form>
                 {% else %}
-                    <a data-toggle="modal" data-target="#loginModal" class="el-button primary" style="margin-bottom:15px; color: white">登陆购买</a>
+                    <a data-toggle="modal" data-target="#loginModal" class="el-button primary" style="margin-bottom:15px; color: white">登陆注册</a>
                 {% endif %}
-                <a style="margin-bottom:15px" href="{% url 'course_article_detail' course_arcticle_first.id %}" class="el-button border">试读</a>
+                <a style="margin-bottom:15px" href="{% url 'course_article_detail' course_arcticle_first.id %}" class="el-button border">阅读</a>
             {% endif %}
         </div>
       </div>

@@ -3,7 +3,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'chaineye',
         'USER': 'root',
-        'PASSWORD': 'Zhiyu2019!',
+        'PASSWORD': 'Wenwo2020!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
