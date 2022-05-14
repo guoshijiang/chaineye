@@ -63,42 +63,42 @@
           <div class="article-info post-description markdown-body">
               <p>{{ course_arcticle.detail | safe }}</p>
           </div>
-          <div class="article-next-box">
-            <h2>评论区</h2>
-            {% if arcticle_comments %}
-                {% for arcticle_cmt in arcticle_comments %}
-                    <div class="content-discuss-add">
-                        <div class="content-discuss-add-title">
-                          <span class="add-title-name">{{ arcticle_cmt.user }}</span>
-                          <span class="add-title-time">{{ arcticle_cmt.created_at | hdatetime }}</span>
-                        </div>
-                        <div class="discuss-add-text">
-                            {{ arcticle_cmt.content | safe}}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>暂无评论</p>
-           {% endif %}
-          </div>
-          <div class="article-next-box">
-            <h2>评论</h2>
-              <form class="form-box" method="post">
-                <div class="el-textarea">
-                  {% csrf_token %}
-                  {{ comment_form.media }}
-                  {{ comment_form.content }}
-                  {% if comment_form.content.errors %}
-                    <div style="color:red; margin-left:8px; margin-top:5px">
-                       {{ comment_form.content.errors }}
-                    </div>
-                  {% endif %}
-                </div>
-                 <div class="content-comment-btn">
-                    <button type="submit">发布</button>
-                </div>
-             </form>
-          </div>
+<!--          <div class="article-next-box">-->
+<!--            <h2>评论区</h2>-->
+<!--            {% if arcticle_comments %}-->
+<!--                {% for arcticle_cmt in arcticle_comments %}-->
+<!--                    <div class="content-discuss-add">-->
+<!--                        <div class="content-discuss-add-title">-->
+<!--                          <span class="add-title-name">{{ arcticle_cmt.user }}</span>-->
+<!--                          <span class="add-title-time">{{ arcticle_cmt.created_at | hdatetime }}</span>-->
+<!--                        </div>-->
+<!--                        <div class="discuss-add-text">-->
+<!--                            {{ arcticle_cmt.content | safe}}-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            {% else %}-->
+<!--                <p>暂无评论</p>-->
+<!--           {% endif %}-->
+<!--          </div>-->
+<!--          <div class="article-next-box">-->
+<!--            <h2>评论</h2>-->
+<!--              <form class="form-box" method="post">-->
+<!--                <div class="el-textarea">-->
+<!--                  {% csrf_token %}-->
+<!--                  {{ comment_form.media }}-->
+<!--                  {{ comment_form.content }}-->
+<!--                  {% if comment_form.content.errors %}-->
+<!--                    <div style="color:red; margin-left:8px; margin-top:5px">-->
+<!--                       {{ comment_form.content.errors }}-->
+<!--                    </div>-->
+<!--                  {% endif %}-->
+<!--                </div>-->
+<!--                 <div class="content-comment-btn">-->
+<!--                    <button type="submit">发布</button>-->
+<!--                </div>-->
+<!--             </form>-->
+<!--          </div>-->
         </div>
     {% endif %}
   </div>
