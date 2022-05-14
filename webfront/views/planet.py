@@ -41,6 +41,8 @@ def course_detail(request, cid):
     course_arcticle_list = CourseArtcle.objects.filter(
         course=course_detail
     )
+    course_detail.views = course_detail.views + 1
+    course_detail.save()
     course_arcticle_first = course_arcticle_list.first()
     if request.method == "GET":
         ub_course = UserBuyCourse.objects.filter(user=user, course_id=cid).first()
@@ -89,6 +91,8 @@ def course_article_detail(request, arcticle_id):
     )
     course_id = int(course_arcticle.course.id)
     course_detail = Course.objects.filter(id=course_id).first()
+    course_detail.views = course_detail.views + 1
+    course_detail.save()
     arcticle_comments = CourseCommet.objects.filter(artcle__id=arcticle_id).order_by("-id")
     course_arcticle.views += 1
     course_arcticle.save()
