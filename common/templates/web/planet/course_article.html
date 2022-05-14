@@ -15,7 +15,7 @@
                 <button type="submit">立即购买 {{  course_arcticle.course.price | keep_two_decimal_places }}USDT</button>
               </form>
             {% else %}
-                <a data-toggle="modal" data-target="#loginModal" role="button">登陆注册</a>
+                <a data-toggle="modal" data-target="#loginModal" role="button"></a>
             {% endif %}
         {% endif %}
         <div class="mulu-list">
@@ -36,7 +36,7 @@
                     {% if not_buy_this_course %}
                         {% if c_arcticle.is_free == "Yes" %}
                           <div class="row-2">
-                            <span>阅读</span>
+                            <span></span>
                           </div>
                         {% else %}
                           <div class="row-2">
