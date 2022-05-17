@@ -7,6 +7,8 @@ from blogs.models import Category, Article, Tag
 from common.helpers import ok_json, error_json
 from django.conf import settings
 from common.models import Category, Advertise, Banner, Partner
+from webfront.hleper import judge_pc_or_mobile
+from planet.models import Course
 
 tz = pytz.timezone(settings.TIME_ZONE)
 
@@ -23,6 +25,7 @@ def global_variable(request):
 def index(request):
     cat_id = int(request.GET.get('cat_id', 0))
     title = request.GET.get("title", "")
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     if title in ["", None]:
         banner_list = Banner.objects.filter(is_active=True)[0:4]
         hot_list = Article.objects.filter(is_active=True).order_by('views')[:3]
@@ -38,7 +41,12 @@ def index(request):
     if title not in ["", None]:
         index_article_lst = Article.objects.filter(title__icontains=title).order_by("-id")
     nav_mark = "index"
-    return render(request, 'web/finance/index.html', locals())
+    if user_agt is False:
+        return render(request, 'web/finance/index.html', locals())
+    else:
+        course_list = Course.objects.filter(status="CheckPass").order_by("views")[0:8]
+        hot_blog_list = Article.objects.filter(is_active=True).order_by('views')[:20]
+        return render(request, 'h5/index.html', locals())
 
 
 def article_list(request):

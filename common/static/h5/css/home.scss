@@ -1,0 +1,113 @@
+.home-container {
+  padding: 0 .4267rem 1.3867rem;
+  background-color: #F8F9FD;
+  .swiper-container {
+    width: 100%;
+    height: 4rem;
+    padding-top: .2667rem;
+    .swioer-slide{
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-pagination-bullet{
+      background-color: rgba(255,255,255,0.7);
+      &.swiper-pagination-bullet-active{
+        background-color: #ffffff;
+      }
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: .1333rem;
+    }
+  }
+  .menus{
+    height: 3.2rem;
+    background: #FFFFFF;
+    border-radius: .2667rem;
+    margin: .2667rem 0;
+    .menu-item{
+      font-size: .3733rem;
+      img{
+        width: 1.4667rem;
+        height: 1.4667rem;
+        margin-bottom: .3733rem;
+      }
+    }
+  }
+  .course-container{
+    .course-title{
+      font-size: .4rem;
+      margin-bottom: .2133rem;
+    }
+    .course-list{
+      .course-item{
+        position: relative;
+        width: 4.4667rem;
+        height: 4.2667rem;
+        color: #ffffff;
+        font-size: .3467rem;
+        margin-bottom: .2133rem;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: .1333rem;
+        }
+        .text-one{
+          position: absolute;
+          left: .2667rem;
+          bottom: .92rem;
+        }
+        .text-two{
+          position: absolute;
+          left: .2667rem;
+          bottom: .32rem;
+        }
+      }
+    }
+  }
+  .new-container{
+    background: #FFFFFF;
+    border-radius: .2133rem;
+    margin-top: .1867rem;
+    .new-title{
+      height: 1.2rem;
+      line-height: 1.2rem;
+      font-size: .4rem;
+      padding-left: .32rem;
+      border-bottom: 1px solid #EEEEEE;
+    }
+    .list{
+      .list-item{
+        padding: .32rem;
+        border-bottom: 1px solid #EEEEEE;
+        img{
+          width: 1.7867rem;
+          height: 1.8133rem;
+          object-fit: cover;
+          border-radius: .1333rem;
+          margin-right: .2933rem;
+        }
+        .title{
+          font-size: .4rem;
+          margin-bottom: .08rem;
+        }
+        .sub-title{
+          font-size: .3467rem;
+          color: #999999;
+        }
+        .price{
+          font-size: .48rem;
+          color: #FF3B30;
+        }
+        .origin-price{
+          font-size: .2933rem;
+          color: #B3B3B3;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.notice-container{
+  min-height: 100vh;
+  background-color: #F8F9FD;
+  padding-top: .3067rem;
+  box-sizing: border-box;
+  .notice-item{
+    padding: .4rem .48rem;
+    background-color: #ffffff;
+    margin-bottom: .3067rem;
+    img{
+      width: 1.0667rem;
+      height: 1.0667rem;
+      margin-right: .2667rem;
+    }
+    .notice-right{
+      overflow: hidden;
+      height: 1.0667rem;
+    }
+    .title{
+      font-size: .4rem;
+      font-weight: bold;
+    }
+    .des{
+      font-size: .3467rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

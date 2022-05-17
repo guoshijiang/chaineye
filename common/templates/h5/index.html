@@ -1,0 +1,105 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <script src="{% static 'h5/js/flexible.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+  <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/home.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+</head>
+<body>
+  <div class="home-container">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+         {% for banner in banner_list %}
+          <div class="swiper-slide">
+             <img width="720" height="260" src="{% url 'index' %}media/{{ banner.img }}" alt="...">
+          </div>
+         {% endfor %}
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="menus flex">
+      <a href="eye.html" class="menu-item flex-one flex-column flex-center">
+        <img src="{% static 'h5/images/icon1.png' %}" alt="">
+        <div>链眼</div>
+      </a>
+      <a href="blog.html" class="menu-item flex-one flex-column flex-center">
+        <img src="{% static 'h5/images/icon2.png' %}" alt="">
+        <div>博客</div>
+      </a>
+      <a href="activity.html" class="menu-item flex-one flex-column flex-center">
+        <img src="{% static 'h5/images/icon3.png' %}" alt="">
+        <div>活动</div>
+      </a>
+      <a href="qa.html" class="menu-item flex-one flex-column flex-center">
+        <img src="{% static 'h5/images/icon4.png' %}" alt="">
+        <div>问答</div>
+      </a>
+      <a href="notice.html" class="menu-item flex-one flex-column flex-center">
+        <img src="{% static 'h5/images/icon5.png' %}" alt="">
+        <div>公告</div>
+      </a>
+    </div>
+    <div class="course-container">
+      <div class="course-title">精品教程</div>
+      <div class="course-list flex-wrap flex-between">
+        {% for course in course_list%}
+          <div class="course-item">
+            <img src="{% url 'index' %}media/{{ course.logo }}" alt="">
+            <div class="text-one">{{ course.category }}</div>
+            <div class="text-two">{{ course.title }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="new-container">
+      <div class="new-title">最新博客</div>
+      <div class="list">
+        {% for hot_blog in hot_blog_list %}
+          <div class="list-item flex">
+            <img class="item-img" src="http://image.wufazhuce.com/Fhlie-BI9q2MovgsQWTwDAfnxwqj" alt="">
+            <div class="item-right flex-column flex-between">
+              <div>
+                <div class="title">{{ hot_blog.title }}</div>
+                <div class="sub-title">{{ hot_blog.category }}</div>
+              </div>
+              <div>
+                 <span class="sub-title">作者：{{ hot_blog.excerpt }}</span>
+                <span class="sub-title">浏览量：{{ hot_blog.views }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="fixed-bottom flex">
+    <a href="index.html" class="footer-item flex-one flex-column flex-center active">
+      <img src="{% static 'h5/images/shouye_h.png' %}" alt="">
+      <div>首页</div>
+    </a>
+    <a href="tutorial.html" class="footer-item flex-one flex-column flex-center">
+      <img src="{% static 'h5/images/jiaocheng.png' %}" alt="">
+      <div>教程</div>
+    </a>
+    <a href="my.html" class="footer-item flex-one flex-column flex-center">
+      <img src="{% static 'h5/images/my.png' %}" alt="">
+      <div>我的</div>
+    </a>
+  </div>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      autoplay: 5000,//可选选项，自动滑动
+    });
+  </script>
+</body>
+</html>

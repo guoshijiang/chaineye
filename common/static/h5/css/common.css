@@ -1,0 +1,22 @@
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 1.3867rem;
+  font-size: .2933rem;
+  color: #C4C6CF;
+  background: #FFFFFF;
+  border-top: 1px solid #F0F0F0;
+}
+
+.fixed-bottom img {
+  width: .4rem;
+  height: .4rem;
+  margin-bottom: .1333rem;
+}
+
+.fixed-bottom .footer-item.active {
+  color: #F02E2E;
+}
