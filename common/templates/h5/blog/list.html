@@ -15,21 +15,21 @@
     <div class="tabs">
        {% if cat_id == 0 %}
           <div class="tab-item active">
-            <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+            <a style="text-decoration:none; color:#333" href="{% url 'blog_list' %}?cat_id=0">全部</a>
           </div>
         {% else %}
           <div class="tab-item">
-            <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+            <a style="text-decoration:none; color:#333" href="{% url 'blog_list' %}?cat_id=0">全部</a>
           </div>
         {% endif %}
         {% for cat in cat_list %}
              {% if cat_id == cat.id %}
                 <div class="tab-item active">
-                  <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
+                  <a style="text-decoration:none; color:#333" href="{% url 'blog_list' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
                 </div>
              {% else %}
                 <div class="tab-item">
-                  <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
+                  <a style="text-decoration:none; color:#333" href="{% url 'blog_list' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
                 </div>
              {% endif %}
         {% endfor %}
