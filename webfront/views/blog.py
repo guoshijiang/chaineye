@@ -53,7 +53,7 @@ def blog_list(request):
     cat_id = int(request.GET.get('cat_id', 0))
     title = request.GET.get("title", "")
     if title in ["", None]:
-        hot_list = Article.objects.filter(is_active=True).order_by('views')[:3]
+        hot_list = Article.objects.filter(is_active=True).order_by('-views')[:3]
         index = 1
         for hot in hot_list:
             hot.index = index
