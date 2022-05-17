@@ -1,0 +1,33 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客详情</title>
+  <script src="{% static 'h5/js/flexible.js' %}"></script>
+   <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/blog.css' %}">
+</head>
+<body>
+  <div class="blog-detail-container">
+     <div class="top-title">
+      <img src="{% url 'index' %}media/{{ article.img }}" alt="">
+      <div class="title">{{ article.title }}</div>
+    </div>
+    <div class="detail-content">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px">
+        <div class="user-detail">
+            <div class="author-name">{{ article.user }}</div>
+            <div>{{ article.created_at | hdatetime }}</div>
+        </div>
+        <div class="article-content post-description markdown-body">
+            <p>{{ article.body | safe }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

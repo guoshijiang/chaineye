@@ -63,18 +63,20 @@
       <div class="new-title">最新博客</div>
       <div class="list">
         {% for hot_blog in hot_blog_list %}
-          <div class="list-item flex">
-            <div class="item-right flex-column flex-between">
-              <div>
-                <div class="title">{{ hot_blog.title }}</div>
-                <div class="sub-title">{{ hot_blog.excerpt }}</div>
-              </div>
-              <div>
-                <span class="sub-title">作者：{{ hot_blog.user }}</span>
-                <span class="sub-title">浏览量：{{ hot_blog.views }}</span>
+          <a style="text-decoration:none; color:#000" href="{% url 'arctle_detail' %}?article_id={{ hot_blog.id }}">
+             <div class="list-item flex">
+              <div class="item-right flex-column flex-between">
+                <div>
+                  <div class="title">{{ hot_blog.title }}</div>
+                  <div class="sub-title">{{ hot_blog.excerpt }}</div>
+                </div>
+                <div>
+                  <span class="sub-title">作者：{{ hot_blog.user }}</span>
+                  <span class="sub-title">浏览量：{{ hot_blog.views }}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         {% endfor %}
       </div>
     </div>

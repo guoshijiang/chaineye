@@ -120,6 +120,7 @@ def tag_list(request, tag):
 
 def arctle_detail(request):
     article_id = int(request.GET.get('article_id', 0))
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     article = Article.objects.filter(id=article_id).first()
     article.views += 1
     article.save()
@@ -131,5 +132,9 @@ def arctle_detail(request):
             'markdown.extensions.toc',
         ]
     )
-    return render(request, 'web/finance/detail.html', locals())
+    if user_agt is False:
+        return render(request, 'web/finance/detail.html', locals())
+    else:
+        return render(request, 'h5/blog/detail.html', locals())
+
 
