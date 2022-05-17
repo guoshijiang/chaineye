@@ -1,0 +1,86 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客</title>
+   <script src="{% static 'h5/js/flexible.js' %}"></script>
+   <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/blog.css' %}">
+</head>
+<body>
+  <div class="blog-container">
+    <div class="tabs">
+       {% if cat_id == 0 %}
+          <div class="tab-item active">
+            <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+          </div>
+        {% else %}
+          <div class="tab-item">
+            <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id=0">全部</a>
+          </div>
+        {% endif %}
+        {% for cat in cat_list %}
+             {% if cat_id == cat.id %}
+                <div class="tab-item active">
+                  <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
+                </div>
+             {% else %}
+                <div class="tab-item">
+                  <a style="text-decoration:none; color:#333" href="{% url 'index' %}?cat_id={{ cat.id }}">{{ cat.name }}</a>
+                </div>
+             {% endif %}
+        {% endfor %}
+    </div>
+    <div class="hot-container">
+      <div class="hot-title">博客热榜</div>
+      <div class="hot-list flex-column flex-between">
+       {% for hot in hot_list %}
+          <a style="text-decoration:none; color:#000" href="{% url 'arctle_detail' %}?article_id={{ hot.id }}">
+              <div class="hot-item flex-between alcenter">
+                <div class="flex alcenter">
+                  {% if hot.index == 1 %}
+                    <img class="rank-img" src="{% static 'h5/images/1.png'%}" alt="">
+                  {% elif hot.index == 2 %}
+                     <img class="rank-img" src="{% static 'h5/images/2.png'%}" alt="">
+                  {% elif hot.index == 3 %}
+                    <img class="rank-img" src="{% static 'h5/images/3.png'%}" alt="">
+                  {% endif %}
+                  <div>{{ hot.title }}</div>
+                </div>
+                <div class="flex alcenter">
+                  {% if hot.index == 1 %}
+                    <img class="hot-img" src="{% static 'h5/images/huo1.png'%}" alt="">
+                  {% elif hot.index == 2 %}
+                    <img class="hot-img" src="{% static 'h5/images/huo2.png'%}" alt="">
+                  {% elif hot.index == 3 %}
+                    <img class="hot-img" src="{% static 'h5/images/huo3.png'%}" alt="">
+                  {% endif %}
+                  <div class="num">{{ hot.views }}</div>
+                </div>
+              </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="blog-list">
+       {% for arcticle in index_article_lst %}
+          <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" class="blog-item flex">
+            <div>
+              <div class="title">{{ arcticle.title }}</div>
+              <div class="flex alcenter sub-detail">
+                <div>{{ arcticle.user }}</div>
+                <div>{{ arcticle.views }}</div>
+              </div>
+            </div>
+            <div class="item-right">
+              <img class="blog-img" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+            </div>
+          </a>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

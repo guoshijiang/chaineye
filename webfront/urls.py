@@ -2,7 +2,7 @@ from typing import Any, List
 from django.contrib import admin
 from django.urls import include, path
 from webfront.views.blog import (
-    index, article_list, tag_list, arctle_detail
+    index, article_list, tag_list, arctle_detail, blog_list
 )
 from webfront.views.about import about
 from webfront.views.activity import (
@@ -65,6 +65,7 @@ urlpatterns: List[Any] = [
     path(r'', index, name='index'),
 
     # 文章模块
+    path(r'blog_list', blog_list, name='blog_list'),
     path(r'article_list', article_list, name='article_list'),
     path(r'<str:tag>/tag_list', tag_list, name='tag_list'),
     path(r'arctle_detail', arctle_detail, name='arctle_detail'),

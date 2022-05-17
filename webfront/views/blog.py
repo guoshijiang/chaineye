@@ -49,6 +49,31 @@ def index(request):
         return render(request, 'h5/index.html', locals())
 
 
+def blog_list(request):
+    cat_id = int(request.GET.get('cat_id', 0))
+    title = request.GET.get("title", "")
+    if title in ["", None]:
+        hot_list = Article.objects.filter(is_active=True).order_by('views')[:3]
+        index = 1
+        for hot in hot_list:
+            hot.index = index
+            index = index + 1
+    cat_list = Category.objects.filter(type='Article', is_active=True).order_by("id").all()
+    if cat_id not in ["0", 0, None]:
+        cat = Category.objects.get(id=cat_id)
+        index_article_lst = Article.objects.filter(
+            category=cat,
+            is_active=True
+        ).order_by('-id')[:20]
+    else:
+        index_article_lst = Article.objects.filter(is_active=True).order_by('-id')[:20]
+    if title not in ["", None]:
+        index_article_lst = Article.objects.filter(title__icontains=title).order_by("-id")
+    nav_mark = "index"
+    return render(request, 'h5/blog/list.html', locals())
+
+
+
 def article_list(request):
     cat_id = request.GET.get('cat_id', 0)
     page = int(request.GET.get('page', 20))
