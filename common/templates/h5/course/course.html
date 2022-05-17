@@ -1,10 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教程</title>
+   <script src="{% static 'h5/js/flexible.js' %}"></script>
+   <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+   <link rel="stylesheet" href="{% static 'h5/css/tutorial.css' %}">
 </head>
 <body>
-
+  <div class="tutorial-container">
+    <div class="tabs">
+       {% if cat_id == 0 %}
+          <div class="tab-item active"><a href="{% url 'plannet_course' %}">全部</a></div>
+       {% else %}
+          <div class="tab-item"><a href="{% url 'plannet_course' %}">全部</a></div>
+       {% endif %}
+       {% for cat in course_cat_list %}
+          {% if cat.id == cat_id %}
+              <div class="tab-item active"><a href="{% url 'plannet_course' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></div>
+          {% else %}
+              <div class="tab-item"><a href="{% url 'plannet_course' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></div>
+          {% endif %}
+       {% endfor %}
+    </div>
+    <div class="list">
+      {% for course in course_list %}
+        <a href="{% url 'course_detail' course.id %}" class="list-item flex">
+          <div class="item-left">
+            <img src="{% url 'index' %}media/{{ course.logo }}" alt="">
+            <div class="status">已完结</div>
+            <img class="play" src="{% static 'h5/images/bofang.png' %}" alt="">
+          </div>
+          <div class="item-right">
+            <div class="user flex alcenter">
+              <div>{{ course.user }}   <img src="{% static 'h5/images/V icon.png' %}" alt=""> </div>
+              <div class="sub-user">／高级开发工程师</div>
+            </div>
+            <div class="title">{{ course.title }}</div>
+            <div class="sub-title">{{ course.excerpt }}</div>
+            <div class="tags flex">
+              <div class="tag-item flex alcenter">推荐</div>
+              <div class="tag-item flex alcenter">永久免费</div>
+            </div>
+            <div class="flex-between">
+              <div class="flex alcenter">
+                <div class="num">{{ course.article_num }} 篇文章</div>
+              </div>
+              <div class="num">{{ course.views }} 已阅读</div>
+            </div>
+<!--            <div class="detail"><span>试听 </span>|  05 家庭资产配置，为你的幸福生活保驾护航</div>-->
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="fixed-bottom flex">
+    <a href="{% url 'index' %}" class="footer-item flex-one flex-column flex-center active">
+      {% if nav_mark == "index" %}
+        <img src="{% static 'h5/images/shouye_h.png' %}" alt="">
+      {% else %}
+        <img src="{% static 'h5/images/shouye.png' %}" alt="">
+      {% endif %}
+      <div>首页</div>
+    </a>
+    <a href="{% url 'plannet_course' %}" class="footer-item flex-one flex-column flex-center">
+      {% if nav_mark == "plannet_course" %}
+         <img src="{% static 'h5/images/jiaocheng_h.png' %}" alt="">
+      {% else %}
+         <img src="{% static 'h5/images/jiaocheng.png' %}" alt="">
+      {% endif %}
+      <div>教程</div>
+    </a>
+    <a href="{% url 'about' %}" class="footer-item flex-one flex-column flex-center">
+      <img src="{% static 'h5/images/my.png' %}" alt="">
+      <div>我的</div>
+    </a>
+  </div>
 </body>
 </html>

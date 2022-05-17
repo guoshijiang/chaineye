@@ -18,17 +18,23 @@ from ceye_auth.models import User, UserInfo, UserBuyCourse
 from wallet.models import UserWallet, TansRecord
 from django.http import HttpResponseRedirect
 from common.models import Asset
+from webfront.hleper import judge_pc_or_mobile
 
 
 def plannet_course(request):
     nav_mark = "plannet_course"
     cat_id = request.GET.get("cat_id", 0)
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     course_cat_list = CourseCat.objects.filter(is_active=True)
     course_list = Course.objects.filter(is_active=True, status="CheckPass").order_by("-id")
     if cat_id not in [0, "0"]:
         course_list = course_list.filter(category__id=cat_id)
     course_list = paged_items(request, course_list)
-    return render(request, 'web/planet/course.html', locals())
+    if user_agt is False:
+        return render(request, 'web/planet/course.html', locals())
+    else:
+        return render(request, 'h5/course/course.html', locals())
+
 
 
 @csrf_exempt

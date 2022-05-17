@@ -34,15 +34,15 @@
         <img src="{% static 'h5/images/icon2.png' %}" alt="">
         <div>博客</div>
       </a>
-      <a href="activity.html" class="menu-item flex-one flex-column flex-center">
+      <a href="{% url 'activity' %}" class="menu-item flex-one flex-column flex-center">
         <img src="{% static 'h5/images/icon3.png' %}" alt="">
         <div>活动</div>
       </a>
-      <a href="qa.html" class="menu-item flex-one flex-column flex-center">
+      <a href="{% url 'questions' %}" class="menu-item flex-one flex-column flex-center">
         <img src="{% static 'h5/images/icon4.png' %}" alt="">
         <div>问答</div>
       </a>
-      <a href="notice.html" class="menu-item flex-one flex-column flex-center">
+      <a href="{% url 'about' %}" class="menu-item flex-one flex-column flex-center">
         <img src="{% static 'h5/images/icon5.png' %}" alt="">
         <div>公告</div>
       </a>
@@ -82,15 +82,23 @@
     </div>
   </div>
   <div class="fixed-bottom flex">
-    <a href="index.html" class="footer-item flex-one flex-column flex-center active">
-      <img src="{% static 'h5/images/shouye_h.png' %}" alt="">
+    <a href="{% url 'index' %}" class="footer-item flex-one flex-column flex-center active">
+      {% if nav_mark == "index" %}
+        <img src="{% static 'h5/images/shouye_h.png' %}" alt="">
+      {% else %}
+        <img src="{% static 'h5/images/shouye.png' %}" alt="">
+      {% endif %}
       <div>首页</div>
     </a>
-    <a href="tutorial.html" class="footer-item flex-one flex-column flex-center">
-      <img src="{% static 'h5/images/jiaocheng.png' %}" alt="">
+    <a href="{% url 'plannet_course' %}" class="footer-item flex-one flex-column flex-center">
+      {% if nav_mark == "plannet_course" %}
+         <img src="{% static 'h5/images/jiaocheng_h.png' %}" alt="">
+      {% else %}
+         <img src="{% static 'h5/images/jiaocheng.png' %}" alt="">
+      {% endif %}
       <div>教程</div>
     </a>
-    <a href="my.html" class="footer-item flex-one flex-column flex-center">
+    <a href="{% url 'about' %}" class="footer-item flex-one flex-column flex-center">
       <img src="{% static 'h5/images/my.png' %}" alt="">
       <div>我的</div>
     </a>
