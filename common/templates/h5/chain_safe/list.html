@@ -1,0 +1,37 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链安</title>
+  <script src="{% static 'h5/js/flexible.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/eye.css' %}">
+</head>
+<body>
+  <div class="eye-container">
+    <div class="list flex-wrap flex-between">
+         {% for chain_safe in chain_safe_list%}
+          <div class="queue">
+            <a href="{% url 'chain_safe_detail' chain_safe.id %}" class="list-item">
+              <div class="itme-img">
+                <img src="{% url 'index' %}media/{{ chain_safe.img }}" alt="">
+                <div class="num">{{ chain_safe.views }} 阅读量</div>
+              </div>
+              <div class="item-detail">
+                <div class="title">{{ chain_safe.title }}</div>
+                <div class="des">{{ chain_safe.excerpt }}</div>
+                <div class="flex alcenter">
+                  <img class="user-avatar" src="{% static 'images/default_avatar.png' %}" alt="">
+                  <div class="user-name">{{ chain_safe.author }}</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

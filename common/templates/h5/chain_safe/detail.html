@@ -1,0 +1,28 @@
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链安详情</title>
+  <script src="{% static 'h5/js/flexible.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/eye.css' %}">
+</head>
+<body>
+  <div class="eye-detail-container">
+    <div class="title">{{ chain_safe.title }}</div>
+    <div class="flex alcenter">
+      <img class="user-avatar" src="{% static 'images/default_avatar.png' %}" alt="">
+      <div class="user-name">{{ chain_safe.author }}</div>
+      <div class="time">{{ chain_safe.created_at | hdatetime }}</div>
+    </div>
+    <div class="detail-content">
+       <div class="article-content" style="font-size: 14px">
+            <p>{{ chain_safe.body | safe }}</p>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
