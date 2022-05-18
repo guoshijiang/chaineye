@@ -72,6 +72,7 @@ class Course(BaseModel):
         verbose_name="是否预售",
     )
     buyer_num = models.PositiveIntegerField(default=0, verbose_name='购买人数')
+    particle_num = models.PositiveIntegerField(default=0, verbose_name='预计课程数量')
     article_num = models.PositiveIntegerField(default=0, verbose_name='课时数量')
     views = models.PositiveIntegerField(default=0, verbose_name='课程阅读量')
     process = models.CharField(max_length=100, default="0", verbose_name='课程完成度')

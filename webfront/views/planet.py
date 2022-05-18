@@ -41,6 +41,7 @@ def plannet_course(request):
 def course_detail(request, cid):
     nav_mark = "plannet_course"
     uid = request.session.get("user_id")
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     user = User.objects.filter(id=uid).order_by("-id").first()
     user_wallet = UserWallet.objects.filter(user=user).order_by("-id").first()
     course_detail = Course.objects.filter(id=cid).first()
@@ -54,7 +55,10 @@ def course_detail(request, cid):
         ub_course = UserBuyCourse.objects.filter(user=user, course_id=cid).first()
         if ub_course is not None:
             already_buy = True
-        return render(request, 'web/planet/course_detail.html', locals())
+        if user_agt is False:
+            return render(request, 'web/planet/course_detail.html', locals())
+        else:
+            return render(request, 'h5/course/detail.html', locals())
     if request.method == "POST":
         if user_wallet is None:
             wallet_not_exist = True
@@ -91,6 +95,7 @@ def course_detail(request, cid):
 def course_article_detail(request, arcticle_id):
     nav_mark = "plannet_course"
     uid = request.session.get("user_id")
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     course_arcticle = CourseArtcle.objects.filter(id=arcticle_id).first()
     course_arcticle_list = CourseArtcle.objects.filter(
         course=course_arcticle.course
@@ -119,7 +124,10 @@ def course_article_detail(request, arcticle_id):
         not_buy_this_course = False
     if request.method == "GET":
         comment_form = CourseCmtForm(request)
-        return render(request, 'web/planet/course_article.html', locals())
+        if user_agt is False:
+            return render(request, 'web/planet/course_article.html', locals())
+        else:
+            return render(request, 'h5/course/course_artcle.html', locals())
     if request.method == "POST":
         comment_form = CourseCmtForm(request, request.POST)
         if comment_form.is_valid():

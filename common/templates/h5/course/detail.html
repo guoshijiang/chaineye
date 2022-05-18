@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles zhifishcc_tag%}
+<html data-static_url={{ config.STATIC_URL }}>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教程详情</title>
+  <script src="{% static 'h5/js/flexible.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
+  <link rel="stylesheet" href="{% static 'h5/css/tutorial.css' %}">
 </head>
 <body>
-
+  <div class="tutorial-detail-container">
+    <div class="top-detail">
+      <img src="{% url 'index' %}media/{{ course_detail.logo }}" alt="">
+      <div class="title">{{ course_detail.title }}</div>
+      <div class="sub-title">{{ course_detail.excerpt }}</div>
+      <div class="num">每周更新二个课时丨预计{{ course_detail.particle_num }}课时 | 已更新 {{ course_detail.article_num}} 课时 </div>
+      <div class="price">永久免费</div>
+      <div class="tabs flex">
+        <div class="tab-item flex-one flex-center active">详情</div>
+        <div class="tab-item flex-one flex-center">课程</div>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="box-container">
+        <div class="common-title flex alcenter">课程简介</div>
+        <div class="des">
+           <div class="js-content">{{ course_detail.detail }}</div>
+        </div>
+      </div>
+      <div class="list-container">
+        <div class="order-title flex alcenter">
+          <div class="title flex-center">目录</div>
+        </div>
+        {% for course_arcticle in course_arcticle_list %}
+        <a class="list-item" href="{% url 'course_article_detail' course_arcticle.id %}">
+            <div class=" flex">
+                <div>
+                  <div class="title">第{{ course_arcticle.part }}课: {{ course_arcticle.title }}</div>
+                  <div class="time">{{course_arcticle.created_at | hdatetime  }}更新</div>
+                </div>
+            </div>
+           </a>
+        {% endfor %}
+      </div>
+    </div>
+<!--    <div class="fixed-bottom flex-between alcenter">-->
+<!--      <div class="btn">免费试读</div>-->
+<!--      <div class="btn active">立即购买</div>-->
+<!--    </div>-->
+  </div>
 </body>
 </html>

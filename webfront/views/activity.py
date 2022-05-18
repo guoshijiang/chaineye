@@ -10,6 +10,7 @@ from django.db.models import F, Q
 from ceye_auth.models import User
 from webfront.forms.activity_forms import ActivityForm
 from django.views.decorators.csrf import csrf_exempt
+from webfront.hleper import judge_pc_or_mobile
 
 
 def activity(request):
@@ -18,6 +19,7 @@ def activity(request):
     cat_id = int(request.GET.get('cat_id', 0))
     area_id = int(request.GET.get('area_id', 0))
     nav_mark = "activity"
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     activity_cat = Category.objects.filter(type="Activity").all()
     area_list = Area.objects.all()
     hot_act = Activity.objects.filter(is_active=True).order_by('views')[:8]
@@ -40,11 +42,15 @@ def activity(request):
         }
         return ok_json(result)
     else:
-        return render(request, 'web/activity/activity.html', locals())
+        if user_agt is False:
+            return render(request, 'web/activity/activity.html', locals())
+        else:
+            return render(request, 'h5/activity/list.html', locals())
 
 
 def activity_detail(request, id):
     nav_mark = "activity"
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     activity_detail = Activity.objects.get(id=id)
     hot_activity = Activity.objects.all().order_by('?')[:10]
     previous_blog = Activity.objects.filter(
@@ -58,7 +64,10 @@ def activity_detail(request, id):
     activity_detail.views = activity_detail.views + 1
     activity_detail.save()
     sa_list = SponsorActivity.objects.filter(activity=activity_detail)
-    return render(request, 'web/activity/activity_detail.html', locals())
+    if user_agt is False:
+        return render(request, 'web/activity/activity_detail.html', locals())
+    else:
+        return render(request, 'h5/activity/detail.html', locals())
 
 
 def activity_tag(request, tag):

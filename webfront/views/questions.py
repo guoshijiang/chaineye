@@ -14,6 +14,7 @@ from django.db.models import F, Q
 from webfront.forms.questions_form import QuestionsForm
 from webfront.forms.answers_form import AnswersForm
 from ceye_auth.models import UserInfo, User
+from webfront.hleper import judge_pc_or_mobile
 
 
 tz = pytz.timezone(settings.TIME_ZONE)
@@ -27,6 +28,7 @@ def questions(request):
     start = page * page_size
     end = start + page_size
     nav_mark = "questions"
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     question_cat_list = Category.objects.filter(
         type='Question',
         is_active=True
@@ -80,11 +82,15 @@ def questions(request):
                 ]
             )
         question_list = paged_items(request, question_list)
-        return render(request, 'web/questions/questions.html', locals())
+        if user_agt is False:
+            return render(request, 'web/questions/questions.html', locals())
+        else:
+            return render(request, 'h5/question/list.html', locals())
 
 
 def question_detail(request, qs_id):
     nav_mark = "questions"
+    user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     question = Questions.objects.filter(id=qs_id).order_by("-id").first()
     user_if = UserInfo.objects.filter(id=question.user.id).first()
     question.user.photo = user_if.photo
@@ -117,10 +123,13 @@ def question_detail(request, qs_id):
     else:
         if request.method == 'GET':
             answer_form = AnswersForm(request)
-            return render(request, 'web/questions/question_detail.html', locals())
+            if user_agt is False:
+                return render(request, 'web/questions/question_detail.html', locals())
+            else:
+                return render(request, 'h5/question/list.html', locals())
         if request.method == 'POST':
             answer_form = AnswersForm(request, request.POST)
-            return render(request, 'web/questions/question_detail.html', locals())
+            return render(request, 'web/questions/detail.html', locals())
 
 
 def create_question(request, uid):
