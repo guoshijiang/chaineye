@@ -67,7 +67,7 @@
     </div>
     <div class="blog-list">
        {% for arcticle in index_article_lst %}
-          <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" class="blog-item flex">
+          <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" class="blog-item flex-between">
             <div>
               <div class="title">{{ arcticle.title }}</div>
               <div class="flex alcenter sub-detail">
