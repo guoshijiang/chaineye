@@ -89,9 +89,11 @@
                     {% for arcticle in index_article_lst %}
                         {% if arcticle.is_recommend == True %}
                         <li class="d-flex justify-content-between">
-                              <div class="information-left-img">
-                                <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
-                              </div>
+                              {% if arcticle.img  %}
+                                  <div class="information-left-img">
+                                    <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                                  </div>
+                              {% endif %}
                               <div class="information-right-content">
                                 <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" target="_blank">
                                   <p>
@@ -120,9 +122,11 @@
                     {% for arcticle in index_article_lst %}
                         {% if arcticle.is_recommend == False %}
                             <li class="d-flex justify-content-between">
-                                  <div class="information-left-img">
-                                    <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
-                                  </div>
+                                  {% if arcticle.img  %}
+                                      <div class="information-left-img">
+                                        <img width="235" height="150" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                                      </div>
+                                  {% endif %}
                                   <div class="information-right-content">
                                     <a href="{% url 'arctle_detail' %}?article_id={{ arcticle.id }}" target="_blank">
                                       <p>{{ arcticle.title }}</p>
