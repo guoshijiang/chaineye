@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>博客</title>
    <script src="{% static 'h5/js/flexible.js' %}"></script>
+   <script src="{% static 'js/jquery.min.js' %}"></script>
    <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
    <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
    <link rel="stylesheet" href="{% static 'h5/css/blog.css' %}">
 </head>
 <body>
-  <div class="blog-container">
+  <div class="blog-container information-box">
     <div class="tabs">
        {% if cat_id == 0 %}
           <div class="tab-item active">
@@ -82,5 +83,54 @@
       {% endfor %}
     </div>
   </div>
+  <script>
+   $(document).ready(function(){
+    let page = 1
+    var Dom = jQuery('.blog-list');
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var boxHeight = $(document.getElementById("information-box")).height() / 2;
+        if (scrollTop >= boxHeight) {
+            console.log("aaaa");
+            let html = '';
+            let l_url=window.location.origin;
+            let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
+            console.log(req_url)
+            $.ajax({
+                url: req_url,
+                data: {},
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    artcle_list = result.result.data
+                    if (artcle_list.length >= 1){
+                        for(var i= 0; i < artcle_list.length; i++) {
+                            console.log(artcle_list[i])
+                            html += `
+                                <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" class="blog-item flex-between">
+                                    <div>
+                                      <div class="title">${ artcle_list[i].title }</div>
+                                      <div class="flex alcenter sub-detail">
+                                        <div>${ artcle_list[i].user }</div>
+                                        <div>${ artcle_list[i].views }</div>
+                                      </div>
+                                    </div>
+                                    <div class="item-right">
+                                      <img class="blog-img" width="80" height="80" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
+                                    </div>
+                                 </a>
+                             `
+                        }
+                        Dom.append(html);
+                    } else {
+                        jQuery('#More').text("没有了，已经见低了");
+                    }
+                }
+            })
+            page = page + 1
+       }
+   });
+})
+</script>
 </body>
 </html>

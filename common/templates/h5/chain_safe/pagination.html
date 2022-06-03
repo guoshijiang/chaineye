@@ -1,0 +1,41 @@
+{% load staticfiles zhifishcc_tag %}
+<style>
+    .page-link {
+       padding: 0.1rem 0.2rem;
+       font-size: 18px;
+    }
+</style>
+<ul class="pagination">
+    {% if items.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="{{ items.prefix_uri }}page={{ items.previous_page_number }}" tabindex="-1" aria-disabled="true">&laquo;</a>
+      </li>
+    {% endif %}
+    {% if items.page_range_data.show_first %}
+        <li class="page-item">
+            <a class="page-link" href="{{ items.prefix_uri }}page=1">1</a>
+        </li>
+    {% endif %}
+    {{ items.page_range }}
+    {% for i in items.page_range_data.page_range %}
+      {% if i == items.number or i == page %}
+          <li class="page-item">
+              <a class="active page-link" href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+          </li>
+      {% else %}
+          <li class="page-item">
+              <a class="page-link" href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+          </li>
+     {% endif %}
+    {% endfor %}
+    {% if items.page_range_data.show_last %}
+        <li class="page-item">
+            <a class="page-link" href="{{ items.prefix_uri }}page={{ items.paginator.num_pages }}">{{ items.paginator.num_pages }}</a>
+        </li>
+    {% endif %}
+    {% if items.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ items.prefix_uri }}page={{ items.next_page_number }}">&raquo;</a>
+      </li>
+    {% endif %}
+</ul>

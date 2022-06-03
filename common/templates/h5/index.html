@@ -20,7 +20,6 @@
         var scrollTop = $(this).scrollTop();
         var boxHeight = $(document.getElementById("information-box")).height() / 2;
         if (scrollTop >= boxHeight) {
-        console.log("enter here11111")
             let html = '';
             let l_url=window.location.origin;
             let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
@@ -103,11 +102,13 @@
       <div class="course-title">精品教程</div>
       <div class="course-list flex-wrap flex-between">
         {% for course in course_list%}
-          <div class="course-item">
-            <img src="{% url 'index' %}media/{{ course.logo }}" alt="">
-            <div class="text-one">{{ course.category }}</div>
-            <div class="text-two">{{ course.title }}</div>
-          </div>
+           <a style="text-decoration:none; color:#000" href="{% url 'course_detail' course.id %}">
+              <div class="course-item">
+                <img src="{% url 'index' %}media/{{ course.logo }}" alt="">
+                <div class="text-one">{{ course.category }}</div>
+                <div class="text-two">{{ course.title }}</div>
+              </div>
+           </a>
         {% endfor %}
       </div>
     </div>

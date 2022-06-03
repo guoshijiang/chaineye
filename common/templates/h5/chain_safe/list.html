@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
   <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
   <link rel="stylesheet" href="{% static 'h5/css/eye.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
   <div class="eye-container">
@@ -32,6 +34,9 @@
           </div>
         {% endfor %}
     </div>
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center" style="margin-top: 30px">
+       {% include 'h5/chain_safe/pagination.html' with items=chain_safe_list %}
+    </nav>
   </div>
 </body>
 </html>

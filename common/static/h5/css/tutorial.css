@@ -55,8 +55,6 @@
 }
 
 .tutorial-container .list .list-item .item-left img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 

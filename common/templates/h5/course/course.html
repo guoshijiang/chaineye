@@ -30,7 +30,7 @@
       {% for course in course_list %}
         <a href="{% url 'course_detail' course.id %}" class="list-item flex">
           <div class="item-left">
-            <img src="{% url 'index' %}media/{{ course.logo }}" alt="">
+            <img width=110; height="138" src="{% url 'index' %}media/{{ course.logo }}" alt="">
             <div class="status">已完结</div>
             <img class="play" src="{% static 'h5/images/bofang.png' %}" alt="">
           </div>
