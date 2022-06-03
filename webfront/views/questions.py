@@ -85,7 +85,7 @@ def questions(request):
         if user_agt is False:
             return render(request, 'web/questions/questions.html', locals())
         else:
-            return render(request, 'h5/question/list.html', locals())
+            return render(request, 'web/questions/questions.html', locals())
 
 
 def question_detail(request, qs_id):
@@ -126,7 +126,7 @@ def question_detail(request, qs_id):
             if user_agt is False:
                 return render(request, 'web/questions/question_detail.html', locals())
             else:
-                return render(request, 'h5/question/list.html', locals())
+                return render(request, 'web/questions/question_detail.html', locals())
         if request.method == 'POST':
             answer_form = AnswersForm(request, request.POST)
             return render(request, 'web/questions/detail.html', locals())

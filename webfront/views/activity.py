@@ -45,7 +45,7 @@ def activity(request):
         if user_agt is False:
             return render(request, 'web/activity/activity.html', locals())
         else:
-            return render(request, 'h5/activity/list.html', locals())
+            return render(request, 'web/activity/activity.html', locals())
 
 
 def activity_detail(request, id):
@@ -67,7 +67,7 @@ def activity_detail(request, id):
     if user_agt is False:
         return render(request, 'web/activity/activity_detail.html', locals())
     else:
-        return render(request, 'h5/activity/detail.html', locals())
+        return render(request, 'web/activity/activity_detail.html', locals())
 
 
 def activity_tag(request, tag):
