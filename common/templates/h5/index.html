@@ -7,10 +7,62 @@
   <title>首页</title>
   <script src="{% static 'h5/js/flexible.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
   <link rel="stylesheet" href="{% static 'h5/css/normal.css' %}">
   <link rel="stylesheet" href="{% static 'h5/css/common.css' %}">
   <link rel="stylesheet" href="{% static 'h5/css/home.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+  <script>
+   $(document).ready(function(){
+    let page = 1
+    var Dom = jQuery('.record-list');
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var boxHeight = $(document.getElementById("information-box")).height() / 2;
+        if (scrollTop >= boxHeight) {
+        console.log("enter here11111")
+            let html = '';
+            let l_url=window.location.origin;
+            let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
+            console.log(req_url)
+            $.ajax({
+                url: req_url,
+                data: {},
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    artcle_list = result.result.data
+                    if (artcle_list.length >= 1){
+                        for(var i= 0; i < artcle_list.length; i++) {
+                            console.log(artcle_list[i])
+                            html += `
+                               <a style="text-decoration:none; color:#000" href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }">
+                                 <div class="list-item flex">
+                                  <div class="item-right flex-column flex-between">
+                                    <div>
+                                      <div class="title">${ artcle_list[i].title }</div>
+                                      <div class="sub-title">${ artcle_list[i].excerpt }</div>
+                                    </div>
+                                    <div>
+                                      <span class="sub-title">作者：${ artcle_list[i].user }</span>
+                                      <span class="sub-title">浏览量：${ artcle_list[i].views }</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            `
+                        }
+                        Dom.append(html);
+                    } else {
+                        jQuery('#More').text("没有了，已经见低了");
+                    }
+                }
+            })
+            page = page + 1
+       }
+   });
+})
+</script>
 </head>
 <body>
   <div class="home-container">
@@ -59,9 +111,9 @@
         {% endfor %}
       </div>
     </div>
-    <div class="new-container">
+    <div class="new-container information-box" id="information-box">
       <div class="new-title">最新博客</div>
-      <div class="list">
+      <div class="list record-list">
         {% for hot_blog in hot_blog_list %}
           <a style="text-decoration:none; color:#000" href="{% url 'arctle_detail' %}?article_id={{ hot_blog.id }}">
              <div class="list-item flex">
