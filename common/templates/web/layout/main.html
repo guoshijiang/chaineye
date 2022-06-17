@@ -43,7 +43,6 @@
     {% include 'web/auth/login.html' %}
     <script>
         let nav_mark = "{{ nav_mark }}"
-        console.log(nav_mark)
         if (nav_mark === "index") {
             $("#index").addClass('on')
             $("#questions").removeClass('on')

@@ -116,8 +116,10 @@
                         {% endif %}
                     {% endfor %}
                     {% if title == "" %}
-                        <p class="subject-title">资金专题 ｜ 你的资金如何保障？</p>
-                        <img src="{% static 'images/pic_chang.png' %}" alt="" class="subject-img">
+                        <p class="subject-title">Web3专题 ｜ SavourDao 一触即发</p>
+                        <a href="https://github.com/SavourDao/enlist">
+                            <img src="{% static 'images/pic_chang.png' %}" alt="" class="subject-img">
+                        </a>
                     {% endif %}
                     {% for arcticle in index_article_lst %}
                         {% if arcticle.is_recommend == False %}
