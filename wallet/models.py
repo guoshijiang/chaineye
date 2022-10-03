@@ -10,7 +10,7 @@ from common.models import (
 from ceye_auth.models import User
 
 WithdrawDeposit = [
-    (x, x) for x in ["Withdraw", "Deposit", "Transfer"]
+    (x, x) for x in ["Withdraw", "Deposit", "Transfer", "Like"]
 ]
 
 TransWay = [

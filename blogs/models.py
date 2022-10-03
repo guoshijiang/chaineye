@@ -40,6 +40,7 @@ class Article(BaseModel):
     body = MDTextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='作者')
     views = models.PositiveIntegerField('阅读量', default=0)
+    likes = models.PositiveIntegerField('点赞量', default=0)
     is_recommend = models.BooleanField('是否推荐', default=False)
     is_synced = models.BooleanField(default=False, verbose_name='是否已经同步')
     is_active = models.BooleanField('是否有效', default=True)
@@ -85,6 +86,7 @@ class ChainSafe(BaseModel):
     )
     excerpt = models.TextField(max_length=200, blank=True, verbose_name='简介')
     views = models.PositiveIntegerField(default=0, verbose_name='阅读量')
+    likes = models.PositiveIntegerField(default=0, verbose_name='点赞量')
     is_synced = models.BooleanField(default=False, verbose_name='是否已经同步')
     is_active = models.BooleanField(default=True, verbose_name='是否是开启')
 

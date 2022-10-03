@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     "planet",
     "question",
     "wallet",
-    "backoffice"
+    "backoffice",
+    "service"
 ]
 
 MIDDLEWARE = [

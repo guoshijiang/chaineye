@@ -1,58 +1,70 @@
-### 链眼社区，项目网址：http://chaineye.info/
+<!--
+parent:
+  order: false
+-->
 
-#### 1.项目介绍
+<div align="center">
+  <h1> Hailstone Repo(savour backend service) </h1>
+</div>
 
-整个项目是 Python 的 Django 框架编写，项目包含 PC 网页端，H5端和操作后台，目前开源代码为 PC 端，后续会陆续开源移动端和操作后台，项目整体设计美观大气，用到的技术也是比较简单，适合个人博客使用，也适合改造成大型平台。和目前开源的博客或者内容平台差距比较大。
+<div align="center">
+  <a href="https://github.com/SavourDao/hailstone/releases/latest">
+    <img alt="Version" src="https://img.shields.io/github/tag/SavourDao/savour-core.svg" />
+  </a>
+  <a href="https://github.com/SavourDao/hailstone/blob/main/LICENSE">
+    <img alt="License: Apache-2.0" src="https://img.shields.io/github/license/SavourDao/savour-core.svg" />
+  </a>
+   <a href="https://www.python.org/downloads/">
+    <img alt="License: Apache-2.0" src="http://img.shields.io/badge/Python3.*-ff3366.svg"/>
+  </a>
+  
+ 
+</div>
 
-#### 2.为什么选择开源
 
-首先介绍一下我和我的团队，我是郭世江，多年的技术开发经验，我们团队叫问我社区，我和我的团队一起做了一个社区，叫做问我社区（http://www.wenwoha.com ）,我们这个团队都是一群技术爱好者，做社区的目的不是为了赚钱，而是想帮助那些想学习 IT 技术的朋友提供一个小小的选择，而链眼这个项目是我们社区规划里面的一个小模块，专攻区块链相关的内容。由于大家平时都比较忙，去做这个社区的时间也比较少，所以我们想把这个代码开源出来呼吁社区一起做这个事儿，如果您喜欢，您可以复制我们代码去建设一个平台，当然，我们还是希望您可以加入我们一起做。
+#### 1.Introduction
 
-- 如果你只是想复制我们代码，那么你只要在网站下方加上我们的代码链接和问我社区和链眼的友链就可以使用我们的的代码
-- 如果你想加入我们，问我社区（http://www.wenwoha.com ）上面有联系方式。
+The whole project is written in Python's Django framework. The project includes PC web terminal, H5 terminal and operation background. Currently, the open source code is the PC terminal, and the mobile terminal and operation background will be open sourced in the future. The overall design of the project is beautiful and atmospheric, and the technologies used are also relatively Simple, suitable for personal blog use, but also suitable for transforming into a large platform. There is a big gap with the current open source blog or content platform.
 
-#### 3.代码部署
+#### 2.Deployment
 
-在部署代码前，你需要安装 python 3.8 以上版本，Mysql 数据库和 Redis
+Before deploying, you need to install python 3.8 or above, Mysql and Redis
 
-第一步，克隆代码：
+1. clone：
 ```buildoutcfg
 git clone git@github.com:guoshijiang/chaineye.git
 ```
 
-第二步，搭建一个 virtualenv：
+2. set up a virtualenv：
 ```buildoutcfg
 cd chaineye
 virtualenv .env
 source .env/bin/activate
 ```
 
-第三步，安装依赖：
+3. install
+
 ```buildoutcfg
 pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 ```
 
-第四步，数据库migrate：
+4. migrate database
 ```buildoutcfg
  python3 manage.py migrate
 ```
-如果你改变数据库结构，请先运行 `python3 manage.py makemigrations`, 然后再运行 `python3 manage.py migrate`
+If you change the database structure, please run `python3 manage.py makemigrations` first, then run `python3 manage.py migrate`
 
-第五步，运行服务：
+5. run：
 ```buildoutcfg
  python3 manage.py runserver
 ```
 
-如果你在线上部署，建议使用，supervisor 管理进程，Ng 转发，把静态文件使用 `python3 manage.py collectstatic` 收集到相应的目录。
+If you deploy online, it is recommended to use supervisor to manage the process, Ng forwarding, and use `python3 manage.py collectstatic` to collect static files to the corresponding directory.
 
+### Notice
 
-### 注意
+In the future, the code on the PC side will be developed based on this code when we develop new functions. Welcome everyone to join us.
 
-以后 PC 端的代码，我们开发新功能的时候也基于这个代码开发，欢迎大家加入一起搞
-
-如果您使用这套代码，搭建过程中有任何问题，可以去问我学院（www.wenwoha.com） 上面找联系方式联系我们，也可以直接加我的微信：LGZAXE
-
-
-
+If you use this code and have any questions during the construction process, you can ask my college (www.wenwoha.com) to find the contact information above, or you can directly add my WeChat: LGZAXE
 
 
