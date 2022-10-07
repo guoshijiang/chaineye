@@ -11,6 +11,7 @@ from webfront.hleper import judge_pc_or_mobile
 
 
 def newsletter(request):
+    nav_mark = "newsletter"
     cat_id = int(request.GET.get('cat_id', 0))
     page = request.GET.get('page', 1)
     page_size = request.GET.get('page_size', 10)
@@ -68,6 +69,7 @@ def newsbad(request):
 
 
 def newsletter_detail(request, id):
+    nav_mark = "newsletter"
     user_agt = judge_pc_or_mobile(request.META.get("HTTP_USER_AGENT"))
     newsletter = Newsletter.objects.filter(id=id).first()
     newsletter.views += 1
