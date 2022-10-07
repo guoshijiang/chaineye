@@ -4,7 +4,7 @@ parent:
 -->
 
 <div align="center">
-  <h1> Hailstone Repo(savour backend service) </h1>
+  <h1> Chaineye Repo </h1>
 </div>
 
 <div align="center">
