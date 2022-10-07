@@ -81,7 +81,7 @@ def questions(request):
                     'markdown.extensions.toc',
                 ]
             )
-        question_list = paged_items(request, question_list)
+        question_list = paged_items(request, question_list, 30)
         if user_agt is False:
             return render(request, 'web/questions/questions.html', locals())
         else:
