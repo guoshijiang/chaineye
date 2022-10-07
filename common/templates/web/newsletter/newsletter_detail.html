@@ -1,0 +1,22 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/articleDetail.css' %}">
+{% endblock %}
+{% block body %}
+<div class="container article-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style="margin-top:50px">
+        <div class="article-title">{{ newsletter.title }}</div>
+        <div class="user-detail">
+            <div>{{ newsletter.created_at | hdatetime }}</div>
+        </div>
+        <div class="article-content">
+            <p>{{ newsletter.content | safe }}</p>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+  </div>
+{% endblock %}

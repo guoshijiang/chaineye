@@ -59,7 +59,12 @@ from webfront.views.wallet import (
     trans_record,
 )
 from webfront.views.wallet_chain import withdraw_deposit_notify
-
+from webfront.views.newsletter import (
+    newsletter,
+    newsbad,
+    newsgood,
+    newsletter_detail
+)
 
 urlpatterns: List[Any] = [
     path(r'', index, name='index'),
@@ -125,6 +130,12 @@ urlpatterns: List[Any] = [
 
     # 充值提现通知
     path(r'withdraw_deposit_notify', withdraw_deposit_notify, name='withdraw_deposit_notify'),
+
+    # 行业资讯
+    path(r'newsletter', newsletter, name='newsletter'),
+    path(r'newsbad', newsbad, name='newsbad'),
+    path(r'newsgood', newsgood, name='newsgood'),
+    path(r'<int:id>/newsletter_detail', newsletter_detail, name='newsletter_detail'),
 
     # 关于我们
     path(r'about', about, name='about'),

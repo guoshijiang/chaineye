@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     "question",
     "wallet",
     "backoffice",
-    "service"
+    "service",
+    "newsletter"
 ]
 
 MIDDLEWARE = [

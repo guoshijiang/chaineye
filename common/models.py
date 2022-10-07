@@ -3,7 +3,7 @@ import uuid
 from django.db import models
 
 
-CATE_TYPE_CHOICES = [(x, x) for x in ['Activity', 'Article', 'Question', 'Other']]
+CATE_TYPE_CHOICES = [(x, x) for x in ['Activity', 'Article', 'Question', 'NewsLetter', 'Other']]
 BANNER_TYPE_CHOICES = [(x, x) for x in ['Index', 'Activity', 'Other']]
 
 

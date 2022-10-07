@@ -75,6 +75,7 @@ class Article(BaseModel):
 class ChainSafe(BaseModel):
     title = models.CharField(max_length=70, verbose_name='名称')
     author = models.CharField(max_length=70, verbose_name='作者')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='作者')
     img = models.ImageField(
         upload_to='article_img/%Y/%m/%d/',
         blank=True, null=True, verbose_name='图片'

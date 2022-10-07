@@ -1,0 +1,89 @@
+{% extends 'web/layout/main.html' %}
+{% load staticfiles zhifishcc_tag%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flash.css' %}">
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="information-box">
+          <div class="container">
+            <div class="row">
+              <ul class="information-hd-box col-12 row">
+                {% if cat_id == 0 %}
+                    <li class="col-1 on">
+                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                    </li>
+                {% else %}
+                    <li class="col-1">
+                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                    </li>
+                {% endif %}
+                {% for cat in newsletter_cat_list %}
+                     {% if cat_id == cat.id %}
+                        <li class="col-1 on"><a style="text-decoration:none; color:#333" href="{% url 'newsletter' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% else %}
+                        <li class="col-1"><a style="text-decoration:none; color:#333" href="{% url 'newsletter' %}?cat_id={{ cat.id }}">{{ cat.name }}</a></li>
+                     {% endif %}
+                {% endfor %}
+              </ul>
+              <div class="information-bd-box col-12" id="question_box">
+                <div class="information-body-item">
+                  <ul class="record-list">
+                    {% for newsletter in allnewsletter %}
+                         {% if newsletter.is_letter == True %}
+                             <a href="{% url 'newsletter_detail' newsletter.id %}" style="text-decoration:none">
+                                <li class="d-flex flex-column" style="color: #0b2e13">
+                                    <div class="title-box">
+                                        <p><font color="red">【快讯】</font>{{ newsletter.title }}</p>
+                                    </div>
+                                    <p class="desc-box">{{ newsletter.content | safe }}</p>
+                                    <div class="curve-box d-flex">
+                                        <p><span><img src="{% static 'svg/zan.svg'%}" alt=""></span>赞: <span>{{ newsletter.good }}</span></p>
+                                        <p><span><img src="{% static 'svg/cai.svg' %}" alt=""></span>踩: <span>{{ newsletter.bad }}</span></p>
+                                        <p><span>{{ newsletter.created_at | hdatetime}}</span></p>
+                                    </div>
+                                </li>
+                             </a>
+                         {% else %}
+                             <li class="d-flex justify-content-between">
+                                  {% if newsletter.img  %}
+                                      <div class="information-left-img">
+                                        <img width="235" height="150" src="{% url 'index' %}media/{{ newsletter.img }}" alt="">
+                                      </div>
+                                  {% endif %}
+                                  <div class="information-right-content">
+                                    <a href="{% url 'newsletter_detail' newsletter.id %}" target="_blank">
+                                      <p>{{ newsletter.title }}</p>
+                                    </a>
+                                    <p class="desc">{{ newsletter.excerpt }}</p>
+                                    <div class="art-info d-flex justify-content-between">
+                                      <p>
+                                        <span>{{ newsletter.user }}</span>
+                                        <span>{{ newsletter.created_at | hdatetime}}</span>
+                                      </p>
+                                      <p>
+                                        <span>阅读量</span>
+                                          {{ newsletter.views }}
+                                      </p>
+                                    </div>
+                                  </div>
+                            </li>
+                         {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center" style="margin-top:20px">
+                  {% include 'web/layout/pagination.html' with items=allnewsletter %}
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include 'web/layout/right.html' %}
+    </div>
+  </div>
+{% endblock %}
