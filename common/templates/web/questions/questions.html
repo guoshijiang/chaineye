@@ -41,7 +41,7 @@
                                 <div class="curve-box d-flex">
                                     <p><span><img src="{% static 'images/eye.svg'%}" alt=""></span>浏览: <span>{{ question.views }}</span></p>
                                     <p><span><img src="{% static 'images/answer.svg' %}" alt=""></span>回答: <span>{{ question.answers }}</span></p>
-                                    <p><span><img src="{% static 'svg/time.svg' %}" alt="">提问时间: {{ question.created_at | hdatetime}}</span></p>
+                                    <p><span><img src="{% static 'svg/time.svg' %}" alt=""></span> 提问时间: <span>{{ question.created_at | hdatetime}}</span></p>
                                 </div>
                             </li>
                          </a>
