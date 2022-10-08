@@ -14,11 +14,11 @@
               <ul class="information-hd-box col-12 row">
                 {% if cat_id == 0 %}
                     <li class="col-1 on">
-                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                        <a style="text-decoration:none; color:#333" href="{% url 'newsletter' %}?cat_id=0">全部</a>
                     </li>
                 {% else %}
                     <li class="col-1">
-                        <a style="text-decoration:none; color:#333" href="{% url 'questions' %}?cat_id=0">全部</a>
+                        <a style="text-decoration:none; color:#333" href="{% url 'newsletter' %}?cat_id=0">全部</a>
                     </li>
                 {% endif %}
                 {% for cat in newsletter_cat_list %}
@@ -43,7 +43,7 @@
                                     <div class="curve-box d-flex">
                                         <p><span><img src="{% static 'svg/zan.svg'%}" alt=""></span>赞: <span>{{ newsletter.good }}</span></p>
                                         <p><span><img src="{% static 'svg/cai.svg' %}" alt=""></span>踩: <span>{{ newsletter.bad }}</span></p>
-                                        <p><span>{{ newsletter.created_at | hdatetime}}</span></p>
+                                        <p><span><img src="{% static 'svg/time.svg' %}" alt=""></span>时间: <span>{{ newsletter.created_at | hdatetime}}</span></p>
                                     </div>
                                 </li>
                              </a>
