@@ -103,12 +103,11 @@
                                 <p class="desc">{{ arcticle.excerpt }}</p>
                                 <div class="art-info d-flex justify-content-between">
                                   <p>
-                                    <span>{{ arcticle.user }}</span>
-                                    <span>{{ arcticle.created_at | hdatetime}}</span>
+                                    <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>{{ arcticle.user }}</span></span>
+                                    <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>时间: <span>{{ arcticle.created_at | hdatetime}}</span></span>
                                   </p>
                                   <p>
-                                    <span>阅读量</span>
-                                      {{ arcticle.views }}
+                                    <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>{{ arcticle.views }}</span></span>
                                   </p>
                                 </div>
                               </div>
@@ -136,12 +135,11 @@
                                     <p class="desc">{{ arcticle.excerpt }}</p>
                                     <div class="art-info d-flex justify-content-between">
                                       <p>
-                                        <span>{{ arcticle.user }}</span>
-                                        <span>{{ arcticle.created_at | hdatetime}}</span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>{{ arcticle.user }}</span></span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>时间: <span>{{ arcticle.created_at | hdatetime}}</span></span>
                                       </p>
                                       <p>
-                                        <span>阅读量</span>
-                                          {{ arcticle.views }}
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>{{ arcticle.views }}</span></span>
                                       </p>
                                     </div>
                                   </div>
