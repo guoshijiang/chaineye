@@ -34,19 +34,19 @@
                   <ul class="record-list">
                     {% for newsletter in allnewsletter %}
                          {% if newsletter.is_letter == True %}
-                             <a href="{% url 'newsletter_detail' newsletter.id %}" style="text-decoration:none">
-                                <li class="d-flex flex-column" style="color: #0b2e13">
+                            <li class="d-flex flex-column" style="color: #0b2e13">
+                                <a href="{% url 'newsletter_detail' newsletter.id %}" style="text-decoration:none">
                                     <div class="title-box">
                                         <p><font color="red">【快讯】</font>{{ newsletter.title }}</p>
                                     </div>
-                                    <p class="desc-box">{{ newsletter.content | safe }}</p>
-                                    <div class="curve-box d-flex">
-                                        <p><span><img src="{% static 'svg/zan.svg'%}" alt=""></span>赞: <span>{{ newsletter.good }}</span></p>
-                                        <p><span><img src="{% static 'svg/cai.svg' %}" alt=""></span>踩: <span>{{ newsletter.bad }}</span></p>
-                                        <p><span><img src="{% static 'svg/time.svg' %}" alt=""></span>时间: <span>{{ newsletter.created_at | hdatetime}}</span></p>
-                                    </div>
-                                </li>
-                             </a>
+                                </a>
+                                <p class="desc-box">{{ newsletter.content | safe }}</p>
+                                <div class="curve-box d-flex">
+                                    <p onclick="Good(this, {{ newsletter.id }})"><span><img src="{% static 'svg/zan.svg'%}" alt=""></span>赞: <span id="goodNews-{{ newsletter.id }}">{{ newsletter.good }}</span></p>
+                                    <p onclick="Bad(this, {{ newsletter.id }})"><span><img src="{% static 'svg/cai.svg' %}" alt=""></span>踩: <span id="badNews-{{ newsletter.id }}">{{ newsletter.bad }}</span></p>
+                                    <p><span><img src="{% static 'svg/time.svg' %}" alt=""></span>时间: <span>{{ newsletter.created_at | hdatetime}}</span></p>
+                                </div>
+                            </li>
                          {% else %}
                              <li class="d-flex justify-content-between">
                                   {% if newsletter.img  %}
@@ -61,12 +61,9 @@
                                     <p class="desc">{{ newsletter.excerpt }}</p>
                                     <div class="art-info d-flex justify-content-between">
                                       <p>
-                                        <span>{{ newsletter.user }}</span>
-                                        <span>{{ newsletter.created_at | hdatetime}}</span>
-                                      </p>
-                                      <p>
-                                        <span>阅读量</span>
-                                          {{ newsletter.views }}
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>{{ arcticle.user }}</span></span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>{{ arcticle.views }}</span></span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>发布时间: <span>{{ arcticle.created_at | hdatetime}}</span></span>
                                       </p>
                                     </div>
                                   </div>
@@ -86,4 +83,39 @@
       {% include 'web/layout/right.html' %}
     </div>
   </div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        function Good(obj, id) {
+            var url = window.location.href;
+            var temp_url = url.replace("newsletter", "newsgood");
+            var req_url = temp_url +"?id=" + id;
+            var goodIndex = id;
+            $.ajax({
+                url: req_url ,
+                data: {},
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    $('#goodNews-' + goodIndex ).text(result.result.total_good);
+                }
+            });
+        }
+
+        function Bad(obj, id) {
+            var url = window.location.href;
+            var temp_url = url.replace("newsletter", "newsbad");
+            var req_url = temp_url +"?id=" + id;
+            var goodIndex = id;
+            $.ajax({
+                url: req_url,
+                data: {},
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result)
+                    $('#badNews-' + goodIndex).text(result.result.total_bad);
+                }
+            });
+        }
+    </script>
 {% endblock %}
