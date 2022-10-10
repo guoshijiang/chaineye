@@ -179,29 +179,27 @@
                     artcle_list = result.result.data
                     if (artcle_list.length >= 1){
                         for(var i= 0; i < artcle_list.length; i++) {
-                            console.log(artcle_list[i])
-                             html += `
-                                <li class="d-flex justify-content-between">
-                                    <div class="information-left-img">
-                                       <img width="235" height="150" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
-                                    </div>
+                             html += `<li class="d-flex justify-content-between">`
+                                  if (artcle_list[i].img){
+                                       html += `<div class="information-left-img">
+                                           <img width="235" height="150" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
+                                        </div>`
+                                  }
+                                  html += `
                                     <div class="information-right-content">
                                         <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" target="_blank">
                                           <p>${ artcle_list[i].title }</p>
                                         </a>
                                         <p class="desc">${ artcle_list[i].excerpt }</p>
                                         <div class="art-info d-flex justify-content-between">
-                                              <p>
-                                                <span>${ artcle_list[i].user }</span>
-                                                <span>${ artcle_list[i].created_at } </span>
-                                              </p>
-                                              <p>
-                                                <span></span>
-                                                  ${ artcle_list[i].views }
+                                             <p>
+                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>${ artcle_list[i].user }</span></span>
+                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>${ artcle_list[i].views }</span></span>
+                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>发布时间: <span>${ artcle_list[i].created_at }</span></span>
                                               </p>
                                           </div>
                                     </div>
-                                </li>
+                               </li>
                             `
                         }
                         Dom.append(html);
