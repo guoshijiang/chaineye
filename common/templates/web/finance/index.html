@@ -143,8 +143,8 @@
                         {% endif %}
                     {% endfor %}
                   </ul>
-                  <div class="loading-more" id="More">
-                       加载中
+                  <div class="loading-more" id="More" onclick="LoadMore">
+                       点击加载更多
                   </div>
                 </div>
               </div>
@@ -159,58 +159,51 @@
     </div>
  </div>
 <script>
- $(document).ready(function(){
-    let page = 1
-    var Dom = jQuery('.record-list');
-    $(window).scroll(function () {
-        var scrollTop = $(this).scrollTop();
-        var boxHeight = $(document.getElementById("information-box")).height();
-        if (scrollTop >= boxHeight) {
-            let html = '';
-            let l_url=window.location.origin;
-            let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
-            console.log(req_url)
-            $.ajax({
-                url: req_url,
-                data: {},
-                type: "GET",
-                dataType: "json",
-                success: function (result) {
-                    artcle_list = result.result.data
-                    if (artcle_list.length >= 1){
-                        for(var i= 0; i < artcle_list.length; i++) {
-                             html += `<li class="d-flex justify-content-between">`
-                                  if (artcle_list[i].img){
-                                       html += `<div class="information-left-img">
-                                           <img width="235" height="150" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
-                                        </div>`
-                                  }
-                                  html += `
-                                    <div class="information-right-content">
-                                        <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" target="_blank">
-                                          <p>${ artcle_list[i].title }</p>
-                                        </a>
-                                        <p class="desc">${ artcle_list[i].excerpt }</p>
-                                        <div class="art-info d-flex justify-content-between">
-                                             <p>
-                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>${ artcle_list[i].user }</span></span>
-                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>${ artcle_list[i].views }</span></span>
-                                                <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>发布时间: <span>${ artcle_list[i].created_at }</span></span>
-                                              </p>
-                                          </div>
-                                    </div>
-                               </li>
-                            `
-                        }
-                        Dom.append(html);
-                    } else {
-                        jQuery('#More').text("没有了，已经见低了");
-                    }
+ let page = 1
+ var Dom = jQuery('.record-list');
+ let html = '';
+ let l_url=window.location.origin;
+ function LoadMore(){
+    let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
+    $.ajax({
+        url: req_url,
+        data: {},
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            artcle_list = result.result.data
+            if (artcle_list.length >= 1){
+                for(var i= 0; i < artcle_list.length; i++) {
+                     html += `<li class="d-flex justify-content-between">`
+                          if (artcle_list[i].img){
+                               html += `<div class="information-left-img">
+                                   <img width="235" height="150" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
+                                </div>`
+                          }
+                          html += `
+                            <div class="information-right-content">
+                                <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" target="_blank">
+                                  <p>${ artcle_list[i].title }</p>
+                                </a>
+                                <p class="desc">${ artcle_list[i].excerpt }</p>
+                                <div class="art-info d-flex justify-content-between">
+                                     <p>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/touxiang.svg' %}" alt=""></span>作者: <span>${ artcle_list[i].user }</span></span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/eye.svg' %}" alt=""></span>阅读量: <span>${ artcle_list[i].views }</span></span>
+                                        <span><span style="margin-right: 2px"><img src="{% static 'svg/time.svg' %}" alt=""></span>发布时间: <span>${ artcle_list[i].created_at }</span></span>
+                                      </p>
+                                  </div>
+                            </div>
+                       </li>
+                    `
                 }
-            })
-            page = page + 1
-       }
-   });
+                Dom.append(html);
+            } else {
+                jQuery('#More').text("没有了，已经见低了");
+            }
+        }
+    })
+    page = page + 1
 })
 </script>
 

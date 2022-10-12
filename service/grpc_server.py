@@ -8,6 +8,8 @@ from blogs.models import Article, ChainSafe, Category
 from ceye_auth.models import User
 from wallet.models import UserWallet, WalletRecord, Asset
 from common.helpers import dec
+from newsletter.models import Newsletter
+
 
 tz = pytz.timezone(settings.TIME_ZONE)
 
@@ -76,7 +78,7 @@ class ChaineyeServer(chaineye_pb2_grpc.ChaineyeServiceServicer):
                 total=len(blog_lists),
                 articles=blog_return_list
             )
-        if type == 1:
+        elif type == 1:
             chain_safe_lists = ChainSafe.objects.all().order_by("-id")
             chain_safe_list = chain_safe_lists[start:end]
             for chain_safe in chain_safe_list:
@@ -97,6 +99,29 @@ class ChaineyeServer(chaineye_pb2_grpc.ChaineyeServiceServicer):
                 code=common_pb2.SUCCESS,
                 msg="get article success",
                 total=len(chain_safe_lists),
+                articles=blog_return_list
+            )
+        else:
+            news_letter_lists = Newsletter.objects.all().order_by("-id")
+            news_letter_list = news_letter_lists[start:end]
+            for news_letter in news_letter_list:
+                item = chaineye_pb2.ArticleList(
+                    id=str(news_letter.id),
+                    title=news_letter.title,
+                    abstract=news_letter.excerpt,
+                    type=type,
+                    author=news_letter.user.user_name,
+                    views=news_letter.views,
+                    add_time=news_letter.created_at.astimezone(tz).strftime('%Y-%m-%d %H:%M'),
+                    upd_time=news_letter.updated_at.astimezone(tz).strftime('%Y-%m-%d %H:%M'),
+                    cover=str(news_letter.img),
+                    like=news_letter.good + news_letter.bad,
+                )
+                blog_return_list.append(item)
+            return chaineye_pb2.ArticleListRep(
+                code=common_pb2.SUCCESS,
+                msg="get article success",
+                total=len(news_letter_lists),
                 articles=blog_return_list
             )
 
@@ -137,9 +162,20 @@ class ChaineyeServer(chaineye_pb2_grpc.ChaineyeServiceServicer):
                 likes=None
             )
         else:
+            news_letter = Newsletter.objects.objects.filter(id=id).first()
             return chaineye_pb2.ArticleDetailRep(
                 code=common_pb2.SUCCESS,
-                msg="get article detail fail, no support this type",
+                msg="get article detail success",
+                title=news_letter.title,
+                detail=news_letter.content,
+                author_id=str(news_letter.user.id),
+                author=news_letter.user.user_name,
+                views=news_letter.views,
+                add_time=news_letter.created_at.astimezone(tz).strftime('%Y-%m-%d %H:%M'),
+                upd_time=news_letter.updated_at.astimezone(tz).strftime('%Y-%m-%d %H:%M'),
+                like=news_letter.good + news_letter.bad,
+                comments=None,
+                likes=None
             )
 
 
