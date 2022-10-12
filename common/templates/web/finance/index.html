@@ -161,10 +161,9 @@
 <script>
  let page = 1
  var Dom = jQuery('.record-list');
- let html = '';
  let l_url=window.location.origin;
  function LoadMore(){
-    console.log("aaa");
+    let html = '';
     let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
     $.ajax({
         url: req_url,
