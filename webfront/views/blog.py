@@ -76,9 +76,9 @@ def blog_list(request):
 
 def article_list(request):
     cat_id = request.GET.get('cat_id', 0)
-    page = int(request.GET.get('page', 20))
+    page = int(request.GET.get('page', 1))
     cat_name = request.GET.get('cat_name', "")
-    page_size = int(request.GET.get('page_size', 1))
+    page_size = int(request.GET.get('page_size', 20))
     start = page * page_size
     end = start + page_size
     if cat_id in ["0", 0]:

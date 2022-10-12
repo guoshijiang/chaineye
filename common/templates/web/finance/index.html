@@ -143,7 +143,7 @@
                         {% endif %}
                     {% endfor %}
                   </ul>
-                  <div class="loading-more" id="More" onclick="LoadMore">
+                  <div class="loading-more" id="More" onclick="LoadMore()">
                        点击加载更多
                   </div>
                 </div>
@@ -164,6 +164,7 @@
  let html = '';
  let l_url=window.location.origin;
  function LoadMore(){
+    console.log("aaa");
     let req_url = l_url + "/article_list?cat_id=" + {{ cat_id }} + "&page=" + page + "&page_size=20";
     $.ajax({
         url: req_url,
