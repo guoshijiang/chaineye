@@ -76,9 +76,11 @@
                 <div>{{ arcticle.views }}</div>
               </div>
             </div>
-            <div class="item-right">
-              <img class="blog-img" width="80" height="80" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
-            </div>
+            {% if arcticle.img %}
+                <div class="item-right">
+                  <img class="blog-img" width="80" height="80" src="{% url 'index' %}media/{{ arcticle.img }}" alt="">
+                </div>
+            {% endif %}
           </a>
       {% endfor %}
     </div>

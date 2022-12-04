@@ -14,7 +14,9 @@
 <body>
   <div class="blog-detail-container">
      <div class="top-title">
-      <img src="{% url 'index' %}media/{{ article.img }}" alt="">
+      {% if article.img %}
+         <img src="{% url 'index' %}media/{{ article.img }}" alt="">
+      {% endif %}
       <div class="title">{{ article.title }}</div>
     </div>
     <div class="detail-content">
