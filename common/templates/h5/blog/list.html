@@ -107,7 +107,6 @@
                     artcle_list = result.result.data
                     if (artcle_list.length >= 1){
                         for(var i= 0; i < artcle_list.length; i++) {
-                            console.log(artcle_list[i])
                             html += `
                                 <a href="{% url 'arctle_detail' %}?article_id=${ artcle_list[i].id }" class="blog-item flex-between">
                                     <div>
@@ -116,12 +115,13 @@
                                         <div>${ artcle_list[i].user }</div>
                                         <div>${ artcle_list[i].views }</div>
                                       </div>
-                                    </div>
-                                    <div class="item-right">
-                                      <img class="blog-img" width="80" height="80" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
-                                    </div>
-                                 </a>
-                             `
+                                    </div>`
+                                    if (artcle_list[i].img){
+                                       html += ` <div class="item-right">
+                                          <img class="blog-img" width="80" height="80" src="{% url 'index' %}media/${ artcle_list[i].img }" alt="">
+                                        </div>`
+                                     }
+                          html += `</a>`
                         }
                         Dom.append(html);
                     } else {

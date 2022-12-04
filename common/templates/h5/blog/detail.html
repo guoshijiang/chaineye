@@ -13,12 +13,14 @@
 </head>
 <body>
   <div class="blog-detail-container">
-     <div class="top-title">
       {% if article.img %}
-         <img src="{% url 'index' %}media/{{ article.img }}" alt="">
+         <div class="top-title">
+           <img src="{% url 'index' %}media/{{ article.img }}" alt="">
+           <div class="title">{{ article.title }}</div>
+        </div>
+      {% else %}
+         <div class="title">{{ article.title }}</div>
       {% endif %}
-      <div class="title">{{ article.title }}</div>
-    </div>
     <div class="detail-content">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:20px">
         <div class="user-detail">
